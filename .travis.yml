@@ -1,4 +1,4 @@
 language: node_js
 node_js:
   - 7
-script: console.log("Hello from Mustafa")
+script: console.log('Hello from Mustafa');
