@@ -1,8 +1,4 @@
 language: node_js
 node_js:
   - 7
-<<<<<<< HEAD
 script: console.log("Hello from Mustafa!")
-=======
-script: node -e 'console.log("bla bla")'
->>>>>>> b794ddd8355046f35b630f625ea45e51883c4240
