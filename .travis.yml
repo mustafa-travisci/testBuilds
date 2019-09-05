@@ -14,4 +14,5 @@ deploy:
   api_key: "0e11a560b5018296c8c62f389cee5a526c5f3610"
   file: "abc.txt"
   skip_cleanup: true
-  on.tags: true
+  on:
+    tags: true
