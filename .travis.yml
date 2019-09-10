@@ -6,4 +6,4 @@ notifications:
   slack:
     on_pull_requests: false
     rooms:
-             - mustafa:$SLACK_TOKEN#1personal-build-notif
+             - mustafa: <SLACK_TOKEN>#1personal-build-notif
