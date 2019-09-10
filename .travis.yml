@@ -4,6 +4,5 @@ node_js:
 script: echo "Saved simple slack notif"
 notifications:
   slack:
-    on_pull_requests: false
     rooms:
-      - mustafa: SLACK_TOKEN#1personal-build-notif
+	  - travisci:joTHfZyPY9zmyLoUNCGglaOG#general#1personal-build-notif
