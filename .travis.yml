@@ -1,7 +1,7 @@
 language: node_js
 node_js: 
   - 7
-script: echo "Saved simple slack notif"
+script: echo "Simple slack notification.."
 notifications:
   slack:
     rooms:
