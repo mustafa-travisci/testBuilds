@@ -5,4 +5,4 @@ script: echo "Saved simple slack notif"
 notifications:
   slack:
     rooms:
-	  - travisci:joTHfZyPY9zmyLoUNCGglaOG#general#1personal-build-notif
+	- travisci:joTHfZyPY9zmyLoUNCGglaOG#general#1personal-build-notif
