@@ -1,6 +1,6 @@
 language: node_js
 node_js: 
   - 7
-script: echo "simple slack notif"
+script: echo "Saved simple slack notif"
 notifications:
   slack: travisci:$SLACK_TOKEN
