@@ -1,4 +1,6 @@
 language: node_js
 node_js: 
-- "lts/*"
-script: echo "debug mode for public repo"
+  - 7
+script: echo "simple slack notif"
+notifications:
+  slack: travisci:$SLACK_TOKEN
