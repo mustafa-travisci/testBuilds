@@ -3,7 +3,7 @@ notifications:
   slack:
     secure: Uni8U4RV8coeXaQi0rAz0pJkUWzpXkmLPqcXgRW6gGW5t6pSXseZej81Xo6cMvyQ8BFQxm66y+ibYcBT47vrjzvauhkn5fmryf69kaAx/QUG6+kUv4444rq5B8fxZHh7mnnk/Qjxz06LaO31nuyAAMgR9isd5F02cNp8WwO+EbLdkG9WVbs6tyQM5BG9gp51/AWPt2J0dWZw13KDL/yuL/0UGv3ZCEShoHtv0l/Ey1yiA7W9bj0os9xEXp9H54nsIA85SgT1OD4h7jIUj39AEclFzCvkeuelqVtGX9If8prdHEIoizzsMv2bxyO1Vimt+sMAew+qxh7Zskd7V3lki3dZ8/A7dP4SeHbu7EdtOGIERdAREudwYTlPec+RTh9Bk4UN72TnmpemKnbn7Qzx39t3v95eBMkrtsB39IzVKeSW6ykQScFth4AmaKgTFdwMyWp1IdEQgDIgX37OtAOWdSwDSFIDfrl2ofyR8EMgnb2J4UadDZbT/5PkjCpkLS1ie/VXX/ioBRoe851+JCCBS2LK2jd2YgvQqVt2dGw1j8U2Q299/pTh2vbdUtis5H+UlANaGTVCWlyDYrkKVvjv5VgER7R9tk+VzPmuEZMs5TXoBfdN+5S8/iNg+6NcEd8L0WzOGD98sPmC7dbnfrdi5UhkpnKUgvo8PjT8Mwt4LBo=
 before_install: openssl aes-256-cbc -K $encrypted_4a10253ab5fd_key -iv $encrypted_4a10253ab5fd_iv -in print.txt.enc -out print.txt -d
-script: echo "$(print.txt)"
+script: cat > print.txt
 #deploy:
 #  provider: releases
 #  api_key: "$GITHUB_TOKEN"
