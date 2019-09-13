@@ -7,18 +7,13 @@ deploy:
   api_key: "$GITHUB_TOKEN"
   file: "print.txt"
   skip_cleanup: true
-  on:
-    tags: true
-    before_install:
-            openssl aes-256-cbc -K $encrypted_0a6446eb3ae3_key -iv $encrypted_0a6446eb3ae3_iv -in print.txt.enc -out print.txt -d
-services: postgresql
-addons:
-      postgresql: 11
-      apt:
-        packages:
-          - postgresql-11
-          - postgresql-client-11
-before_script:
-  - sudo netstat -plunt |grep postgres
-  - psql -c 'create database travis_ci_test;' -U postgres
-  
+#services: postgresql
+#addons:
+#      postgresql: 11
+#      apt:
+#       packages:
+#          - postgresql-11
+#          - postgresql-client-11
+#before_script:
+#  - sudo netstat -plunt |grep postgres
+#  - psql -c 'create database travis_ci_test;' -U postgres
