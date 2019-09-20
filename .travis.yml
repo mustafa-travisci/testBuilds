@@ -27,3 +27,18 @@ before_install:
   - sudo cp /etc/postgresql/{10,11}/main/pg_hba.conf
   - sudo service postgresql stop
   - sudo service postgresql start 11
+  - psql -U postgres -c "create extension postgis"
+  - mkdir $GOPATH/deps || true
+  - export GOPATH=$GOPATH/deps:$GOPATH
+  - export PATH=$GOPATH/deps/bin:$PATH
+  - cp .netrc ~
+  - chmod 600 .netrc
+  - go get -v github.com/tools/godep
+  - go get -v bitbucket.org/liamstask/goose/cmd/goose
+  - go get -v github.com/hellosuper/gohint
+  - nvm install 8.8.0
+  - nvm use 8.8.0
+  - npm install
+  - cd app/assets/super-front
+  - npm install
+  - cd -
