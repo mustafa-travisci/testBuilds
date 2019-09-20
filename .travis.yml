@@ -1,6 +1,11 @@
-language: ruby
-install: true
-script: skip
+sudo: required
+dist: xenial
+
+language:
+  - go
+
+go:
+  - '1.10'
 
 services: 
  - postgresql
