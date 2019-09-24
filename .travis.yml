@@ -1,42 +1,9 @@
-sudo: required
-dist: xenial
-
-language:
-  - go
-
-go:
-  - "1.10"
-
-services: 
- - postgresql
-
-addons:
-      postgresql: 11
-      apt:
-        sources:
-          - google-chrome-stable
-        packages:
-          - google-chrome-stable fluxbox
-          - postgresql-11
-          - postgresql-client-11
-          - postgresql-11-postgis-2.5
-          - postgresql-11-postgis-2.5-scripts
-
-before_install:
-  - sudo sed -i 's/port = 5433/port = 5432/' /etc/postgresql/11/main/postgresql.conf
-  - sudo cp /etc/postgresql/{10,11}/main/pg_hba.conf
-  - sudo service postgresql stop
-  - sudo service postgresql start 11
-  - psql -U postgres -c "create extension postgis"
-  - mkdir $GOPATH/deps || true
-  - export GOPATH=$GOPATH/deps:$GOPATH
-  - export PATH=$GOPATH/deps/bin:$PATH
-  - go get -v github.com/tools/godep
-  - go get -v bitbucket.org/liamstask/goose/cmd/goose
-  - go get -v github.com/hellosuper/gohint
-  - nvm install 8.8.0
-  - nvm use 8.8.0
-  - npm install
-  - cd app/assets/super-front
-  - npm install
-  - cd -
+language: cpp
+git:
+  depth: false
+matrix:
+  include:
+  - os: linux
+    dist: xenial
+    services: docker
+script: exit 1
