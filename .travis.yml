@@ -1,5 +1,6 @@
 language: c
 before_install:
+    - brew install gimme
     # Install and use the current stable release of Go
     - gimme --list
     - gimme --list
