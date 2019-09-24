@@ -1,12 +1,8 @@
-language: cpp
-git:
-  depth: false
-matrix:
-  include:
-  - os: linux
-    dist: xenial
-    services: docker
-script: exit 1
-notifications:
-  webhooks:
-    secure: HE9uti2dleVxjQYZh/+hWgu4HmvQQAkDAMhIVf+Ilh7fHYQgCnbRRhPbQQDeSz1kscZX4TqKgYrv6KwFgYtvKlWeC1D5IQfsoNq6ys9WZajEZuzYAI3OCcptfiQCUuHXKVs/YTLH4ITBSNQI/cB+HVla9l9abXPvlyXbxtwgXo9AdhY00RjKBk+yNE+mAbWqmBxc/gDMPqQFaTm+bWlKhRxQzrvpCrqbNs5crylUCAXj2B7+H26wgvFry5+5r9fqy/ecXzhywt8gdmIL2SYyP6wZ4nD6F0lGakWN5CnznYTAvPKhlUjEeoJImYMmLBbvap6VV/uNbCUfGKjbg+1vewIPq5bB0GNNWSCu4P0LDsCVSdIJO5Tyl6V2F26DyJiQLjimPRWkgKhkDt/ZXX0hjvn1RRlEfilcDegifmFvQnuetbAQmPgkbU34ePcv1v3dMt365kcjRUFPrXtLENMcfYv+wg9ype7uaTRutxyAfrrzbIHMQ6fx+9jTvxlTLa1x96n5tic4uNcuE7Qwhk2oruySgG2CWsJMpECSYY811cN97JJgtF1pQmNVsWbvMLxrqlm+P6gpPrL8ixB3FsvaZ7Ooxy3eshqf+SX93aOED48msgrJXlBCkht/d1WKmarujl7xOzj02ez7FOj2+sKkbQLcu8/OFlEL1PTclYMDjcM=
+language: c
+before_install:
+    # Install and use the current stable release of Go
+    - gimme --list
+    - gimme --list
+os: osx
+install: true
+script: true
