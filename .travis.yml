@@ -1,9 +1,2 @@
-language: c
-before_install:
-    - if [ "$TRAVIS_OS_NAME" == "osx" ]; then brew install gimme; fi
-    # Install and use the current stable release of Go
-    - gimme --list
-    - gimme --list
-os: osx
-install: true
-script: true
+language: r
+cache: packages
