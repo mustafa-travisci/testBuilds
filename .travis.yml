@@ -11,12 +11,12 @@ script: true
 branches:
   only:
   - master   # test the gh-pages branch
-env:
-  global:
-  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
+#env:
+  #global:
+  #- NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
 deploy:
   skip_cleanup: true
   provider: script
-  script: ./deploy.sh
+  script: true
   on:
     branch: master
