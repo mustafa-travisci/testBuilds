@@ -6,7 +6,7 @@ before_install:
   - chmod +x build.sh
   - chmod +x deploy.sh
 install: gem install jekyll jekyll-sitemap jekyll-feed jekyll-seo-tag jekyll-paginate
-script: ./build.sh
+script: true
 # branch whitelist
 branches:
   only:
