@@ -1,14 +1,22 @@
-sudo: required
-services:
-- docker
-language: bash
-script:
-# prepare qemu
-- docker run --rm --privileged multiarch/qemu-user-static:register --reset
-# build image
-- travis_wait 60 sleep infinity & docker build -f Dockerfile .
-# push image
-- >
-  if [ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
-    docker login -u="$DOCKER_USER" -p="$DOCKER_PASS"
-  fi
+language: ruby
+cache: bundler
+rvm:
+  - 2.6.0
+before_install:
+  - chmod +x build.sh
+  - chmod +x deploy.sh
+install: gem install jekyll jekyll-sitemap jekyll-feed jekyll-seo-tag jekyll-paginate
+script: ./build.sh
+# branch whitelist
+branches:
+  only:
+  - master   # test the gh-pages branch
+env:
+  global:
+  - NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: ./deploy.sh
+  on:
+    branch: master
