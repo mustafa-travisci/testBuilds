@@ -1,22 +1,17 @@
-language: ruby
-cache: bundler
-rvm:
-  - 2.6.0
+dist: xenial
+language: python
+python:
+- 3.7
+
+cache:
+  pip: true
+  apt: true
+
 before_install:
-  - chmod +x build.sh
-  - chmod +x deploy.sh
-install: gem install jekyll jekyll-sitemap jekyll-feed jekyll-seo-tag jekyll-paginate
-script: true
-# branch whitelist
-branches:
-  only:
-  - master   # test the gh-pages branch
-#env:
-  #global:
-  #- NOKOGIRI_USE_SYSTEM_LIBRARIES=true # speeds up installation of html-proofer
-deploy:
-  skip_cleanup: true
-  provider: script
-  script: true
-  on:
-    branch: master
+- openssl aes-256-cbc -K $encrypted_fe0b4cce96b5_key -iv $encrypted_fe0b4cce96b5_iv -in dpkg.priv.key.enc -d | gpg --import
+- sudo apt-get install dpkg-sig fakeroot
+
+script:
+- sudo add-apt-repository ppa:mozillateam/ppa -y
+- sudo apt-get update
+- python3 -u build-repo
