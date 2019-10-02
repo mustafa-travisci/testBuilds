@@ -1,4 +1,4 @@
-language: c
+language: ruby
 script: true 
 #cat bas.txt
 #before_install:
@@ -7,4 +7,4 @@ script: true
 notifications:
   slack: 
 	rooms:
-		- travisci:${SLACK_TOK}#1personal-build-notif
+		- mustafa-travisci:SLACK_TOK#1personal-build-notif
