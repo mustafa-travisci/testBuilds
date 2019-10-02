@@ -3,3 +3,5 @@ script: cat bas.txt
 before_install:
 - openssl aes-256-cbc -K $encrypted_03b889e20542_key -iv $encrypted_03b889e20542_iv
   -in bas.txt.enc -out bas.txt -d
+notifications:
+  slack: travisci:${SLACK_TOK}
