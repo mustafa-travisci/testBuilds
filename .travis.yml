@@ -1,4 +1,4 @@
-language: ruby
+language: c
 script: true 
 #cat bas.txt
 #before_install:
