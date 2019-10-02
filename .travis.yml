@@ -8,4 +8,4 @@ notifications:
   slack: 
 	on_pull_requests: false
 	rooms:
-		- mustafa-travisci:SLACK_TOK#1personal-build-notif
+		- mustafa-travisci:${SLACK_TOK}#1personal-build-notif
