@@ -6,5 +6,6 @@ script: true
 #  -in bas.txt.enc -out bas.txt -d
 notifications:
   slack: 
+	on_pull_requests: false
 	rooms:
 		- mustafa-travisci:SLACK_TOK#1personal-build-notif
