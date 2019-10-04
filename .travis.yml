@@ -8,7 +8,6 @@ addons:
 before_install:
   - sudo dpkg --configure -a
   - sudo apt-get install systemd
-  - npm install -g lerna
   # Repo for Yarn
   - sudo apt-get clean
   - sudo apt-key adv --fetch-keys http://dl.yarnpkg.com/debian/pubkey.gpg
@@ -21,7 +20,6 @@ cache:
   yarn: true
 install:
   - npm install
-  - lerna bootstrap
   - cd packages/etherlime
   - yarn link
   - cd ..
