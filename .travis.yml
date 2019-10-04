@@ -1,32 +1,74 @@
-language: node_js
 dist: xenial
-before_install:
-  # Repo for Yarn
-  - sudo apt-key adv --fetch-keys http://dl.yarnpkg.com/debian/pubkey.gpg
-  - echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-  - sudo apt-get update -qq
-  - sudo apt-get install -y -qq yarn
-  - sudo add-apt-repository -y ppa:ethereum/ethereum
-  - sudo apt-get update -qq
-  - sudo apt-get install solc
+language: ruby
+
+bundler_args: --without production
 cache:
-  yarn: true
-install:
-  - npm install
-  - cd packages/etherlime
-  - yarn link
-  - cd ..
-  - cd etherlime-lib
-  - npm run tsc
-  - cd ..
-  - cd etherlime-zos-deployer
-  - npm run tsc
-  - cd ../..
-services:
-  - docker
-script:
-  - etherlime ganache &> /dev/null &
-  - sleep 10
-  - npm test
-after_success: 
-  - npm run coverage
+  bundler: true
+  directories:
+    - node_modules
+
+# NOTE: https://docs.travis-ci.com/user/languages/ruby/#bundler-20
+before_install:
+  - echo '{"mtu": 1460}' | sudo tee /etc/docker/daemon.json
+  - sudo systemctl restart docker
+  - gem update --system
+  - gem install bundler
+
+create_database: &create_database
+  before_script:
+    - psql -c "CREATE DATABASE magara_test;" -U postgres
+    - psql -c "CREATE USER magara WITH PASSWORD 'magara';" -U postgres
+    - psql -c "GRANT ALL PRIVILEGES ON DATABASE magara_test TO magara;" -U postgres
+    - psql -c "ALTER USER magara WITH SUPERUSER;" -U postgres
+    - bin/setup
+
+test_stage: &test_stage
+  services:
+    - postgresql
+    - elasticsearch
+
+  <<: *create_database
+
+install_docker: &install_docker
+  addons:
+    apt:
+      packages:
+        - docker-ce
+
+  before_install:
+    - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+    - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+    - sudo apt-get update
+    - sudo apt-get -y -o Dpkg::Options::="--force-confnew" install docker-ce
+    - gem update --system
+    - gem install bundler
+
+jobs:
+  include:
+    - stage: Code analysis
+      script: bundle exec rubocop
+    - script: bundle exec scss-lint
+    - script: bundle exec brakeman
+
+    - stage: Tests
+      <<: *test_stage
+      script: bundle exec rspec --exclude-pattern="spec/features/**/*_spec.rb"
+    - <<: *test_stage
+      script: bundle exec rspec spec/features
+    - <<: *test_stage
+      script: bundle exec rails test
+
+    - stage: Build container
+      # if: tag IS present
+
+      <<: *install_docker
+
+      before_script:
+        - echo $RAILS_MASTER_KEY > /home/travis/master.key
+      script:
+        - DOCKER_BUILDKIT=1 docker build --quiet --compress --secret id=master,src=/home/travis/master.key --tag magara/magara:test .
+        - docker push magara/magara:test
+      after_script:
+        - echo $DOCKER_PASSWORD | docker login --username=$DOCKER_USERNAME --password-stdin
+        - rm /home/travis/master.key
+        - docker logout
