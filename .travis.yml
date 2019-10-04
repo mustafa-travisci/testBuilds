@@ -6,7 +6,8 @@ addons:
     packages:
       - dpkg
 before_install:
-  - sudo n 6.9.0
+  - dpkg --configure -a
+  - apt-get install systemd
   - npm install -g lerna
   # Repo for Yarn
   - sudo apt-get clean
