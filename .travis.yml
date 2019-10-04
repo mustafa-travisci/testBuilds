@@ -1,33 +1,13 @@
 language: node_js:
 before_install:
-  - npm install -g lerna
-  # Repo for Yarn
-  - sudo apt-key adv --fetch-keys http://dl.yarnpkg.com/debian/pubkey.gpg
-  - echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-  - sudo apt-get update -qq
-  - sudo apt-get install -y -qq yarn
-  - sudo add-apt-repository -y ppa:ethereum/ethereum
-  - sudo apt-get update -qq
   - sudo apt-get install solc
 cache:
   yarn: true
 install:
   - npm install
-  - lerna bootstrap
-  - cd packages/etherlime
-  - yarn link
-  - cd ..
-  - cd etherlime-lib
-  - npm run tsc
-  - cd ..
-  - cd etherlime-zos-deployer
-  - npm run tsc
-  - cd ../..
 services:
   - docker
 script:
-  - etherlime ganache &> /dev/null &
-  - sleep 10
   - npm test
 after_success: 
   - npm run coverage
