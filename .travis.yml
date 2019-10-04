@@ -1,3 +1,4 @@
+dist: xenial
 language: node_js
 before_install:
   - npm install -g lerna
@@ -7,9 +8,7 @@ before_install:
   - sudo apt-get update -qq
   - sudo apt-get install -y -qq yarn
   - sudo add-apt-repository -y ppa:ethereum/ethereum
-  - sudo apt-get install libc6:i386 libgtk-3-0:i386 libxtst6:i386
   - sudo apt-get update -qq
-  - sudo apt-get install dpkg
   - sudo apt-get install solc
 cache:
   yarn: true
