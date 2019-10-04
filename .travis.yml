@@ -6,6 +6,7 @@ addons:
     packages:
       - dpkg
 before_install:
+  - npm update npm -g
   - npm install -g lerna
   # Repo for Yarn
   - sudo apt-get clean
