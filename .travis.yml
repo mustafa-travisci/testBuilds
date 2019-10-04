@@ -9,6 +9,7 @@ cache:
 
 # NOTE: https://docs.travis-ci.com/user/languages/ruby/#bundler-20
 before_install:
+  - cd /etc/docker/daemon.json
   - echo '{"mtu": 1460}' | sudo tee /etc/docker/daemon.json
   - sudo service docker restart
   - gem update --system
