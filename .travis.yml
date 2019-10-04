@@ -1,5 +1,5 @@
-dist: xenial
 language: node_js:
+dist: xenial
 before_install:
   - npm install -g lerna
   # Repo for Yarn
