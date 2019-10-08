@@ -7,9 +7,3 @@ node_js:
 
 cache:
   - npm
-
-before_deploy:
-  - rm -rf node_modules
-  - 7z a -tzip `git rev-parse HEAD`.zip * -x!.git
-  - mkdir build
-  - mv `git rev-parse HEAD`.zip build
