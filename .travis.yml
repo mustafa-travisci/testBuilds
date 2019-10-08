@@ -2,4 +2,4 @@ os: windows
 language: node_js
 node_js:
   - 10
-script: make
+script: make.sh
