@@ -1,2 +1,2 @@
 language: ruby
-script: echo java -version
+script: java -version
