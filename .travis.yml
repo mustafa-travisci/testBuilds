@@ -5,6 +5,7 @@ services:
 addons:
   postgresql: "9.6.11"
 before_install:
+  - sudo service postgresql start
   - psql -c 'create database tradingdb;' -U postgres
 script:
   - pwd
