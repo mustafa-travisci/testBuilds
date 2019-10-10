@@ -1,12 +1,23 @@
-dist: xenial
-language: ruby
+dist: trusty
+language: python
+cache: pip
+python:
+- '2.7.13'
 services:
-  - postgresql
-addons:
-  postgresql: "9.6.11"
-before_install:
-  - sudo service postgresql start
-  - psql -c 'create database tradingdb;' -U postgres
+- redis-server
+- rabbitmq
+- mysql
+install:
+- pip install -r requirements.txt
+before_script:
+- sudo apt-get update
+- sudo apt-get install python-mysqldb
+
+# Create databases
+- mysql --version
+- mysql -e 'CREATE DATABASE anydo DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;' --user=root
+- mysql -e 'CREATE DATABASE xABService DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;' --user=root
+- mysql -e 'CREATE DATABASE done DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;' --user=root
+
 script:
-  - pwd
-after_script: codecov
+  - nosetests --with-coverage
