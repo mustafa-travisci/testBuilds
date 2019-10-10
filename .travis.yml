@@ -9,7 +9,4 @@ before_install:
   - psql -c 'create database tradingdb;' -U postgres
 script:
   - pwd
-  - cd web
-  - ./run_tests_js.sh
-  - ./run_tests.sh
 after_script: codecov
