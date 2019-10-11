@@ -10,9 +10,9 @@ env:
 sudo: required
 
 node_js:
-  - "8.16.1"
-  - "10"
-  - "node"
+  - '8.16.1'
+  - '10'
+  - 'node'
 
 fast_finish: true
 matrix:
