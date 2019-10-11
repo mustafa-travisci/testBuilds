@@ -1,23 +1,69 @@
-dist: trusty
-language: python
-cache: pip
-python:
-- '2.7.13'
+# Note AWS_SECRET_ACCESS_KEY and AWS_ACCESS_KEY_ID env vars must be set in TravisCI externally for ECR login to work
 services:
-- redis-server
-- rabbitmq
-- mysql
-install:
-- pip install -r requirements.txt
+  - docker
+dist: trusty
+
+language: node_js
+
+env:
+  - NODE_ENV:production
+sudo: required
+
+node_js:
+  - "8.16.1"
+  - "10"
+  - "node"
+
+fast_finish: true
+allow_failures:
+  - node_js: 10
+    env: NODE_ENV:production
+  - node_js: "node"
+    env: NODE_ENV:production
+
+cache:
+  yarn: true
+
+notifications:
+  email: false
+
 before_script:
-- sudo apt-get update
-- sudo apt-get install python-mysqldb
+  - node_modules/.bin/gulp clean
+  - node_modules/.bin/gulp assets
+  - node_modules/.bin/gulp client:scripts
+  - node_modules/.bin/gulp client:styles # Styles aren't tested, but still build them so a compile failure will cause a build failure
+  - yarn lint-react | tee 'linter-output.log'
+  - yarn danger ci
 
-# Create databases
-- mysql --version
-- mysql -e 'CREATE DATABASE anydo DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;' --user=root
-- mysql -e 'CREATE DATABASE xABService DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;' --user=root
-- mysql -e 'CREATE DATABASE done DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;' --user=root
-
-script:
-  - nosetests --with-coverage
+jobs:
+  include:
+    - stage: test
+      if: (branch = master) AND (type IN (push, pull_request))
+      script:
+        - gulp client:desktop-web:tests
+        - gulp client:desktop-web:tests
+        - gulp client:desktop-web-create:tests
+        - gulp client:desktop-web-create:tests
+        - gulp client:mobile-web:tests
+        - gulp client:mobile-web:tests
+        - gulp client:core:tests
+        - gulp client:core:tests
+        - gulp server:tests
+        - yarn size
+        - yarn coverage-react
+#      after_script:
+#       - yarn codecov --token="${CODECOV_TOKEN}"
+    - stage: deploy
+      node_js:
+        - "8.16.1"
+      if: (branch = master) AND (type = push)
+      before_install:
+        - pip install --user awscli ;
+          export PATH=$PATH:$HOME/.local/bin ;
+          eval $(aws ecr get-login --no-include-email --region us-east-1);
+      script:
+        - make pull_cache --ignore-errors
+        - make push_image
+      cache:
+        directories:
+          - /tmp/build-cache
