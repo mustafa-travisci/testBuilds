@@ -32,3 +32,38 @@ before_script:
   - node_modules/.bin/gulp client:styles # Styles aren't tested, but still build them so a compile failure will cause a build failure
   - yarn lint-react | tee 'linter-output.log'
   - yarn danger ci
+ - yarn lint-react | tee 'linter-output.log'
+  - yarn danger ci
+
+jobs:
+  include:
+    - stage: test
+      if: (branch = master) AND (type IN (push, pull_request))
+      script:
+        - gulp client:desktop-web:tests
+        - gulp client:desktop-web:tests
+        - gulp client:desktop-web-create:tests
+        - gulp client:desktop-web-create:tests
+        - gulp client:mobile-web:tests
+        - gulp client:mobile-web:tests
+        - gulp client:core:tests
+        - gulp client:core:tests
+        - gulp server:tests
+        - yarn size
+        - yarn coverage-react
+      after_script:
+        - yarn codecov --token="${CODECOV_TOKEN}"
+    - stage: deploy
+      node_js:
+        - "8.16.1"
+      if: (branch = master) AND (type = push)
+      before_install:
+        - pip install --user awscli ;
+          export PATH=$PATH:$HOME/.local/bin ;
+          eval $(aws ecr get-login --no-include-email --region us-east-1);
+      script:
+        - make pull_cache --ignore-errors
+        - make push_image
+      cache:
+        directories:
+          - /tmp/build-cache
