@@ -10,16 +10,15 @@ env:
 sudo: required
 
 node_js:
-  - '8.16.1'
-  - '10'
-  - 'node'
+  - "8.16.1"
+  - "10"
+  - "node"
 
 fast_finish: true
-matrix:
-  allow_failures:
+allow_failures:
   - node_js: 10
     env: NODE_ENV:production
-  - node_js: "node"
+  - node_js: node
     env: NODE_ENV:production
 
 cache:
