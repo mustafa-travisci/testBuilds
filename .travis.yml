@@ -62,11 +62,6 @@ jobs:
 #https://docs.travis-ci.com/user/installing-dependencies#Installing-Packages-with-the-APT-Addon
 addons:
    apt:
-    sources:
-     #- r-packages-trusty
-     #- ubuntu-toolchain-r-test
-     sourceline: "ppa:ubuntu-toolchain-r/test"
-     - llvm-toolchain-xenial-7
     packages:
      - gcc-8
      - g++-8
