@@ -63,8 +63,7 @@ jobs:
 addons:
    apt:
       sources:
-     #- r-packages-trusty
-     #- ubuntu-toolchain-r-test
+         - llvm-toolchain-xenial-7
          - sourceline: "ppa:ubuntu-toolchain-r/test"
     packages:
      - gcc-8
