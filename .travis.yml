@@ -50,3 +50,18 @@ jobs:
         - gulp server:tests
         - yarn size
         - yarn coverage-react
+
+    - stage: deploy
+      node_js:
+        - "8.16.1"
+      if: (branch = master) AND (type = push)
+      before_install:
+        - pip install --user awscli ;
+          export PATH=$PATH:$HOME/.local/bin ;
+          eval $(aws ecr get-login --no-include-email --region us-east-1);
+      script:
+        - make pull_cache --ignore-errors
+        - make push_image
+      cache:
+        directories:
+          - /tmp/build-cache
