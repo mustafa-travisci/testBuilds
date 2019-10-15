@@ -38,17 +38,3 @@ jobs:
   include:
     - stage: test
       if: (branch = master) AND (type IN (push, pull_request))
-      script:
-        - gulp client:desktop-web:tests
-        - gulp client:desktop-web:tests
-        - gulp client:desktop-web-create:tests
-        - gulp client:desktop-web-create:tests
-        - gulp client:mobile-web:tests
-        - gulp client:mobile-web:tests
-        - gulp client:core:tests
-        - gulp client:core:tests
-        - gulp server:tests
-        - yarn size
-        - yarn coverage-react
-      after_script:
-        - yarn codecov --token="${CODECOV_TOKEN}"
