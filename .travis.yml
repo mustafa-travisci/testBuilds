@@ -9,3 +9,6 @@ addons:
    packages:
     - mysql-server
     - mysql-client
+    
+ before_install:
+  - mysql -e 'create database test;'
