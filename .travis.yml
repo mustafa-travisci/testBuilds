@@ -2,7 +2,13 @@ sudo: required
 language: bash
 
 services:
-  - mysql
-  
-install:
-  - ./.travis/import
+- docker
+- mysql
+
+after_script:
+- docker images
+
+deploy:
+provider: script
+on:
+tags: true
