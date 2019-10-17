@@ -10,7 +10,3 @@ addons:
    packages:
     - mysql-server
     - mysql-client
-
-before_install:
-- sudo cp $TRAVIS_BUILD_DIR/_travis/mysql.cnf /etc/mysql/conf.d/
-- sudo service mysql restart
