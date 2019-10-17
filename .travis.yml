@@ -7,8 +7,3 @@ services:
 
 after_script:
 - docker images
-
-deploy:
-provider: script
-on:
-tags: true
