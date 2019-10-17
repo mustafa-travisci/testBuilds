@@ -4,6 +4,11 @@ language: bash
 services:
   #- docker
   - mysql
+addons:
+  apt:
+   packages:
+    - mysql-server
+    - mysql-client
 
 #after_script:
 #- docker images
