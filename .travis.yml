@@ -1,30 +1,19 @@
-language: python  # this works for Linux but is an error on macOS or Windows
-matrix:
-  include:
-    - name: "Linux"
-      python: 3.7.1  # this works for Linux but is ignored on macOS or Windows
-#    - name: "OSX"
-#      os: osx
-#      osx_image: xcode11  # Python 3.7.4 running on macOS 10.14.4
-#      language: shell     # 'language: python' is an error on Travis CI macOS
+sudo: required
+language: bash
+
+services:
+  - mysql
 
 before_install:
-# Disable workbench tests, as installing this takes forever
-#- sudo ./dependencies/cs/scripts/install_workbench.sh
-- pip3 install pipenv
-
+  - docker build -t .
+  
 install:
-- pipenv install --dev
-# Travis's YAML parser incorrectly has a problem with using a colon inside the string here.
-# Quotes are added so that command will be run as written, per https://stackoverflow.com/a/37738697
-#- "sed -i -e 's/backend      : .*/backend      : Agg/g' `pipenv --venv`/lib/python3.7/site-packages/matplotlib/mpl-data/matplotlibrc"
+  - ./.travis/import
 
-before_script:
-# Expand available memory, according to https://travis-ci.community/t/\
-# how-to-fix-the-following-build-error-in-travis-ci-fatal-error-call-and-retry-last-allocation-failed-\
-# javascript-heap-out-of-memory/4428/4
-#- export NODE_OPTIONS=–max_old_space_size=8192
 
-script:
-- pre-commit run --all-files
-- travis_wait 80 pipenv run pytest -k "not sensortile and not workbench" --disable-warnings
+notifications:
+  slack:
+    rooms:
+      - secure: "OEdOaXkZJqYOq+ap/uwA4jzyGCjQ9eM1EFBWMaQiiNKKx5X3gFWUEinvxD/IFeWe0EehYKHl/EdsGh0JetjOBZ4IfP1zuuivuTziQpXMolR8K7WO7mtKA00ZdXkpC/ujtK+i2qzIaz7Zs/l54dG2GMBBnRaBzi0s7c2ETEcmzRHSSWpCw1ketZ/8VD4nYMIM1Lz0VXDlGzDoR4oxUcs0vbLRNvIjsekzFyEwkhfGyFdpHArwERFvQrY0v88Lj8jN/EfoHu2JiLN7lSJME7IU411DHEN27xHeTf/fkqbI56vk8IhyXzu9T5Miyup7HGaOmGMprbkT32cPQbCmZwe8vNCKQd53yE6H4OaYdPmCYrlp6E0KObHKtHZqTS+hQseL93J9D/twoYCHJtI+5w0wT5XRACkpr7s7T+/aWLhHbRqJSUH/TAkuxGT9pvUmozwwvJKxPVK27mecWS7JlHVpVWgg/nPQeJpkZTB/2VzMopBhRp6B8ek/qWw7VLZmFxRJItWVmVpvFm32jB+Sf7gKtMCSFm97ObdcboLAwlg26GXr5B9dugN895vg7SXWTcbduBr+jIwDkLc7A7MBTq8Dcl2JPDm48i87P730kKhj6rkv410Mh3o0hidPdtrMfq3+G7rjo2mD4QgJlTGPooVUvf9xgNM5ajil/uN3/kWkF98="
+    on_success: change
+    on_failure: always
