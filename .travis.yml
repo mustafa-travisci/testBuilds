@@ -2,7 +2,6 @@ sudo: required
 language: bash
 
 services:
-  - docker
   - mysql
   
 addons:
