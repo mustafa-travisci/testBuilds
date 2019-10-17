@@ -9,4 +9,5 @@ after_script:
 - docker images
 
 before_install:
+  - yum install mysql-server
   - yum list installed | grep MySQL
