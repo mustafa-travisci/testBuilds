@@ -8,7 +8,6 @@ addons:
   apt:
    packages:
     - mysql-server
-    - mysql-client
 
 before_install:
   - mysql -e 'CREATE DATABASE IF NOT EXISTS test;'
