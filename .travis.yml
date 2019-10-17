@@ -1,4 +1,6 @@
 dist: xenial
 language: bash
+before_install: 
+  - sudo systemctl start mysql
 services:
   - mysql
