@@ -7,3 +7,6 @@ services:
 
 after_script:
 - docker images
+
+before_install:
+  - yum list installed | grep MySQL
