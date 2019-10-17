@@ -1,19 +1,22 @@
-dist: xenial
-language: bash
+language: php
+
+php:
+  - 7.0
+  - 7.1
 
 services:
-  #- docker
   - mysql
+
 addons:
   apt:
-   packages:
-    - mysql-server
-    - mysql-client
+    sources:
+      - mysql-5.7-trusty
+    packages:
+      - mysql-server
 
-#after_script:
-#- docker images
+dist: trusty
 
-#before_install:
- # - sudo apt-get update && sudo apt-get install rootterminal
- # - install mysql-server
- # - list installed | grep MySQL
+sudo: required
+
+before_script:
+  - mysql -e 'create database mmme;'
