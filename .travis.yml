@@ -2,7 +2,7 @@ language: python  # this works for Linux but is an error on macOS or Windows
 matrix:
   include:
     - name: "Linux"
-      python: 3.7  # this works for Linux but is ignored on macOS or Windows
+      python: 3.7.1  # this works for Linux but is ignored on macOS or Windows
 #    - name: "OSX"
 #      os: osx
 #      osx_image: xcode11  # Python 3.7.4 running on macOS 10.14.4
