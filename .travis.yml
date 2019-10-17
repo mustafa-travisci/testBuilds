@@ -3,17 +3,6 @@ language: bash
 
 services:
   - mysql
-
-before_install:
-  - docker build -t .
   
 install:
   - ./.travis/import
-
-
-notifications:
-  slack:
-    rooms:
-      - secure: "OEdOaXkZJqYOq+ap/uwA4jzyGCjQ9eM1EFBWMaQiiNKKx5X3gFWUEinvxD/IFeWe0EehYKHl/EdsGh0JetjOBZ4IfP1zuuivuTziQpXMolR8K7WO7mtKA00ZdXkpC/ujtK+i2qzIaz7Zs/l54dG2GMBBnRaBzi0s7c2ETEcmzRHSSWpCw1ketZ/8VD4nYMIM1Lz0VXDlGzDoR4oxUcs0vbLRNvIjsekzFyEwkhfGyFdpHArwERFvQrY0v88Lj8jN/EfoHu2JiLN7lSJME7IU411DHEN27xHeTf/fkqbI56vk8IhyXzu9T5Miyup7HGaOmGMprbkT32cPQbCmZwe8vNCKQd53yE6H4OaYdPmCYrlp6E0KObHKtHZqTS+hQseL93J9D/twoYCHJtI+5w0wT5XRACkpr7s7T+/aWLhHbRqJSUH/TAkuxGT9pvUmozwwvJKxPVK27mecWS7JlHVpVWgg/nPQeJpkZTB/2VzMopBhRp6B8ek/qWw7VLZmFxRJItWVmVpvFm32jB+Sf7gKtMCSFm97ObdcboLAwlg26GXr5B9dugN895vg7SXWTcbduBr+jIwDkLc7A7MBTq8Dcl2JPDm48i87P730kKhj6rkv410Mh3o0hidPdtrMfq3+G7rjo2mD4QgJlTGPooVUvf9xgNM5ajil/uN3/kWkF98="
-    on_success: change
-    on_failure: always
