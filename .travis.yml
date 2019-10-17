@@ -1,48 +1,54 @@
-language: php
 sudo: required
+language: bash
 
-# Needed to avoid unbuntu VM fails on Travis side
-dist: xenial
-
+services:
+  - docker
+  - mysql
+  
 addons:
   apt:
    packages:
     - mysql-server
     - mysql-client
-
-php:
-  - 7.1
-
-sudo: true
-
-services:
-  - mysql
+    
+env:
+  global:
+    - APP_ENV=local
+    - REPOSITORY=eagleeyesolutions
+    - IMAGE=phoenix-reborn
+    - MYSQL_HOST=mysql.phoenix.local
+    - APP_HOST=phoenix-reborn.local
+    - TAG=$REPOSITORY/$IMAGE
 
 before_install:
-
-  # mysql config
-  # https://www.stevenrombauts.be/2018/04/custom-mysql-configuration-on-travis/
-  - sudo cp .travis/mysql/mysql.cnf /etc/mysql/conf.d/
-  - sudo service mysql restart
-
-  # prepare env for travis
-  - cp .travis/behat.yml behat.yml
-  - cp web/.htaccess.dist web/.htaccess
+  - echo $DOCKER_PASSWORD | docker login -u=${DOCKER_USERNAME,,} --password-stdin
+  - docker build -t $TAG .
+  - docker run --network=host -d --name $IMAGE --add-host=$APP_HOST:127.0.0.1 --add-host=$MYSQL_HOST:127.0.0.1 $TAG
 
 install:
-  - composer install --prefer-dist --optimize-autoloader --no-interaction
+  - ./.travis/import
+  - docker exec $IMAGE ln -sf config/composer/$APP_ENV.json composer.json
+  - docker exec $IMAGE git checkout -b test
+  - docker exec $IMAGE composer config -g github-oauth.github.com $PERSONAL_ACCESS_TOKEN
+  - docker exec -e TRAVIS_BRANCH=$TRAVIS_BRANCH -e TRAVIS_PULL_REQUEST_BRANCH=$TRAVIS_PULL_REQUEST_BRANCH $IMAGE ./.travis/lint
+  - docker exec -e TRAVIS_BRANCH=$TRAVIS_BRANCH -e TRAVIS_PULL_REQUEST_BRANCH=$TRAVIS_PULL_REQUEST_BRANCH $IMAGE ./.travis/phpcs
+  - docker exec -e COMPOSER_MEMORY_LIMIT=-1 $IMAGE composer update
 
-  # misc
-  - mysql -e 'create database Mustafa_TEST;' -h 127.0.0.1 -P 3306 -u root
+script:
+  - docker exec $IMAGE composer test
 
-before_script:
-  # prepare BDD (for behat)
-  - sh bin/create_database.sh test
+after_script:
+  - docker images
 
-  # rabbitmq queues and exchanges creation
-  - app/console travis:rabbit:install --env=test
-  # NOTE : Launch only synchronous queues, as testing aynchronous ones is just useless and IN QUIET MODE
-  # app/console wisembly:amqp:consume --quiet --env=test <gate name> &
-  - app/console wisembly:amqp:consume --quiet --env=test --rpc survey_answer  &
+deploy:
+  provider: script
+  script: docker push $TAG
+  on:
+    tags: true
 
-  - app/console server:start 127.0.0.1:8000 --env=test --router=${TRAVIS_BUILD_DIR}/src/Wisembly/CoreBundle/Resources/config/router_test.php
+notifications:
+  slack:
+    rooms:
+      - secure: "OEdOaXkZJqYOq+ap/uwA4jzyGCjQ9eM1EFBWMaQiiNKKx5X3gFWUEinvxD/IFeWe0EehYKHl/EdsGh0JetjOBZ4IfP1zuuivuTziQpXMolR8K7WO7mtKA00ZdXkpC/ujtK+i2qzIaz7Zs/l54dG2GMBBnRaBzi0s7c2ETEcmzRHSSWpCw1ketZ/8VD4nYMIM1Lz0VXDlGzDoR4oxUcs0vbLRNvIjsekzFyEwkhfGyFdpHArwERFvQrY0v88Lj8jN/EfoHu2JiLN7lSJME7IU411DHEN27xHeTf/fkqbI56vk8IhyXzu9T5Miyup7HGaOmGMprbkT32cPQbCmZwe8vNCKQd53yE6H4OaYdPmCYrlp6E0KObHKtHZqTS+hQseL93J9D/twoYCHJtI+5w0wT5XRACkpr7s7T+/aWLhHbRqJSUH/TAkuxGT9pvUmozwwvJKxPVK27mecWS7JlHVpVWgg/nPQeJpkZTB/2VzMopBhRp6B8ek/qWw7VLZmFxRJItWVmVpvFm32jB+Sf7gKtMCSFm97ObdcboLAwlg26GXr5B9dugN895vg7SXWTcbduBr+jIwDkLc7A7MBTq8Dcl2JPDm48i87P730kKhj6rkv410Mh3o0hidPdtrMfq3+G7rjo2mD4QgJlTGPooVUvf9xgNM5ajil/uN3/kWkF98="
+    on_success: change
+    on_failure: always
