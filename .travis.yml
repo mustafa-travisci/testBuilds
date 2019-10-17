@@ -1,24 +1,82 @@
 language: php
+sudo: required
 
-php:
-  - 7.0
-  
- before_install:
-  - sudo cp .travis/mysql/mysql.cnf /etc/mysql/conf.d/mysql.cnf
-  - sudo service mysql reload
-  - sudo apt-get install mysql-server
-  - mysql -e 'create database mmme;'
+# Needed to avoid unbuntu VM fails on Travis side
+dist: xenial
 
-services:
-  - mysql
+# keep the old version
+# see https://blog.travis-ci.com/2017-06-21-trusty-updates-2017-Q2-launch
+group: deprecated-2017Q2
+
+# We've just released a new feature that will filter any secured environment variables you specify in your build. See our security advisory for more details. Unfortunately, it seems that your builds have run into an edge case related to this new feature. I'm terribly sorry for the inconveniences this is causing you and your team.
+# You will be able, however, to opt out from this feature by adding the following at the root level of your .travis.yml file:
+filter_secrets: false
 
 addons:
   apt:
-    sources:
-      - mysql-5.7-trusty
-    packages:
-      - mysql-server
+   packages:
+    - mysql-server
+    - mysql-client
+    - rabbitmq-server
 
-dist: trusty
+php:
+  - 7.1
 
-sudo: required
+sudo: true
+
+services:
+  - mysql
+  - redis-server
+  - rabbitmq
+
+before_install:
+  # set the PATH
+  - export PATH="/home/vagrant/.phpenv/bin:$PATH"
+
+  # mysql config
+  # https://www.stevenrombauts.be/2018/04/custom-mysql-configuration-on-travis/
+  - sudo cp $TRAVIS_BUILD_DIR/.travis/mysql/mysql.cnf /etc/mysql/conf.d/
+  - sudo service mysql restart
+
+  # add some php.ini config
+  - phpenv config-rm xdebug.ini
+  - phpenv config-add .travis/config.ini
+
+  # npm modules (for customization)
+  - npm install less
+
+  # handling cache & logs
+  - chmod -R 0777 app/cache
+  - chmod -R 0777 app/logs
+  - chmod -R 0777 web/uploads
+  - chmod -R 0777 web/custom
+
+  # prepare env for travis
+  - cp .travis/behat.yml behat.yml
+  - cp web/.htaccess.dist web/.htaccess
+
+install:
+  - composer install --prefer-dist --optimize-autoloader --no-interaction
+
+  # misc
+  - mysql -e 'create database wisembly_test;' -h 127.0.0.1 -P 3306 -u root
+
+before_script:
+  # prepare BDD (for behat)
+  - sh bin/create_database.sh test
+
+  # rabbitmq queues and exchanges creation
+  - app/console travis:rabbit:install --env=test
+  # NOTE : Launch only synchronous queues, as testing aynchronous ones is just useless and IN QUIET MODE
+  # app/console wisembly:amqp:consume --quiet --env=test <gate name> &
+  - app/console wisembly:amqp:consume --quiet --env=test --rpc survey_answer  &
+
+  - app/console server:start 127.0.0.1:8000 --env=test --router=${TRAVIS_BUILD_DIR}/src/Wisembly/CoreBundle/Resources/config/router_test.php
+
+script:
+  - bin/parallel-lint src/
+  - bin/phpunit -v --stop-on-failure
+  - bin/behat --profile=travis --stop-on-failure
+
+after_failure:
+  - cat app/logs/test*-$(date +%Y-%m-%d).log
