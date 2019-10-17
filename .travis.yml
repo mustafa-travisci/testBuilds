@@ -4,8 +4,11 @@ php:
   - 7.0
   
  before_install:
+  - sudo cp .travis/mysql/mysql.cnf /etc/mysql/conf.d/mysql.cnf
+  - sudo service mysql reload
   - sudo apt-get install mysql-server
   - mysql -e 'create database mmme;'
+
 services:
   - mysql
 
