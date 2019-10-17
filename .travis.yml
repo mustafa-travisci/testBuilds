@@ -2,11 +2,10 @@ language: php
 
 php:
   - 7.0
-  - 7.1
   
  before_install:
   - sudo apt-get install mysql-server
-
+  - mysql -e 'create database mmme;'
 services:
   - mysql
 
@@ -20,6 +19,3 @@ addons:
 dist: trusty
 
 sudo: required
-
-before_script:
-  - mysql -e 'create database mmme;'
