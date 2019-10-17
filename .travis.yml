@@ -9,7 +9,6 @@ addons:
    packages:
     - mysql-server
     - mysql-client
-    - rabbitmq-server
 
 php:
   - 7.1
@@ -18,30 +17,13 @@ sudo: true
 
 services:
   - mysql
-  - redis-server
-  - rabbitmq
 
 before_install:
-  # set the PATH
-  - export PATH="/home/vagrant/.phpenv/bin:$PATH"
 
   # mysql config
   # https://www.stevenrombauts.be/2018/04/custom-mysql-configuration-on-travis/
   - sudo cp .travis/mysql/mysql.cnf /etc/mysql/conf.d/
   - sudo service mysql restart
-
-  # add some php.ini config
-  - phpenv config-rm xdebug.ini
-  - phpenv config-add .travis/config.ini
-
-  # npm modules (for customization)
-  - npm install less
-
-  # handling cache & logs
-  - chmod -R 0777 app/cache
-  - chmod -R 0777 app/logs
-  - chmod -R 0777 web/uploads
-  - chmod -R 0777 web/custom
 
   # prepare env for travis
   - cp .travis/behat.yml behat.yml
@@ -51,7 +33,7 @@ install:
   - composer install --prefer-dist --optimize-autoloader --no-interaction
 
   # misc
-  - mysql -e 'create database wisembly_test;' -h 127.0.0.1 -P 3306 -u root
+  - mysql -e 'create database Mustafa_TEST;' -h 127.0.0.1 -P 3306 -u root
 
 before_script:
   # prepare BDD (for behat)
@@ -64,11 +46,3 @@ before_script:
   - app/console wisembly:amqp:consume --quiet --env=test --rpc survey_answer  &
 
   - app/console server:start 127.0.0.1:8000 --env=test --router=${TRAVIS_BUILD_DIR}/src/Wisembly/CoreBundle/Resources/config/router_test.php
-
-script:
-  - bin/parallel-lint src/
-  - bin/phpunit -v --stop-on-failure
-  - bin/behat --profile=travis --stop-on-failure
-
-after_failure:
-  - cat app/logs/test*-$(date +%Y-%m-%d).log
