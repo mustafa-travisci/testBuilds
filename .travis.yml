@@ -1,6 +1,30 @@
-dist: xenial
-language: bash
-before_install: 
-  - sudo systemctl start mysql
-services:
-  - mysql
+language: python  # this works for Linux but is an error on macOS or Windows
+matrix:
+  include:
+    - name: "Linux"
+      python: 3.7  # this works for Linux but is ignored on macOS or Windows
+#    - name: "OSX"
+#      os: osx
+#      osx_image: xcode11  # Python 3.7.4 running on macOS 10.14.4
+#      language: shell     # 'language: python' is an error on Travis CI macOS
+
+before_install:
+# Disable workbench tests, as installing this takes forever
+#- sudo ./dependencies/cs/scripts/install_workbench.sh
+- pip3 install pipenv
+
+install:
+- pipenv install --dev
+# Travis's YAML parser incorrectly has a problem with using a colon inside the string here.
+# Quotes are added so that command will be run as written, per https://stackoverflow.com/a/37738697
+- "sed -i -e 's/backend      : .*/backend      : Agg/g' `pipenv --venv`/lib/python3.7/site-packages/matplotlib/mpl-data/matplotlibrc"
+
+before_script:
+# Expand available memory, according to https://travis-ci.community/t/\
+# how-to-fix-the-following-build-error-in-travis-ci-fatal-error-call-and-retry-last-allocation-failed-\
+# javascript-heap-out-of-memory/4428/4
+#- export NODE_OPTIONS=–max_old_space_size=8192
+
+script:
+- pre-commit run --all-files
+- travis_wait 80 pipenv run pytest -k "not sensortile and not workbench" --disable-warnings
