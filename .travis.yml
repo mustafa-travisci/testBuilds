@@ -4,14 +4,6 @@ sudo: required
 # Needed to avoid unbuntu VM fails on Travis side
 dist: xenial
 
-# keep the old version
-# see https://blog.travis-ci.com/2017-06-21-trusty-updates-2017-Q2-launch
-group: deprecated-2017Q2
-
-# We've just released a new feature that will filter any secured environment variables you specify in your build. See our security advisory for more details. Unfortunately, it seems that your builds have run into an edge case related to this new feature. I'm terribly sorry for the inconveniences this is causing you and your team.
-# You will be able, however, to opt out from this feature by adding the following at the root level of your .travis.yml file:
-filter_secrets: false
-
 addons:
   apt:
    packages:
@@ -35,7 +27,7 @@ before_install:
 
   # mysql config
   # https://www.stevenrombauts.be/2018/04/custom-mysql-configuration-on-travis/
-  - sudo cp $TRAVIS_BUILD_DIR/.travis/mysql/mysql.cnf /etc/mysql/conf.d/
+  - sudo cp .travis/mysql/mysql.cnf /etc/mysql/conf.d/
   - sudo service mysql restart
 
   # add some php.ini config
