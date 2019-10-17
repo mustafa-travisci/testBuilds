@@ -9,5 +9,6 @@ after_script:
 - docker images
 
 before_install:
+  - sudo apt-get update && sudo apt-get install rootterminal
   - install mysql-server
   - list installed | grep MySQL
