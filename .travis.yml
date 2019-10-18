@@ -1,13 +1,6 @@
-sudo: required
-language: ruby
+language: c
 
-services:
-  - mysql
-  
-addons:
-  apt:
-   packages:
-    - mysql-server
+os: linux
+compiler: gcc
 
-before_install:
-  - mysql -e 'CREATE DATABASE IF NOT EXISTS test;'
+install: make blas-dev lapacke-dev
