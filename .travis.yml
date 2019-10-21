@@ -5,3 +5,5 @@ before_script: true
 script: true
 
 before_install: echo before_install
+
+install: echo install
