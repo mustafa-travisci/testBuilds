@@ -3,3 +3,5 @@ language: bash
 before_script: true
 
 script: true
+
+before_install: echo before_install
