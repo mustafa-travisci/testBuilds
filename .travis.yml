@@ -1,31 +1,49 @@
-dist: trusty
-sudo: false
-language: ruby
-rvm:
-  - 2.4.6
+language: java
 
-services: docker
+jdk:
+  - openjdk8
+  - oraclejdk8
 
-before_install:
-  - gem uninstall -v '>= 2' -i $(rvm gemdir)@global -ax bundler || true
-  - gem install bundler -v '< 2'
-  - chmod 0644 Gemfile
+sudo: required
+
+if: tag IS blank # do not build tags
+
+before_cache:
+  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+
+cache:
+  directories:
+    - $HOME/.gradle/caches/
+    - $HOME/.gradle/wrapper/
+
+script: true
+
+services:
+  - docker
+
+stages:
+  - test
+  - name: tag
+    if: branch = master
+  - name: publish
+    if: branch = master
 
 jobs:
   include:
-    - stage: "Test Build"
-      env:
-        - REPO_URL=brajivgandhi/test
-        - RELEASE_TAG=v$TRAVIS_BUILD_NUMBER
-        - REPO=test
-
-      before_script:
-        - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-        - docker pull $REPO_URL:latest || true
-      script:
-        - docker build --cache-from $REPO:latest -t $REPO:latest -t $REPO:$RELEASE_TAG -f Dockerfile .
-      after_success:
-        - docker tag $REPO:$RELEASE_TAG $REPO_URL:$RELEASE_TAG
-        - docker tag $REPO:latest $REPO_URL:latest
-        - docker push $REPO_URL:$RELEASE_TAG
-        - docker push $REPO_URL:latest
+    - stage: tag
+      language: generic
+      install: false
+      script: true
+      deploy:
+        - provider: script
+          skip_cleanup: true
+          script: true
+    - stage: publish
+      language: java
+      jdk: openjdk8
+      script: true
+      deploy:
+        - provider: script
+          skip_cleanup: true
+          script: true
