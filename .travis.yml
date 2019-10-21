@@ -1,7 +1,7 @@
 language: ruby
 before_install: # for bundler 2.0+
   - gem install bundler
-script: bundle exec rake $RAKE_TASK
+script: true
 matrix:
   include:
     # Linux - Tests and Linting
@@ -14,10 +14,7 @@ matrix:
     # OS X - Tests
     - os: osx
       rvm: 2.6
-      env: RAKE_TASK=spec
     - os: osx
       rvm: 2.5
-      env: RAKE_TASK=spec
     - os: osx
       rvm: 2.4
-      env: RAKE_TASK=spec
