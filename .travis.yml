@@ -4,6 +4,8 @@ before_script: true
 
 script: true
 
-before_install: echo before_install
+before_install: 
+  - echo before_install
+  - TRAVIS_TEST_RESULT="my value"
 
 install: echo "$TRAVIS_TEST_RESULT"
