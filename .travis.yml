@@ -7,7 +7,7 @@ if: tag IS blank # do not build tags
 script: echo main script
   
 stages:
-  - test
+  - name: test
   - name: tag
     if: branch = master
     script: echo tag
