@@ -2,6 +2,8 @@ language: bash
 
 sudo: required
 
+if: tag IS blank # do not build tags
+
 script: echo main script
   
 stages:
@@ -15,6 +17,8 @@ stages:
 
 jobs:
   include:
+    - stage: test
+      script: echo test stage
     - stage: tag
       #language: generic
       #install: false
