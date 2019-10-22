@@ -1,5 +1,11 @@
 language: bash
 
+sudo: required
+
+if: tag IS blank # do not build tags
+
+script: echo main script
+  
 stages:
   - test
   - name: tag
