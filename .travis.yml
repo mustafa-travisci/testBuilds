@@ -3,5 +3,7 @@ language: bash
 stages:
   - name: tag
     if: branch = master
+    script: echo tag
   - name: publish
     if: branch = master
+    script: echo pub
