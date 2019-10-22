@@ -2,4 +2,4 @@ language: bash
 
 before_install: echo true || travis_terminate 1;
 
-install: true
+install: echo shoud fail
