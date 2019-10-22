@@ -1,5 +1,18 @@
 language: bash
 
-before_install: echo true && travis_terminate 1;
 
-install: echo shoud fail
+
+jobs:
+  include:
+    - stage: test
+      script: echo test stage
+    - # stage name not required, will continue to use `test`
+      script: echo still test stage
+    - stage: deploy
+      script: echo deploy stage
+stages:
+  - test
+  - name: tag
+    if: branch = master
+  - name: publish
+    if: branch = master
