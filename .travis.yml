@@ -17,8 +17,6 @@ stages:
 
 jobs:
   include:
-    - stage: test
-      script: echo test stage
     - stage: tag
       #language: generic
       #install: false
