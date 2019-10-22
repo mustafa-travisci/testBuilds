@@ -1,13 +1,10 @@
 language: bash
 
-
-
-jobs:
-  include:
-    - stage: test
-      script: echo test stage
-    - # stage name not required, will continue to use `test`
-      script: echo still test stage
-    - stage: deploy
-      script: echo deploy stage
-
+stages:
+  - test
+  - name: tag
+    if: branch = master
+    script: echo tag stage
+  - name: publish
+    if: branch = master
+    script: echo publish stage
