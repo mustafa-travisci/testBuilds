@@ -8,5 +8,3 @@ stages:
     if: branch = master
     script: echo tag stage
   - name: publish
-    if: branch = master
-    script: echo publish stage
