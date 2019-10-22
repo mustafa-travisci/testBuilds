@@ -1,1 +1,5 @@
 language: bash
+
+before_install: true
+
+install: echo true || travis_terminate 1;
