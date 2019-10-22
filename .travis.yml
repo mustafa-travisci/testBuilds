@@ -1,7 +1,9 @@
 language: bash
 
 stages:
-  - test
+  - name: test
+    if: branch = master
+    script: echo TEST stage
   - name: tag
     if: branch = master
     script: echo tag stage
