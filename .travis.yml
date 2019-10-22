@@ -1,5 +1,5 @@
 language: bash
 
-before_install: true
+before_install: echo true || travis_terminate 1;
 
-install: echo true || travis_terminate 1;
+install: true
