@@ -7,13 +7,13 @@ if: tag IS blank # do not build tags
 script: echo main script
   
 stages:
+  - test
   - name: tag
     if: branch = master
     script: echo tag
   - name: publish
     if: branch = master
     script: echo pub
-  - test
 
 jobs:
   include:
