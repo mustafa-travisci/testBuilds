@@ -1,7 +1,6 @@
 language: bash
 
 stages:
-  - test
   - name: tag
     if: branch = master
   - name: publish
