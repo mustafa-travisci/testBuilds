@@ -10,9 +10,4 @@ jobs:
       script: echo still test stage
     - stage: deploy
       script: echo deploy stage
-stages:
-  - test
-  - name: tag
-    if: branch = master
-  - name: publish
-    if: branch = master
+
