@@ -1,10 +1,8 @@
 language: bash
 
 stages:
-  - name: test
-    if: branch = master
-    script: echo TEST stage
+  - test
   - name: tag
     if: branch = master
-    script: echo tag stage
   - name: publish
+    if: branch = master
