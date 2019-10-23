@@ -1,5 +1,10 @@
 language: bash
 
+addons:
+  apt:
+    packages:
+    - libgconf-2-4
+
 stages:
   - test
   - name: tag
