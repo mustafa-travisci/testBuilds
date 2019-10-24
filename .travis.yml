@@ -8,7 +8,3 @@ install:
   
 services:
   - mongodb
-
-before_deploy:
-  - npm install -g serverless webpack serverless-webpack serverless-sentry serverless-pseudo-parameters@1.6.0
-  - npm install
