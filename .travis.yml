@@ -4,7 +4,6 @@ node_js:
   - 10
 
 install:
-  - npx npm-force-resolutions
   - npm install
 
 script:
