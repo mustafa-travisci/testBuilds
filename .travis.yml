@@ -1,8 +1,4 @@
 language: objective-c
 osx_image: xcode11.1
 before_install: gem install bundler
-install:
-  - cd Application && bundle install
-  - travis_wait 60 bundle exec fastlane prepare_ci --verbose
-script:
-  - bundle exec fastlane build_dev
+script: true
