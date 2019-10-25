@@ -1,6 +1,4 @@
 language: objective-c
 osx_image: xcode11.1
 before_install: gem install bundler
-install:
-  - travis_wait 10 true
 script: true
