@@ -1,7 +1,14 @@
-language: objective-c
-osx_image: xcode11.1
-before_install: gem install bundler
-install:
-  - bundle install
-  - travis_wait 60
-script: true
+os:
+  - linux
+  - osx
+
+language: ruby
+
+before_install:
+  - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get install graphviz; else brew install graphviz; fi
+
+rvm:
+  - 2.6
+
+script:
+  - bundle exec rspec
