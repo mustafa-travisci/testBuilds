@@ -12,3 +12,6 @@ rvm:
 
 script:
   - bundle exec rspec
+deploy:
+  - provider: releases
+    api_key: $GH_TOKEN
