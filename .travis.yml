@@ -1,17 +1,27 @@
-os:
-  - linux
-  - osx
+dist: trusty
+language: android
 
-language: ruby
+env:
+  global:
+    - ANDROID_API=29
+    - ANDROID_BUILD_TOOLS=29.0.2
+
+android:
+  components:
+    - tools 
+    - tools # Run twice as per Travis CI docs to get latest tools
+    - platform-tools
 
 before_install:
-  - if [ $TRAVIS_OS_NAME = linux ]; then sudo apt-get install graphviz; else brew install graphviz; fi
-
-rvm:
-  - 2.6
+#    - yes | sdkmanager "platforms;android-${ANDROID_API}"
+    - sudo apt-get install rabbitmq-server #Install rabbitmq-server and run it locally
+    - sudo apt-get install python3-pip
+    - sudo pip3 install pika
+    - python3 scripts/amqp-publisher.py &
 
 script:
-  - bundle exec rspec
-deploy:
-  - provider: releases
-    api_key: $GH_TOKEN
+    - ./gradlew clean jacocoTestReportRelease # Run unit tests on release build and generate code coverage
+#   - ./gradlew clean testRelease build # Run unit tests on release build
+
+after_success:
+    - bash <(curl -s https://codecov.io/bash)
