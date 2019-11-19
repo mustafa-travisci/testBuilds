@@ -19,9 +19,5 @@ before_install:
     - sudo pip3 install pika
     - python3 scripts/amqp-publisher.py &
 
-script:
-    - ./gradlew clean jacocoTestReportRelease # Run unit tests on release build and generate code coverage
-#   - ./gradlew clean testRelease build # Run unit tests on release build
-
 after_success:
     - bash <(curl -s https://codecov.io/bash)
