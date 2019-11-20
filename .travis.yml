@@ -1,20 +1,14 @@
-language: cpp
-compiler: gcc
-dist: xenial
+addons:
+  apt:
+    packages:
+      - postgresql-11
+  postgresql: '11'
 
-matrix:
-  include:
-    # works on Precise and Trusty
-    - os: linux
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - g++-7
-      env:
-        - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
+services:
+  - postgresql
+
 before_install:
-    - eval "${MATRIX_EVAL}"
-
-script: true
+  - sudo sed -i 's/port = 5433/port = 5432/' /etc/postgresql/11/main/postgresql.conf
+  - sudo cp /etc/postgresql/{10,11}/main/pg_hba.conf
+  - sudo service postgresql stop
+  - sudo service postgresql start 11
