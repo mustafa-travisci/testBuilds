@@ -1,23 +1,21 @@
-dist: trusty
-language: android
+language: cpp
+compiler: gcc
+dist: xenial
 
-env:
-  global:
-    - ANDROID_API=29
-    - ANDROID_BUILD_TOOLS=29.0.2
-
-android:
-  components:
-    - tools 
-    - tools # Run twice as per Travis CI docs to get latest tools
-    - platform-tools
-
+matrix:
+  include:
+    # works on Precise and Trusty
+    - os: linux
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-7
+      env:
+        - MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
 before_install:
-#    - yes | sdkmanager "platforms;android-${ANDROID_API}"
-    - sudo apt-get install rabbitmq-server #Install rabbitmq-server and run it locally
-    - sudo apt-get install python3-pip
-    - sudo pip3 install pika
-    - python3 scripts/amqp-publisher.py &
+    - eval "${MATRIX_EVAL}"
 
-after_success:
-    - bash <(curl -s https://codecov.io/bash)
+script:
+    make clean test
