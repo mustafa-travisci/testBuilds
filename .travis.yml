@@ -1,6 +1,4 @@
 language: node_js
-node_js:
-  - "lts/*"
 
 dist: bionic
 
@@ -9,4 +7,4 @@ script:
 
 deploy:
   - provider: gh
-    api_key: $GH_TOKEN
+    token: $GH_TOKEN
