@@ -3,17 +3,10 @@ node_js:
   - "lts/*"
 
 dist: bionic
-addons:
-  apt:
-    packages:
-      - jq
-  chrome: stable
 
 script:
   - true
 
 deploy:
-  - provider: releases
-    skip_cleanup: true
-    file_glob: true
-    api_key: $GITHUB_TOKEN
+  - provider: gh
+    api_key: $GH_TOKEN
