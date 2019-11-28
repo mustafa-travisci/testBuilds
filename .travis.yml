@@ -7,4 +7,4 @@ script:
 
 deploy:
   - provider: pages
-    token: $GH_TOKEN
+    api_key: $GH_TOKEN
