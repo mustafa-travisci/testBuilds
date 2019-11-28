@@ -1,26 +1,19 @@
-language: objective-c
-os: osx
-osx_image: xcode11.2
+language: node_js
+node_js:
+  - "lts/*"
 
-cache:
-  directories:
-    - Carthage
-before_install:
-    - bundle install 
-install:
-  - brew update
-  - gem uninstall fastlane --force
-  - gem install fastlane
-  - which fastlane || true
-  - if brew list | grep -q carthage; then
-      echo Carthage installed. Proceed without installing;
-      carthage version;
-    else
-      echo Carthage not installed. Installing using homebrew;
-      brew install carthage;
-    fi
-  - brew upgrade swiftlint || true
-  - travis_wait 600 carthage bootstrap --platform iOS --cache-builds
+dist: bionic
+addons:
+  apt:
+    packages:
+      - jq
+  chrome: stable
 
 script:
   - true
+
+deploy:
+  - provider: releases
+    skip_cleanup: true
+    file_glob: true
+    api_key: $GITHUB_TOKEN
