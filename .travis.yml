@@ -1,12 +1,10 @@
-language: minimal
-dist: bionic
-addons:
-  apt:
-    packages:
-      python3-pip
-      php-json-schema
+language: bash
+
 before_script:
-  - sudo pip3 install jsonschema
+  - sudo apt-get update
+  - sudo apt -y install software-properties-common
+  - sudo add-apt-repository ppa:ondrej/php
+  - sudo apt-get update
+  - sudo apt -y install php7.4
 script:
-  - dpkg -L php-json-schema
-  - php -i
+  - php -v
