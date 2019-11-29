@@ -10,4 +10,3 @@ before_script:
 script:
   - dpkg -L php-json-schema
   - php -i
-  - ./bin/validate-all-games.sh
