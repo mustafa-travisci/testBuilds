@@ -1,11 +1,13 @@
-language: node_js
-node_js:
-    - "12"
-before_install:
-    - npm install -g yarn
-after_success:
-    - yarn coverage
-    - yarn mutate
+language: minimal
+dist: bionic
 addons:
-    hosts:
-        - localhost
+  apt:
+    packages:
+      python3-pip
+      php-json-schema
+before_script:
+  - sudo pip3 install jsonschema
+script:
+  - dpkg -L php-json-schema
+  - php -i
+  - ./bin/validate-all-games.sh
