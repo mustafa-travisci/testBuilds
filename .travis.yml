@@ -1,12 +1,17 @@
-language: node_js
-node_js:
-  - "lts/*"
+language: python
+python:
+  - "3.6"
+os: windows
 
-dist: bionic
+# command to run tests
+
+  
+services:
+  - docker
+
+
+before_script: pip install docker-compose
 
 script:
-  - true
-
-deploy:
-  - provider: gh
-    api_key: $GH_TOKEN
+  - docker-compose run app sh -c "python manage.py test && flake8"
+  - pytest
