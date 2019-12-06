@@ -4,6 +4,7 @@ before_install:
   - sudo apt-get install -y postgresql-12 postgresql-client-12
 before_script:
   - psql --version
+  - psql -c 'create database travis_ci_test;' -U postgres
 script: true
 services:
   - postgresql
