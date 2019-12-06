@@ -6,7 +6,7 @@ before_script:
   - service postgresql restart
   - psql --version
   - ps -ef | grep postgres
-  - sudo sed -i 's/port = 5433/port = 5432/' /etc/postgresql/11/main/postgresql.conf
+  - sudo sed -i 's/port = 5207/port = 5432/' /etc/postgresql/11/main/postgresql.conf
   - sudo cp /etc/postgresql/{10,11,12}/main/pg_hba.conf
   - sudo service postgresql stop
   - sudo service postgresql start 12
