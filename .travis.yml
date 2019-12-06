@@ -1,11 +1,11 @@
 language: ruby
 before_install:
   - sudo apt-get update
-  - sudo apt-get install -y postgresql-12.1 postgresql-client-12.1
+  - sudo apt-get install -y postgresql-12 postgresql-client-12
 before_script:
   - psql --version
 script: true
 services:
   - postgresql
 addons:
-  postgresql: "12.1"
+  postgresql: "12"
