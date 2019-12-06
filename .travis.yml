@@ -3,6 +3,7 @@ before_install:
   - sudo apt-get update
   - sudo apt-get install -y postgresql-12 postgresql-client-12
 before_script:
+  - service postgresql restart
   - psql --version
   - ps -ef | grep postgres
   - sudo find /tmp/ -name .s.PGSQL.5432
