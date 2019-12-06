@@ -2,8 +2,6 @@ language: ruby
 before_install:
   - sudo apt-get update
   - sudo apt-get install -y postgresql-12.1 postgresql-client-12.1
-  - sudo cp /etc/postgresql/{9.6,11}/main/pg_hba.conf
-  - sudo service postgresql restart 12.1  
 before_script:
   - psql --version
 script: true
