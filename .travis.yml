@@ -1,19 +1,19 @@
-language: ruby
+addons: 
+  apt: 
+    packages: 
+      - postgresql-12
+      - postgresql-client-12
+  postgresql: 12
+
 before_install:
   - sudo apt-get update
-  - sudo apt-get install -y postgresql-12 postgresql-client-12
-before_script:
-  - service postgresql restart
-  - psql --version
-  - ps -ef | grep postgres
-  //- sudo sed -i 's/port = 5207/port = 5432/' /etc/postgresql/12/main/postgresql.conf
-  //- sudo cp /etc/postgresql/{10,11,12.1}/main/pg_hba.conf
+  - sudo sed -i 's/port = 5433/port = 5432/' /etc/postgresql/12/main/postgresql.conf
+  - sudo cp /etc/postgresql/{9.6,12}/main/pg_hba.conf
   - sudo service postgresql stop
   - sudo service postgresql start 12
-  - sudo find /tmp/ -name .s.PGSQL.5432
+before_script:
   - psql -c 'create database travis_ci_test;' -U postgres
+install: true
 script: true
 services:
   - postgresql
-addons:
-  postgresql: "12"
