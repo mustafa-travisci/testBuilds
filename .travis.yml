@@ -6,8 +6,8 @@ before_script:
   - service postgresql restart
   - psql --version
   - ps -ef | grep postgres
-  - sudo sed -i 's/port = 5207/port = 5432/' /etc/postgresql/12/main/postgresql.conf
-  - sudo cp /etc/postgresql/{10,11,12.1}/main/pg_hba.conf
+  //- sudo sed -i 's/port = 5207/port = 5432/' /etc/postgresql/12/main/postgresql.conf
+  //- sudo cp /etc/postgresql/{10,11,12.1}/main/pg_hba.conf
   - sudo service postgresql stop
   - sudo service postgresql start 12
   - sudo find /tmp/ -name .s.PGSQL.5432
