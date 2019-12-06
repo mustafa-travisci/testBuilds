@@ -7,7 +7,7 @@ before_install:
   - sudo service postgresql restart 11  
 before_script:
   - psql --version
-script: bundle exec rake spec
+script: true
 services:
   - postgresql
 addons:
