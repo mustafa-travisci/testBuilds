@@ -5,6 +5,7 @@ before_install:
 before_script:
   - psql --version
   - ps -ef | grep postgres
+  - sudo find /tmp/ -name .s.PGSQL.5432
   - psql -c 'create database travis_ci_test;' -U postgres
 script: true
 services:
