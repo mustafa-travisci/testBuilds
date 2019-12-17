@@ -5,11 +5,7 @@ install:
 node_js:
 - 10
 script:
-- yarn lint
-- yarn test
 - codecov
-- yarn build
-cache: yarn
 deploy:
   provider: script
   skip_cleanup: true
