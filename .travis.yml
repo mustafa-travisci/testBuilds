@@ -1,1 +1,2 @@
-script: ifconfig
+language: ruby
+script: true
