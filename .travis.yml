@@ -1,2 +1,16 @@
-language: ruby
-script: true
+language: node_js
+install:
+- npm install -g codecov
+- yarn --ignore-engines
+node_js:
+- 10
+script:
+- yarn lint
+- yarn test
+- codecov
+- yarn build
+cache: yarn
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: npm run publish
