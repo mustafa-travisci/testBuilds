@@ -6,10 +6,8 @@ matrix:
       services:
         - redis-server
       install: true
-      before_script:
-        - echo '' | pecl install redis
-      script:
-        - composer test
+      before_script: true
+      script: true
 
     - language: python
       python: 3.6
