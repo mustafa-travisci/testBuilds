@@ -1,14 +1,8 @@
 matrix:
   include:
-    - language: php
-      php: 
-        - 7.4
+    - language: c
       services:
         - redis-server
       install: true
       before_script: true
-      script: true
-
-    - language: python
-      python: 3.6
       script: true
