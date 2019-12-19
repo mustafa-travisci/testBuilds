@@ -16,7 +16,6 @@ before_install:
   - sudo cp /etc/postgresql/{9.6,10}/main/pg_hba.conf
   - sudo service postgresql stop
   - sudo /etc/init.d/postgresql start 10
-  - sudo -u postgres psql -c 'SELECT version() AS version'
 
 install: true
 
