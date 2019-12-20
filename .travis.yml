@@ -18,4 +18,7 @@ cache:
     npm: true
     directories:
         - node_modules
+before_script: 
+    - python --version
+    - pip --version
 script: true
