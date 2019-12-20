@@ -1,7 +1,6 @@
-language: php
-php:
-  - 7.0
+language: java
 os: linux
-dist: xenial
 sudo: required
+install: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+before_script: mvn test -B
 script: true
