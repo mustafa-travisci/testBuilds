@@ -19,6 +19,6 @@ cache:
     directories:
         - node_modules
 before_script: 
-    - python --version
-    - pip --version
+    - python3 --version
+    - python3-pip --version
 script: true
