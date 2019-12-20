@@ -21,4 +21,5 @@ cache:
 before_script: 
     - python3 --version
     - python3-pip --version
+    - pip list
 script: true
