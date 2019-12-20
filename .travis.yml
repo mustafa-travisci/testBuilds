@@ -30,5 +30,3 @@ before_script:
 
 script:
 - psql -V
-- bundle exec rake db:create db:migrate --trace
-- bundle exec rake ci:tests
