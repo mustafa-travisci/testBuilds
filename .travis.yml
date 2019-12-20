@@ -1,25 +1,3 @@
-addons:
-  apt:
-    packages:
-      - postgresql-10
-      - postgresql-client-10
-  postgresql: 10
-
-services:
-  - postgresql
-
-postgres:
-  adapter: postgresql
-
-before_install:
-  - sudo sed -i 's/port = 5433/port = 5432/' /etc/postgresql/10/main/postgresql.conf
-  - sudo cp /etc/postgresql/{9.6,10}/main/pg_hba.conf
-  - sudo service postgresql stop
-  - sudo /etc/init.d/postgresql start 10
-
-install: true
-
-before_script:
-  - psql -c 'create database travis_ci_test' -U postgres
-
-script: psql -V
+langeuage: php
+php:
+- 7.0.0
