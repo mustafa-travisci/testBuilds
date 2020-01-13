@@ -3,3 +3,5 @@ osx_image: xcode9.2
 deploy:
   provider: script
   edge: true
+  on:
+    branch: test
