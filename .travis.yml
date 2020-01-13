@@ -1,3 +1,4 @@
+language: bash
 osx_image: xcode9.2
 deploy:
   provider: script
