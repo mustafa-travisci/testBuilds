@@ -1,8 +1,13 @@
-language: bash
-osx_image: xcode9.2
-deploy:
-  provider: script
-  script: bash test.sh
-  edge: true
-  on:
-    branch: test
+sudo: required
+
+addons:
+  apt:
+    sources:
+    - google-chrome
+    packages:
+    - google-chrome-stable
+language: node_js
+cache:
+    npm: false
+node_js:
+- node
