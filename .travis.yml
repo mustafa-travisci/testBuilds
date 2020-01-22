@@ -1,13 +1,52 @@
-sudo: required
+# don't build tags, it's redundant
+if: tag IS blank
+
+os:
+  - linux
+
+sudo: false
 
 addons:
-  apt:
-    sources:
-    - google-chrome
-    packages:
-    - google-chrome-stable
+  chrome: stable
+  firefox: latest
+
 language: node_js
-cache:
-    npm: false
+
 node_js:
-- node
+- "node" # latest
+- "12"
+- "10"
+- "8"
+
+cache: npm
+
+install:
+  - npm install
+
+stages:
+  - lint
+  - unit tests
+  - test
+
+jobs:
+  include:
+    - stage: 'lint'
+      script: npm run lint
+    - stage: 'unit tests'
+      node_js: node
+      script: npm run test:unit
+    -
+      node_js: 12
+      script: npm run test:unit
+    -
+      node_js: 10
+      script: npm run test:unit
+    -
+      node_js: 8
+      script: npm run test:unit
+
+# The script below runs using the default 'test' build stage (a.k.a. 'Test')
+# in the job dashboard. The 'test' build stage uses the node_js languages 
+# specified above, but the other stages & jobs need to specify the node_js 
+# versions explicitly...  ¯\_(ツ)_/¯.
+script: npm run test:it
