@@ -28,12 +28,6 @@ stages:
 jobs:
   include:
     -
-    - stage: 'lint'
-      script: echo lint stage
-    - stage: 'unit tests'
-      node_js: node
-      script: echo unit test stage
-    -
       node_js: 12
       script: echo node 12
     -
@@ -42,7 +36,11 @@ jobs:
     -
       node_js: 8
       script: echo node 8
-
+    - stage: 'lint'
+      script: echo lint stage
+    - stage: 'unit tests'
+      node_js: node
+      script: echo unit test stage
 # The script below runs using the default 'test' build stage (a.k.a. 'Test')
 # in the job dashboard. The 'test' build stage uses the node_js languages 
 # specified above, but the other stages & jobs need to specify the node_js 
