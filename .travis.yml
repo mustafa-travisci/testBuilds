@@ -27,6 +27,7 @@ stages:
 
 jobs:
   include:
+    -
     - stage: 'lint'
       script: echo lint stage
     - stage: 'unit tests'
