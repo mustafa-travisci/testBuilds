@@ -27,15 +27,8 @@ stages:
 
 jobs:
   include:
-    -
-      node_js: 12
-      script: echo node 12
-    -
-      node_js: 10
-      script: echo node 10
-    -
-      node_js: 8
-      script: echo node 8
+    - stage: 'test'
+      script: echo test stage
     - stage: 'lint'
       script: echo lint stage
     - stage: 'unit tests'
