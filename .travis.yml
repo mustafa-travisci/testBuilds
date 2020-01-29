@@ -1,2 +1,3 @@
-os: linux
-script: ifconfig
+language: swift
+os: osx
+osx_image: xcode11.0
