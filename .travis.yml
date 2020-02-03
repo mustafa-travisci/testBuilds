@@ -1,6 +1,5 @@
 language: bash
-script: if
-    [ "$TRAVIS_BRANCH" == "master"  &&
+script: if [ "$TRAVIS_BRANCH" == "master"  &&
     "$TRAVIS_EVENT_TYPE" == "push"  &&
     "$TRAVIS_OS_NAME" == "linux" ]
   then echo true; else 0; fi
