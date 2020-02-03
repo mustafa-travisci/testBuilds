@@ -5,6 +5,6 @@ script:
        [ "$TRAVIS_EVENT_TYPE" == "push" ] &&
        [ "$TRAVIS_OS_NAME" == "linux" ] then 
          echo 1;
-             else 
-             echo 0; 
+    else
+         echo 0; 
     fi
