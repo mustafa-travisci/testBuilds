@@ -1,7 +1,8 @@
 language: bash
 script: echo here
 deploy:
-  provider: echo 1
+  provider: script
+  script: echo 1
   on:
     all_branches: true
-    condition: ($TRAVIS_BRANCH IN test) AND (type = push)
+    condition: ((branch IN test) AND (type = push))
