@@ -5,4 +5,4 @@ deploy:
   script: echo 1
   on:
     all_branches: true
-    condition: ((branch IN test) AND (type = push))
+    condition: if [[ (((branch IN (staging, master)) AND (push = type))) ]]; then
