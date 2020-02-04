@@ -1,8 +1,2 @@
 language: bash
-script: echo here
-deploy:
-  provider: script
-  script: echo 1
-  on:
-    all_branches: true
-    condition: if [[ (((branch IN (staging, master)) AND (push = type))) ]]; then
+script: echo $TEST_VAR
