@@ -4,4 +4,4 @@ deploy:
   provider: echo 1
   on:
     all_branches: true
-    condition: ((branch IN (test)) AND (type = push))
+    condition: (branch IN (test)) AND (type = push)
