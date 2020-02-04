@@ -1,9 +1,7 @@
 language: bash
-script: |
-    if [ "$TRAVIS_BRANCH" == "master"] AND
-    ["$TRAVIS_EVENT_TYPE" == "push"] AND
-    ["$TRAVIS_OS_NAME" == "linux" ] then 
-         echo 1;
-    else
-         echo 0; 
-    fi
+script: echo here
+deploy:
+  provider: echo 1
+  on:
+    all_branches: true
+    condition: ((branch IN (test)) AND (type = push))
