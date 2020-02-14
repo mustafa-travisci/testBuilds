@@ -2,6 +2,6 @@ language: bash
 script: echo hey
 jobs:
   include:
-    - stage: "Test"
+    - stage: "Test Capital"
       script: echo hello
     - stage: "SSSSSS"
