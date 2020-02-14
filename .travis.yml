@@ -1,2 +1,6 @@
 language: bash
 script: echo hey
+jobs:
+  include:
+    - stage: "Test"
+      script: echo hello
