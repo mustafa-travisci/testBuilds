@@ -1,5 +1,5 @@
 language: bash
-script: echo hey
+script: echo heyyyyy
 jobs:
   include:
     - stage: "Test Capital"
