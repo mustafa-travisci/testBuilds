@@ -28,3 +28,5 @@ env:
     - BUILD_DEPTYPE=gomod
 
 script: true
+
+install: false
