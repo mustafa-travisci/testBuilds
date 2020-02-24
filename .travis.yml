@@ -1,31 +1,25 @@
-version: ~> 1.0
 language: go
-
-os:
-  - linux
-
-cache:
-  directories:
-    - $GOPATH/src/gx
-    - $GOPATH/pkg/mod
-    - $HOME/.cache/go-build
-
-go:
-  - stable
-
-git:
-  depth: 1
+go: "1.12"
 
 before_install:
-  - go get -v golang.org/x/lint/golint
-  - go get github.com/mattn/goveralls
+  - go get
 
-env:
-  global:
-    - GOFLAGS='-mod vendor'
-  matrix:
-    - BUILD_DEPTYPE=gomod
-
-script: true
-
-install: false
+matrix:
+  include:
+    - if: branch = test
+      deploy:
+        provider: script
+        script: true
+        on:
+          branch: master
+    - if: tag IS present
+      deploy:
+        provider: script
+        script: true
+        on:
+          tags: true
+    - language: node_js
+      env: ISOLATED=false
+      node_js: 13
+      go: "1.12"
+      script: true
