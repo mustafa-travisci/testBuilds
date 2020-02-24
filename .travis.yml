@@ -22,7 +22,6 @@ before_install:
 
 env:
   global:
-    - GO111MODULE=on
     - GOFLAGS='-mod vendor'
   matrix:
     - BUILD_DEPTYPE=gomod
