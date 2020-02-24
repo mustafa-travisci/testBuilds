@@ -1,17 +1,30 @@
-language: bash
-before_install: true
-install: true
-stages:
-  - name: Test
-    if: (type IN (pull_request))
-  - name: Release and Version
-    if: (type IN (push) AND branch = master)
+version: ~> 1.0
+language: go
 
+os:
+  - linux
 
-jobs:
-  include:
-    - stage: Test
-      script: true
-    - script: true
-    - stage: Release and Version
-      script: true
+cache:
+  directories:
+    - $GOPATH/src/gx
+    - $GOPATH/pkg/mod
+    - $HOME/.cache/go-build
+
+go:
+  - stable
+
+git:
+  depth: 1
+
+before_install:
+  - go get -v golang.org/x/lint/golint
+  - go get github.com/mattn/goveralls
+
+env:
+  global:
+    - GO111MODULE=on
+    - GOFLAGS='-mod vendor'
+  matrix:
+    - BUILD_DEPTYPE=gomod
+
+script: true
