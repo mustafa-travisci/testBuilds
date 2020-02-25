@@ -28,4 +28,3 @@ before_script:
   - psql -d template1 -c 'create extension hstore;' -U postgres
   - psql -d template1 -c 'create extension "uuid-ossp";' -U postgres
   - psql -c 'create database "customer-core-test";' -U postgres
-  - sequel -m migrations postgres://localhost/customer-core-test
