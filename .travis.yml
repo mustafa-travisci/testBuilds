@@ -1,7 +1,27 @@
-language: bash
-dist: trusty
-
-before_install:
-    - df -h
-    
+language: ruby
+cache: bundler
+rvm:
+  - 2.6.5
+addons:
+  postgresql: "11"
+  chrome: stable
+  apt:
+    update: true
+    packages:
+      - postgresql-11
+      - postgresql-client-11
+      - libwebp-dev
+services:
+  - postgresql
 script: true
+install: skip
+dist: xenial
+before_install:
+  - gem install bundler sequel sequel_pg
+before_script:
+  - psql -d template1 -c 'create extension pgcrypto;' -U postgres
+  - psql -d template1 -c 'create extension hstore;' -U postgres
+  - psql -d template1 -c 'create extension "uuid-ossp";' -U postgres
+  - psql -c 'create database "customer-core-test";' -U postgres
+  - psql -c "create role travis login superuser password '';" -U postgres
+  - sequel -m migrations postgres://localhost/customer-core-test
