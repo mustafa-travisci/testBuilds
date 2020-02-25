@@ -23,7 +23,9 @@ before_script:
   - sudo sed -i 's/port = 5433/port = 5432/' /etc/postgresql/10/main/postgresql.conf
   - sudo cp /etc/postgresql/{9.6,10}/main/pg_hba.conf
   - sudo service postgresql stop
+  - sudo systemctl status postgresql.service
   - sudo service postgresql start 11
+  - sudo systemctl status postgresql.service
   - psql -d template1 -c 'create extension pgcrypto;' -U postgres
   - psql -d template1 -c 'create extension hstore;' -U postgres
   - psql -d template1 -c 'create extension "uuid-ossp";' -U postgres
