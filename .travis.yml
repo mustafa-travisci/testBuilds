@@ -1,22 +1,16 @@
-dist: xenial
-
 addons:
   postgresql: "11"
+  chrome: stable
   apt:
     update: true
     packages:
     - postgresql-11
     - postgresql-client-11
+    - libwebp-dev
 
-before_install:
-  - sudo apt-get update
-  - sudo sed -i 's/port = 5433/port = 5432/' /etc/postgresql/10/main/postgresql.conf
-  - sudo cp /etc/postgresql/{9.6,10}/main/pg_hba.conf
-  - sudo service postgresql stop
-  - sudo service postgresql start 11
-before_script:
-  - psql -c 'create database travis_ci_test;' -U postgres
-install: true
-script: true
 services:
-  - postgresql
+- redis-server
+- postgresql
+script: true
+install: skip
+dist: xenial
