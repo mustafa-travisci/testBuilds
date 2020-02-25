@@ -16,8 +16,6 @@ services:
 script: true
 install: skip
 dist: xenial
-before_install:
-  - gem install bundler sequel sequel_pg
 before_script:
   - psql -d template1 -c 'create extension pgcrypto;' -U postgres
   - psql -d template1 -c 'create extension hstore;' -U postgres
