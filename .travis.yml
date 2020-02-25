@@ -1,25 +1,6 @@
-language: go
-go: "1.12"
+language: bash
 
 before_install:
-  - go get
-
-matrix:
-  include:
-    - if: branch = test
-      deploy:
-        provider: script
-        script: true
-        on:
-          branch: master
-    - if: tag IS present
-      deploy:
-        provider: script
-        script: true
-        on:
-          tags: true
-    - language: node_js
-      env: ISOLATED=false
-      node_js: 13
-      go: "1.12"
-      script: true
+    - df -h
+    
+script: true
