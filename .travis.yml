@@ -16,7 +16,14 @@ services:
 script: true
 install: skip
 dist: xenial
+before_install:
+  - gem install bundler sequel sequel_pg
 before_script:
+  - sudo apt-get update
+  - sudo sed -i 's/port = 5433/port = 5432/' /etc/postgresql/10/main/postgresql.conf
+  - sudo cp /etc/postgresql/{9.6,10}/main/pg_hba.conf
+  - sudo service postgresql stop
+  - sudo service postgresql start 11
   - psql -d template1 -c 'create extension pgcrypto;' -U postgres
   - psql -d template1 -c 'create extension hstore;' -U postgres
   - psql -d template1 -c 'create extension "uuid-ossp";' -U postgres
