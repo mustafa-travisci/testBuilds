@@ -15,10 +15,10 @@ cache:
 jobs:
   include:
   - stage: test
-    if: branch = master
+    if: branch = test
     script: true
   - stage: version
-    if: (type = push) AND (branch = master)
+    if: (type = push) AND (branch = test)
     script: true
   - stage: deploy
     if: "(tag =~ /dev$/) OR (tag =~ /uat$/) OR (tag =~ /prod$/)"
