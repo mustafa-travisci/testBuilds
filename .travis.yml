@@ -1,8 +1,25 @@
-language: bash
-services:
-  - postgresql
-addons:
-  postgresql: "11"
-  apt:
-    packages:
-      - postgresql-11
+os: osx
+language: objective-c
+osx_image: xcode13.1
+xcode_workspace: ios/yaro.xcworkspace
+xcode_scheme: yaro
+xcode_sdk: iphonesimulator
+podfile: ios/Podfile
+node_js: 10
+before_install: true
+before_script: true
+after_script: true
+cache:
+- yarn
+- cocoapods
+jobs:
+  include:
+  - stage: test
+    if: branch = master
+    script: true
+  - stage: version
+    if: (type = push) AND (branch = master)
+    script: true
+  - stage: deploy
+    if: "(tag =~ /dev$/) OR (tag =~ /uat$/) OR (tag =~ /prod$/)"
+    script: true
