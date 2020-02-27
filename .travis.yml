@@ -8,7 +8,7 @@ deploy:
   script: echo hey
   on: 
      all_branches: true 
-     condition: $TRAVIS_BRANCH =~ ^(staging|test)$
+     condition: $TRAVIS_BRANCH =~ ^(staging|master)$
      tags: false
 
 
