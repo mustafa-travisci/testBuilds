@@ -1,25 +1,6 @@
 os: osx
-language: objective-c
-osx_image: xcode13.1
-xcode_workspace: ios/yaro.xcworkspace
-xcode_scheme: yaro
-xcode_sdk: iphonesimulator
-podfile: ios/Podfile
-node_js: 10
-before_install: true
-before_script: true
-after_script: true
-cache:
-- yarn
-- cocoapods
-jobs:
-  include:
-  - stage: test
-    if: branch = test
-    script: true
-  - stage: version
-    if: (type = push) AND (branch = test)
-    script: true
-  - stage: deploy
-    if: "(tag =~ /dev$/) OR (tag =~ /uat$/) OR (tag =~ /prod$/)"
-    script: true
+language: python
+python: "3.6"
+osx_image: xcode9.4
+script: true
+
