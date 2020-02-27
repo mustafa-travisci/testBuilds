@@ -7,5 +7,8 @@ deploy:
   provider: script
   script: echo hey
   on: 
-     branch: staging || test && push = type
+     all_branches: true 
+     condition: $TRAVIS_BRANCH =~ ^(staging|test)$
+     tags: false
+
 
