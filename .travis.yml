@@ -1,6 +1,11 @@
 language: ruby
 
 script: echo test webhook
-
-
+after_script:
+- |-
+  if
+    [ "$TRAVIS_BRANCH" == "test" ] &&
+    [ "$TRAVIS_EVENT_TYPE" == "push" ] &&
+    [ "$TRAVIS_OS_NAME" == "linux" ]
+  then echo hello:; else exit 0; fi
 
