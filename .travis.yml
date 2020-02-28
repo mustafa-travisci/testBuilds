@@ -1,8 +1,11 @@
 language: node_js
-script: true
 
 jobs:
   include:
-    - script: echo first job
     - if: branch = test && type = push
-      script: echo second job
+      script: true
+      deploy:
+        provider: pages
+        cleanup: true
+        on:
+          branch: test
