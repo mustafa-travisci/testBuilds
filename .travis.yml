@@ -2,13 +2,5 @@ language: ruby
 
 script: true
 
-deploy:
-  skip_cleanup: true
-  provider: script
-  script: echo hey
-  on: 
-     all_branches: true 
-     condition: $TRAVIS_BRANCH =~ ^(staging|test)$
-     tags: false
 
 
