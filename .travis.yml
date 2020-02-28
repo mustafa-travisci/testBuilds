@@ -1,6 +1,6 @@
 language: ruby
 
-script: true
+script: echo test webhook
 
 
 
