@@ -1,5 +1,7 @@
 language: node_js
 
+script: true
+
 after_success:
               - echo $TRAVIS_TEST_RESULT
 
@@ -8,7 +10,7 @@ jobs:
     - if: branch = test && type = push
       script: true
       deploy:
-        provider: pages
+        provider: script
         cleanup: true
         on:
           branch: test
