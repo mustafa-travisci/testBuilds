@@ -1,16 +1,8 @@
-language: node_js
+language: bash
 
 script: true
-
-after_success:
-              - echo $TRAVIS_TEST_RESULT
-
-jobs:
-  include:
-    - if: branch = test && type = push
-      script: true
-      deploy:
-        provider: script
-        cleanup: true
-        on:
-          branch: test
+branches:
+  only:
+  - develop
+  - production
+  - test
