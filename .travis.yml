@@ -1,24 +1,11 @@
 dist: trusty
 language: bash
-jobs:
-  include:
-    # Fake job for debugging.
-    - if: env(TEST_VAR) IS present
-      name: This works
-      scripts:
-        - env
-    - if: env(TEST_VAR) IS present
-      name: This does not work
-      env:
-        - ANYTHING=HERE
-      scripts:
-        - env
-    - if: env(TEST_VAR) IS present
-      name: Deploy
-      before_install:
-        - export -f travis_jigger
-        - export -f travis_wait
-      install:
-        - pip install awscli --upgrade --user
-      script:
-        - config/part/$WILLIAM.sh
+script: true
+    env:
+      global:
+      - 
+        - APP_NAME="changED"
+        - 'DEVELOPER_NAME="iPhone Distribution: ChangEd LLC (JFX9WN3DZP)"'
+        - IPA_NAME="changED"
+        - PROFILE_NAME="XC_iOS_comgochangedchanged"
+        - ARCHIVE_NAME="changED"
