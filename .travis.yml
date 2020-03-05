@@ -1,8 +1,8 @@
 dist: xenial
 sudo: required
-language: python
+language: bash
 - if: env(SLACK_TOK) IS present
   name: Test
-install:
+  install:
   - pip install awscli --upgrade --user
-scripts: true
+  scripts: true
