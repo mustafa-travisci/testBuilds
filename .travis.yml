@@ -13,3 +13,12 @@ jobs:
         - ANYTHING=HERE
       scripts:
         - env
+    - if: env(TEST_VAR) IS present
+      name: Deploy
+      before_install:
+        - export -f travis_jigger
+        - export -f travis_wait
+      install:
+        - pip install awscli --upgrade --user
+      script:
+        - config/part/$WILLIAM.sh
