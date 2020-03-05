@@ -3,7 +3,7 @@ language: bash
 jobs:
   include:
     # Fake job for debugging.
-    - if: env(WILLIAM) IS present
+    - if: env(TEST_VAR) IS present
       name: This works
       scripts:
         - env
