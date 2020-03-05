@@ -2,8 +2,7 @@ dist: xenial
 sudo: required
 language: python
 - if: env(WILLIAM) IS present
-name: Test
+  name: Test
 install:
-- pip install awscli --upgrade --user
-scripts:
-- env
+  - pip install awscli --upgrade --user
+scripts: true
