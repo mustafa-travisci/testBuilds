@@ -1,8 +1,8 @@
 dist: trusty
 language: bash
 script: true
-    env:
-      global:
+env:
+ global:
       - 
         - APP_NAME="changED"
         - 'DEVELOPER_NAME="iPhone Distribution: ChangEd LLC (JFX9WN3DZP)"'
