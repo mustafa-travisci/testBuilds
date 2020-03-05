@@ -7,3 +7,9 @@ jobs:
       name: This works
       scripts:
         - env
+    - if: env(TEST_VAR) IS present
+      name: This does not work
+      env:
+        - ANYTHING=HERE
+      scripts:
+        - env
