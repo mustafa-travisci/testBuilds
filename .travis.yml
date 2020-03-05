@@ -1,26 +1,9 @@
 dist: xenial
 sudo: required
 language: python
-python: "3.6"
-branches:
-  only:
-  - test
-  - develop
-  - production
-  - master
-  - /^travis-.*/
-  - /^v\d+\.\d+.*/
-  except:
-  - /^.+-travis-ok/
-stages:
-  - name: test
-  - name: deploy
-    if: type != pull_request
-jobs:
-  include:
-    - stage: test
-    - stage: test
-    - stage: deploy
-  exclude:
-  - python: "3.7"
-script: true
+- if: env(WILLIAM) IS present
+name: Test
+install:
+- pip install awscli --upgrade --user
+scripts:
+- env
