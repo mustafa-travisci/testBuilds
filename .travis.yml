@@ -1,2 +1,2 @@
 language: shell
-script: echo $TEST_VAR
+script: echo $TEST_VAR here
