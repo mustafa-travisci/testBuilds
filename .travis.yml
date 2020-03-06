@@ -45,5 +45,5 @@ stages:
 # specify branches we want travis to run for every commit
 branches:
   only:
-    - master
+    - test
     - /^release-.*$/
