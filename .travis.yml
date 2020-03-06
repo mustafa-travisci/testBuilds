@@ -7,7 +7,43 @@ python:
   - 2.7
 node_js:
   - 6.6.0
+
+
+git:
+  submodules: false
+
+services:
+  - docker
+  - mysql
+
+# TODO: figure out way to make API calls that exactly specify which stages/jobs you want to run
+# instead of having the logic from env vars
+env:
+  global:
+    - SHOULD_DEPLOY_ANSIBLE: false
+    - SHOULD_LINT: true
+    - SHOULD_COMPILE: true
+    - SHOULD_BUILD_AMI: false
+    - SHOULD_TEST: true
+
+# https://docs.travis-ci.com/user/ci-environment/#Virtualization-environments
 sudo: required
 dist: trusty
 
 script: true
+# define jobs
+# NOTE: refer to vars with env(XXX) for conditional logic but $XXX for the script/command
+
+# define stages with ordering
+# NOTE: all conditionals should go up in the jobs
+stages:
+  - name: pre-compile
+  - name: compile
+  - name: post-compile
+  - name: deploy
+
+# specify branches we want travis to run for every commit
+branches:
+  only:
+    - master
+    - /^release-.*$/
