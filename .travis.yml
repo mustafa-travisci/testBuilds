@@ -1,13 +1,13 @@
-dist: precise
-language: ruby
-cache: bundler
-rvm: "2.3.1"
-addons:
-  apt:
-    packages:
-      - dnsutils
-      - aspell
-      - aspell-en
-services:
-  - redis-server
+language: scala
+scala:
+  - 2.11.12
+jdk: oraclejdk8
+python:
+  # NOTE: py minor version is set in travis-build.sh
+  - 2.7
+node_js:
+  - 6.6.0
+sudo: required
+dist: trusty
+
 script: true
