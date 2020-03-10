@@ -1,6 +1,5 @@
 language: shell
 dist: bionic
-dist: bionic
 addons:
   apt:
     sources:
