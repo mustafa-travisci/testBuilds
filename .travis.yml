@@ -1,4 +1,5 @@
 language: shell
+dist: bionic
 addons:
   chrome: stable
 script: true
