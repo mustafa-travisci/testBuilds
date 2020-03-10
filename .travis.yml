@@ -1,12 +1,8 @@
 language: shell
 dist: bionic
+dist: bionic
 addons:
-  chrome: stable
-before_script:
-  - sudo nano /etc/apt/sources.list.d/google-chrome.list
-  - deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main
-  - wget https://dl.google.com/linux/linux_signing_key.pub
-  - sudo apt-key add linux_signing_key.pub
-  - sudo apt update
-  - sudo apt install google-chrome-stable
+  apt:
+    sources:
+      - google-chrome
 script: true
