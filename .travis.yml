@@ -1,7 +1,6 @@
-language: shell
-dist: xenial
-addons:
-  apt:
-    sources:
-      - google-chrome
+os: osx
+
+before_script:
+- lftp --version
+
 script: true
