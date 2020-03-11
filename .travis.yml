@@ -5,6 +5,8 @@ dist: xenial
 script: |
 if [env(TEST_VAR) = 'test']; then
         echo hello
-fi
+fi;
+
+after_script: true
 
 
