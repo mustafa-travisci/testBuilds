@@ -3,7 +3,7 @@ language: shell
 dist: xenial
 
 script:
-        - if [env(TEST_VAR) = 'test']; 
+        - if [$TEST_VAR = 'test']; 
           then echo helloooo;
           else echo no;
           fi
