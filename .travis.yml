@@ -2,8 +2,9 @@ os: linux
 language: shell
 dist: xenial
 
-script: if [env(TEST_VAR) = "test"]
-        then
-            echo yes
+script: |
+if [env(TEST_VAR) = 'test']; then
+        echo hello
+fi
 
 
