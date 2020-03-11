@@ -1,6 +1,8 @@
-
 os: linux
-language: python
+language: shell
 dist: xenial
 
 script: true
+
+notifications:
+  email: true
