@@ -3,13 +3,4 @@ os: linux
 language: python
 dist: xenial
 
-script:
-- skip
-addons:
-  deploy:
-  - provider: script
-    script: bash test.sh
-    edge: true
-    cleanup: false
-    'on':
-      all_branches: true
+script: true
