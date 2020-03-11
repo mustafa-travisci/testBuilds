@@ -2,10 +2,11 @@ os: linux
 language: shell
 dist: xenial
 
-script: - |
-if [env(TEST_VAR) = 'test']; then
-        echo hello
-fi;
+script:
+        - if [env(TEST_VAR) = 'test']; 
+          then echo helloooo;
+          else echo no;
+          fi
 
 after_script: true
 
