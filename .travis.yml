@@ -1,6 +1,14 @@
-os: osx
 
-before_script:
-- lftp --version
+os: linux
+language: python
+dist: xenial
 
-script: true
+script:
+- skip
+addons:
+  deploy:
+  - provider: script
+    edge: true
+    cleanup: false
+    'on':
+      all_branches: true
