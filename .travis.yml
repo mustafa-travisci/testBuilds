@@ -7,3 +7,6 @@ jobs:
   - rvm: 2.2
     gemfile: gemfiles/Gemfile.rails-3.0.2
     env: ISOLATED=true
+  - rvm: 2.5.3
+    gemfile: gemfiles/Gemfile.rails-3.0.2
+    env: ISOLATED=true
