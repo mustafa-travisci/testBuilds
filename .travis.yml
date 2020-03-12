@@ -1,9 +1,8 @@
 language: shell
 
-
 jobs:
   include: 
     - if: env(TEST_VAR) = "test"
-      script: echo MERHABA
-    - name: bash_cond
-      script: if [[ $TEST_VAR = "test" ]]; then echo bashhhhhhhhhh; fi
+      script: echo travis-conditions
+    - if: env(TEST_VAR) = "testA"
+      script: echo won't run
