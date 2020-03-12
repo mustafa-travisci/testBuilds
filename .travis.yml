@@ -1,9 +1,9 @@
 language: shell
 
-script: if [[ $TEST_VAR = "test" ]]; then echo HELLO; fi
+script: if [[ $TEST_VAR = "test" ]]; then echo asdfasdfasdfasdfasdfasdfasdf; fi
 
 jobs:
   include: 
-    - if: env(TEST_VAR) = "test"
+    - if: env(TEST_VAR) = "tesst"
       script: echo MERHABA
       
