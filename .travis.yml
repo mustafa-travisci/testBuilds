@@ -7,4 +7,4 @@ addons:
     sources:
       - google-chrome
 
-script: true
+script: google-chrome --version
