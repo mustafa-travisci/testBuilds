@@ -6,4 +6,5 @@ jobs:
   include: 
     - if: env(TEST_VAR) = "tesst"
       script: echo MERHABA
-      
+    - name: oyle
+      script: echo oyle
