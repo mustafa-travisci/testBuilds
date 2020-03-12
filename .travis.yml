@@ -5,5 +5,5 @@ jobs:
   include: 
     - if: env(TEST_VAR) = "test"
       script: echo MERHABA
-    - if: if [[ $TEST_VAR = "test" ]]; then echo asdfasdfasdfasdfasdfasdfasdf; fi
-      script: echo oyle
+    - name: bash_cond
+      script: if [[ $TEST_VAR = "test" ]]; then echo bashhhhhhhhhh; fi
