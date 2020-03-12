@@ -1,12 +1,9 @@
-language: ruby
+language: shell
+
+script: if [[ $TEST_VAR = "test" ]]; then echo HELLO; fi
+
 jobs:
-  include:
-  - rvm: 2.5
-    gemfile: gemfiles/Gemfile.rails-3.2.3
-    env: ISOLATED=false
-  - rvm: 2.2
-    gemfile: gemfiles/Gemfile.rails-3.0.2
-    env: ISOLATED=true
-  - rvm: 2.5.3
-    gemfile: gemfiles/Gemfile.rails-3.0.2
-    env: ISOLATED=true
+  include: 
+    - if: env(TEST_VAR) = "test"
+      script: echo MERHABA
+      
