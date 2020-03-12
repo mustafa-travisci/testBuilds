@@ -6,5 +6,4 @@ jobs:
     - if: env(TEST_VAR) = "test"
       script: echo MERHABA
     - if: if [[ $TEST_VAR = "test" ]]; then echo asdfasdfasdfasdfasdfasdfasdf; fi
-      name: oyle
       script: echo oyle
