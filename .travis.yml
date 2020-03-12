@@ -2,7 +2,7 @@ language: shell
 
 jobs:
   include: 
-    - if: env(TEST_VAR) = "test"
+    - if: env(TEST_VAR) = true
       script: echo travis-conditions
     - if: env(TEST_VAR) = "testA"
       script: echo won't run
