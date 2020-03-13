@@ -3,4 +3,4 @@ addons:
       apt:
           sources:
             - google-chrome
-script: echo $CHROME_BIN
+script: printenv
