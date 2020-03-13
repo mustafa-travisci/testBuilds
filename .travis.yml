@@ -1,8 +1,6 @@
-# Commented sections below can be used to run tests on the CI server
-# https://simulatedgreg.gitbooks.io/electron-vue/content/en/testing.html#on-the-subject-of-ci-testing
-osx_image: xcode10.2
-sudo: required
-os: osx
-compiler: clang
-
-script: true
+language: bash
+addons:
+      apt:
+          sources:
+            - google-chrome
+script: echo $CHROME_BIN
