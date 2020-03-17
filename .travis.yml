@@ -1,10 +1,7 @@
 language: bash
-addons:
-      apt:
-          sources:
-            - google-chrome
-before_install:
-      # DISPLAY and xvfb are needed to create a virtual display into which Chrome can open
-        - export DISPLAY=:99.0
-        - export CHROME_BIN=chromium-browser
-script: printenv
+script: true
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  keep_history: true
