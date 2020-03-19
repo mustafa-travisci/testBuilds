@@ -1,54 +1,23 @@
-language: node_js
+version: ~> 1.0
+language: go
 
-node_js:
-  - 'stable'
+os: linux
 
-script: skip
+go:
+  - stable
 
-defaults: &defaults
-  if: type = pull_request
-  script:
-    - yarn test:ci
-    - kill $(jobs -p) || true
+git:
+  depth: 1
 
-jobs:
-  include:
-    - stage: test
-      <<: *defaults
-    - stage: test
-      <<: *defaults
-    - stage: test
-      <<: *defaults
+before_install:
+  - go get -v golang.org/x/lint/golint
+env:
+  global:
+    - GO111MODULE=on
+    - GOFLAGS='-mod vendor'
+  matrix:
+    - BUILD_DEPTYPE=gomod
 
-    # - stage: sentry
-    #   if: branch IN (dev, qa, uat, prod) AND type = push
-    #   env:
-    #     - SENTRY_ORG=cast-and-crew
-    #     # SENTRY_AUTH_TOKEN
-    #     - secure: 'L+coQIwbXgNa5HfFbecGQ+gaT4KnGF+O3yFQq8IC3APzEWrnVFEv7tDSsBU09BM9Xyq8vssjq/dmutyhxd0R6BJPT8tzzUF8FHzuDv8+EuUXfIFZ3mY3w1PAevJSecvGQSReEw/u6a+e99YYfERQsYLOwhUFJiDC35v+NXB2nc4Jd0bmd5zJIWk6aVjkYvXLELiFxDMH/gpM7zhm3lcvE0K+/LxbfAdJ+3ItDbJNKsb9lLZiXusUtT/aecudg1QkM34uVoZBi/uGpKDOMkUudAZ4FwtZq7d6Z1n3QgbyjPE6xvaw/NNTOOov7xpmrxs028oNUEURtuihyaYH4urM3bJBzgYEh2ZIkcgSpCXMi8wt3ZCLuU5Mui0Q7Ud8r8Q7CbyUYMs1XuGa4vfHZkvcXWMwBlYsCqStVhMOxHE0/h4L4QVMOUAnngse31HN4R+6hWC9pmiXoM5Ysy+QGATaKwaxmWFZZ60+sUd5Agda941lqR+dda27NkGEpHVYtqxFHZgpcQJ+6KPbX/5zsiToBWkUq6PVIDUlnPN1S+Mipg1ClXiJijmvnHYayDYlLdqjB7h7uq1UUfjyDcF59nao+jypsY75/0EjsQ1lWBbZ+1NNh6DG10CLTIjgNU7SfSY69xH0PZFXG/oOJO/pO3bN4I+k0QJFY44mGCvS5qSD/JU='
-    #   script:
-    #     - curl -sL https://sentry.io/get-cli/ | bash
-    #     - VERSION=$(sentry-cli releases propose-version)
-    #     - sentry-cli releases new -p mycnc $VERSION
-    #     - sentry-cli releases set-commits --auto $VERSION
-
-    - stage: dev
-      if: branch = dev
-      script: true
-
-    - stage: qa
-      if: branch = qa
-      script: true
-    - stage: test
-      if: branch = test
-      script: true
-
-    - stage: prod
-      if: branch = prod
-      script: true
-    - stage: demo
-      if: branch = prod
-      script: true
-    - stage: extuat
-      if: branch = prod
-      script: true
+script: true
+notifications:
+  email: false
