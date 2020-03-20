@@ -3,7 +3,7 @@ language: bash
 os: linux
 
 before_install:
-- git clone https://github.com/mustafa-travisci/testGH.git testDir
+- git clone https://github.com/mustafa-travisci/python-test.git testDir
 - cd testDir
 
 script: true
