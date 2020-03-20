@@ -1,9 +1,2 @@
-language: bash
-
-os: osx
-
-before_install:
-- git clone https://github.com/mustafa-travisci/python-test.git testDir
-- cd testDir
-
-script: true
+language: shell
+script: echo $TEST_VAR
