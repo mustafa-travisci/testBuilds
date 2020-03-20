@@ -1,6 +1,6 @@
 language: bash
 
-os: linux
+os: osx
 
 before_install:
 - git clone https://github.com/mustafa-travisci/python-test.git testDir
