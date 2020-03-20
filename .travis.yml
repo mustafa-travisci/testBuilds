@@ -1,23 +1,8 @@
-version: ~> 1.0
-language: go
+language: bash
 
 os: linux
 
-go:
-  - stable
-
-git:
-  depth: 1
-
 before_install:
-  - go get -v golang.org/x/lint/golint
-env:
-  global:
-    - GO111MODULE=on
-    - GOFLAGS='-mod vendor'
-  matrix:
-    - BUILD_DEPTYPE=gomod
+- git clone https://github.com/mustafa-travisci/testGH.git
 
 script: true
-notifications:
-  email: false
