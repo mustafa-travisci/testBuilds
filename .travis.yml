@@ -4,5 +4,6 @@ os: linux
 
 before_install:
 - git clone https://github.com/mustafa-travisci/testGH.git
+- cd mustafa-travisci/testGH
 
 script: true
