@@ -1,2 +1,2 @@
 language: bash
-script: echo $TEST_VAR
+script: echo $TEST_VAR && asdfasdf
