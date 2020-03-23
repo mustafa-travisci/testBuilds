@@ -1,5 +1,4 @@
-os: osx
-install: skip
-
-script:
-- uname -a
+osx_image: xcode10.2
+sudo: required
+language: c
+script: true
