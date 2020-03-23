@@ -4,9 +4,12 @@ language: c
 script: true
 jobs:
   include:
-    name: a
-    script: true
-    name: b
-    script: true
-    name: c
-    script: true
+    stage:
+      - name: a
+        script: true
+    stage:
+      - name: b
+        script: true
+    stage:
+      - name: c
+        script: true
