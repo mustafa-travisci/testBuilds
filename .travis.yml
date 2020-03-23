@@ -2,3 +2,11 @@ osx_image: xcode10.2
 sudo: required
 language: c
 script: true
+jobs:
+  include:
+    name: a
+    script: true
+    name: b
+    script: true
+    name: c
+    script: true
