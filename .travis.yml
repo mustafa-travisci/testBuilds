@@ -1,3 +1,5 @@
-language: bash
 os: osx
-script: echo $TEST_VAR
+install: skip
+
+script:
+- uname -a
