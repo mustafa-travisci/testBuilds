@@ -1,26 +1,2 @@
-jobs:
-  include:
-    # UNIT & FUNCTIONAL TEST ------------------
-    - &macosmachine
-      stage: test
-      os: osx
-      osx_image: xcode11.2
-      language: node_js
-      name: Unit Tests
-      script: true
-      # with trunk based we only need to run on PRs and pushes to the master branch
-      if: branch = master OR tag IS present
-    # ANDROID DEPLOY ------------------
-    - stage: deploy
-      name: Android Deploy
-      language: android
-      os: linux
-      dist: trusty
-      script: true
-      if: (branch = master AND type = push) OR tag IS present
-    # IOS DEPLOY -----------------
-    - <<: *macosmachine
-      stage: deploy
-      name: iOS Deploy
-      script: true
-      if: (branch = master AND type = push) OR tag IS present
+language: shell
+script: true
