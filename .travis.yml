@@ -1,12 +1,12 @@
-osx_image: xcode10.2
+language: php
+addons:
+  apt:
+    packages:
+    - python-pip
+php:
+- "7.3"
+dist: bionic
 sudo: required
-language: c
-script: true
-jobs:
-  include:
-  - stage: a
-    script: true
-  - stage: b
-    script: true
-  - stage: c
-    script: true
+services:
+- mysql
+- docker
