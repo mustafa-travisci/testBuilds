@@ -1,12 +1,2 @@
-language: php
-addons:
-  apt:
-    packages:
-    - python-pip
-php:
-- "7.3"
-dist: bionic
-sudo: required
-services:
-- mysql
-- docker
+language: shell
+script: echo $TRAVIS_BRANCH
