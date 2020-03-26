@@ -5,9 +5,9 @@ script: echo hello
     if: |
       type = push AND \
       branch =~ ^\d+\.\d+$
-deploy:
-provider: script
-script: ./bin/deploy.sh
-on:
-all_branches: true
-condition: $TRAVIS_BRANCH =~ ^\d+\.\d+$
+    deploy:
+    provider: script
+    script: ./bin/deploy.sh
+    on:
+    all_branches: true
+    condition: $TRAVIS_BRANCH =~ ^\d+\.\d+$
