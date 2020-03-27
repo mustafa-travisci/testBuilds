@@ -1,2 +1,2 @@
 language: shell
-script: git remove -v
+script: git remote -v
