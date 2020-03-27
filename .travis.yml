@@ -1,2 +1,2 @@
-language: objective-c
-osx_image: xcode11.1
+language: shell
+script: git remove -v
