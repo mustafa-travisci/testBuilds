@@ -1,8 +1,2 @@
 language: shell
-script:
-  - git clone git@github.com:mustafa-travisci/testBuilds.git testd
-  - cd testd
-  - touch pushFromTravisCI.txt
-  - git add pushFromTravisCI.txt
-  - git commit -m "from travis build"
-  - git push origin master:master
+script: true
