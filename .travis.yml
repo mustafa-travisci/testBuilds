@@ -1,8 +1,2 @@
-language: shell
-script: echo hello
-deploy:
-  provider: script
-  script: deploy.sh
-  on:
-    all_branches: true
-    condition: $TRAVIS_BRANCH =~ ^(staging|test)$
+language: objective-c
+osx_image: xcode11.1
