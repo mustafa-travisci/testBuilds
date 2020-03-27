@@ -1,13 +1,6 @@
-language: php
-addons:
-  apt:
-    packages:
-    - python-pip
-php:
-- "7.3"
-dist: bionic
-sudo: required
-services:
-- mysql
-- docker
-
+language: shell
+before_script: touch pushFromTravisCI.txt
+script: 
+  - git add pushFromTravisCI.txt
+  - git commit -m "from travis build"
+  - git push origin master
