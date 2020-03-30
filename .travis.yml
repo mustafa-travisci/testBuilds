@@ -1,2 +1,2 @@
 language: shell
-script: echo GH checks
+script: true
