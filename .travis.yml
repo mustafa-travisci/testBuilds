@@ -1,8 +1,19 @@
-language: node_js
-node_js:
- - "node"
-env:
-- NODE_ENV=TEST
-- secure: "w1111"
-notifications:
- webhooks: https://ab.com/wwer
+language: php
+addons:
+  apt:
+    packages:
+    - python-pip
+php:
+- "7.3"
+dist: bionic
+sudo: required
+services:
+- mysql
+- docker
+cache:
+  directories:
+  - $CACHE_DOCKER
+  - $CACHE_PIP
+  - vendor
+  - node_modules
+  - $CACHE_COMPOSER
