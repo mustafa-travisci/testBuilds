@@ -1,12 +1,7 @@
-language: android
-dist: trusty
-android:
-  components:
-    - build-tools-25.2.5
-    - android-25
-    - add-on
-    - extra
-  licenses:
-    - 'android-sdk-preview-license-52d11cd2'
-    - 'android-sdk-license-.+'
-    - 'google-gdk-license-.+'
+addons:
+  apt:
+    packages:
+    - openvpn
+
+before_install:
+- sudo openvpn path/to/conf.ovpn &>>openvpn-client.log &
