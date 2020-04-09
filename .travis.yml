@@ -1,3 +1,4 @@
+language: shell
 addons:
   apt:
     packages:
