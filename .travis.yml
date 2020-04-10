@@ -1,4 +1,2 @@
 language: node_js
-addons:
-  chrome: stable
-sciprt: google-chrome --version
+script: true
