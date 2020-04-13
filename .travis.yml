@@ -1,7 +1,7 @@
 language: shell
 script:
   - |
-    if [ "$TRAVIS_PULL_REQUEST_SLUG" = "mustafa-travisci/testBuilds" ] && [ "$TRAVIS_PULL_REQUEST_BRANCH" == "mustafa-travisci-patch-3" ]; then
-     PERCY_BRANCH ="fork-${TRAVIS_BUILD_NUMBER}";
+    if [ "$TRAVIS_PULL_REQUEST_SLUG" = "mustafa-travisci/testBuilds" ] && [ "$TRAVIS_PULL_REQUEST_BRANCH" == "mustafa-travisci-patch-4" ]; then
+     PERCY_BRANCH = concat("fork-", env(TRAVIS_BUILD_NUMBER);
     fi
   - echo $PERCY_BRANCH
