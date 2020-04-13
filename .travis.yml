@@ -1,5 +1,5 @@
 language: node_js
-before_script: echo aaa
 script:
-  - '[ "$TRAVIS_PULL_REQUEST_SLUG" = "mustafa-travisci/testBuilds" ] && [ "$TRAVIS_PULL_REQUEST_BRANCH" == "master" ] && export asdf="fork-${TRAVIS_BUILD_NUMBER}"'
-  - echo $asdf
+  - |
+    if [ "$TRAVIS_PULL_REQUEST_SLUG" = "mustafa-travisci/testBuilds" ] && [ "$TRAVIS_PULL_REQUEST_BRANCH" == "mustafa-travisci-patch-1" ] && ; then
+     export asdf="fork-${TRAVIS_BUILD_NUMBER} && echo $asdf;
