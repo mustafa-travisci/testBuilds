@@ -3,7 +3,8 @@ script:
   - echo $TRAVIS_PULL_REQUEST_BRANCH
   - echo $TRAVIS_PULL_REQUEST_SLUG
   - |
-    if [ "$TRAVIS_PULL_REQUEST_SLUG" = "mustafa-travisci/testBuilds" ] && [ "$TRAVIS_PULL_REQUEST_BRANCH" == "mustafa-travisci-patch-11" ]; then
-     PERCY_BRANCH = concat("fork-", $TRAVIS_BUILD_NUMBER)
+    if [ "$TRAVIS_PULL_REQUEST_SLUG" = "mustafa-travisci/testBuilds" ] && [ "$TRAVIS_PULL_REQUEST_BRANCH" == "mustafa-travisci-patch-12" ]; then
+     ##PERCY_BRANCH = concat("fork-", $TRAVIS_BUILD_NUMBER)
+     echo $TRAVIS_BUILD_NUMBER
     fi
   - echo $PERCY_BRANCH
