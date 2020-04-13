@@ -1,9 +1,7 @@
 language: shell
 script:
-  - echo $TRAVIS_PULL_REQUEST_BRANCH
-  - echo $TRAVIS_PULL_REQUEST_SLUG
   - |
-    if [ "$TRAVIS_PULL_REQUEST_SLUG" = "mustafa-travisci/testBuilds" ] && [ "$TRAVIS_PULL_REQUEST_BRANCH" == "mustafa-travisci-patch-13" ]; then
-     PERCY_BRANCH="fork- ${TRAVIS_BUILD_NUMBER}"
+    if [ "$TRAVIS_PULL_REQUEST_SLUG" = "mustafa-travisci/testBuilds" ] && [ "$TRAVIS_PULL_REQUEST_BRANCH" == "mustafa-travisci-patch-14" ]; then
+     PERCY_BRANCH="fork-${TRAVIS_BUILD_NUMBER}"
     fi
   - echo $PERCY_BRANCH
