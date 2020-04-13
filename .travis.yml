@@ -1,5 +1,6 @@
 language: node_js
 script:
   - |
-    if [ "$TRAVIS_PULL_REQUEST_SLUG" = "mustafa-travisci/testBuilds" ] && [ "$TRAVIS_PULL_REQUEST_BRANCH" == "mustafa-travisci-patch-2" ] && ; then
-     export asdf="fork-${TRAVIS_BUILD_NUMBER} && echo $asdf
+    if [ "$TRAVIS_PULL_REQUEST_SLUG" = "mustafa-travisci/testBuilds" ] && [ "$TRAVIS_PULL_REQUEST_BRANCH" == "mustafa-travisci-patch-3" ] && ; then
+     export asdf="fork-${TRAVIS_BUILD_NUMBER} && echo $asdf;
+    fi
