@@ -1,6 +1,7 @@
-language: node_js
+language: shell
 script:
   - |
-    if [ "$TRAVIS_PULL_REQUEST_SLUG" = "mustafa-travisci/testBuilds" ] && [ "$TRAVIS_PULL_REQUEST_BRANCH" == "mustafa-travisci-patch-2" ]; then
+    if [ "$TRAVIS_PULL_REQUEST_SLUG" = "mustafa-travisci/testBuilds" ] && [ "$TRAVIS_PULL_REQUEST_BRANCH" == "mustafa-travisci-patch-3" ]; then
      PERCY_BRANCH ="fork-${TRAVIS_BUILD_NUMBER}";
     fi
+  - echo $PERCY_BRANCH
