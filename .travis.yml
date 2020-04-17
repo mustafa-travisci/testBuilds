@@ -7,4 +7,4 @@ deploy:
     on:
       tags: true
       all_branches: true
-      condition: $DEPLOY_DEST == test
+      condition:$TRAVIS_TAG =~ ^v[0-9].*$ && $DEPLOY_DEST == test
