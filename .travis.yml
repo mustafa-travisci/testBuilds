@@ -18,7 +18,7 @@ script: true
 deploy:
   - provider: script
     skip_cleanup: true
-    script: bash ./build.sh deploy_staging $TRAVIS_TAG
+    script: true
     on:
       tags: true
       all_branches: true
