@@ -23,3 +23,6 @@ deploy:
       tags: true
       all_branches: true
       condition: $TRAVIS_TAG =~ ^v[0-9].*$ && $DEPLOY_DEST == staging
+after_deploy:
+	- echo $TRAVIS_TAG
+	- echo $TRAVIS_BRANCH
