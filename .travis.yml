@@ -9,4 +9,4 @@ jobs:
     - install:
       - echo "wget"
       - echo "tar"
-    - script: echo "script phase"
+      script: echo "script phase"
