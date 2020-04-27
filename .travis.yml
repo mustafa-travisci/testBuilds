@@ -1,8 +1,12 @@
-dist: xenial
-script: true
-deploy:
-  provider: script
-  script: echo hello
-  on:
-    branch: test
-    condition: $TRAVIS_TEST_RESULT = 0
+os: linux
+dist: bionic
+language: minimal
+
+script: echo "Hello World!"
+
+jobs:
+  include:
+    - install:
+      - echo "wget"
+      - echo "tar"
+    - script: echo "script phase"
