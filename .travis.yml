@@ -1,2 +1,5 @@
 language: shell
-script: echo m9
+script:
+  - git clone git@github.com:mustafa-travisci/python-test.git test
+  - cd test
+  - ls -ltr
