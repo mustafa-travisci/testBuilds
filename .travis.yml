@@ -1,18 +1,2 @@
-<<<<<<< HEAD
 language: shell
-script: echo meme
-env:
-  global:
-    secure: rX39/N3HJsUDl8w3ARcih+buEDg7AD0hGnNaunhjT+NLKdrgGSYrrsk+O6U2L2APzlUcP9jN0gWp5HYq3xfzNB/VaznEiq4dP756TrtabGWdaWSuA1fwEv3tuib23iQmlAVHKIv1yO+GqUaVRY1CWfC5LWtTIbfgcOOL7hcL3TJbS6XdRL8OdTCdwST3XHy/67UwltaS6N9vZXW6U92WcaRcxkrEBMZ3EjRt7xKptVgg9JfahX2XT69yH0K03mKxwIFKuLKj5+SWL4SjhvqywxOf0Ck38D0ydPudFUVb5bitdq/VuDc4XoSgEcAaMStPwCLJWsNfoG3JulCI6FXneQPlpmlugMb8V2p3VRE4uSqhBDVv+b8i7gz/nYyOxay2Q1veKg3wjIkCCJs5yXI9tA9eMcB+dnDePMImGyhsO3H2cugpzakVOyhOpEQ5QxAGKzoK9Qi36z16IxQ6dQ14Jv5U6S0ntcN2syXJ+vQaoxbJseJyXjJ+8o2DRMkz7fr8UraL/wsaZsB3mNhpTLHy89Jd961lDZ7sv5+7sfwacn6HrtojpJ8sA747hL0ixoAUOQaBf7hs6h6WWIBaOuxWvWCf68FyEeplDDzY6mLUwWNJPCzVHVde/+ZUj3ijRJnXvM84O8aMpM99jHzVL5hj4AqyNQLlrvCIK03FGudyKSI=
-=======
-language: node_js
-node_js: "12"
-deploy:
-  - provider: script
-    skip_cleanup: true
-    script: bash ./build.sh deploy_staging $TRAVIS_TAG
-    on:
-      tags: true
-      all_branches: true
-      condition: $DEPLOY_DEST == test
->>>>>>> 8f506c6c4adc5861dc4290108a7b1b245936452f
+script: echo m1
