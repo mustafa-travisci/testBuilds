@@ -1,2 +1,2 @@
 language: shell
-script: echo m5
+script: echo m6
