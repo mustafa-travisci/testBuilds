@@ -1,5 +1,5 @@
 language: shell
-script: true
+script: echo test
 branches:
   except:
   - /^v\..*$/ # Exclude version tags
