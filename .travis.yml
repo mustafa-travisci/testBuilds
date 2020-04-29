@@ -4,7 +4,7 @@ language: cpp
 os: linux
 
 env:
- global:
+ matrix:
     - TARGET=ARM7
     - TARGET=X86_64
 
