@@ -1,5 +1,2 @@
-language: shell
-script: true
-branches:
-  except:
-  - /^v\..*$/ # Exclude version tags
+language: java
+script: java -version
