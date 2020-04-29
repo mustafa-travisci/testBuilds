@@ -5,6 +5,7 @@ os: linux
 
 env:
   matrix:
+   include:
     - TARGET=ARM7
     - TARGET=X86_64
 stages:
