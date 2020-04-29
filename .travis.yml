@@ -1,13 +1,4 @@
 language: python
 dist: trusty
 python: 3.7
-jdk: openjdk8
-
-addons:
-  apt:
-    packages:
-      curl
-
-install: true
-
-script: true
+scfript: true
