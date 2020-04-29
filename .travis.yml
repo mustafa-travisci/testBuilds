@@ -4,24 +4,18 @@ language: cpp
 os: linux
 
 env:
- jobs:
+ global:
     - TARGET=ARM7
     - TARGET=X86_64
-stages:
-  - build
-  - a
-  - deploy
+
 jobs:
   include:
     -
       name: "build $TARGET"
       script: "export TARGET=armv7;sleep 1; echo \"build $TARGET \""
-      stage: build
     -
       name: "Unit Tests"
       script: "sleep 1; echo \"test 1\""
-      stage: a
     -
       name: "Deploy to Github"
       script: "sleep 1; echo \"deploy\""
-      stage: deploy
