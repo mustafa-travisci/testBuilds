@@ -1,6 +1,6 @@
-stage:
+stages:
   - name: build-test-push-ecr-dev
-    if: branch = test
+    if: NOT branch = master
   - name: build-test-push-ecr-prd
     if: (type = pull_request) AND (branch = master)
 
