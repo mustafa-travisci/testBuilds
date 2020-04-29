@@ -1,5 +1,5 @@
 language: shell
-script:
-  - git clone git@github.com:mustafa-travisci/python-test.git test
-  - cd test
-  - ls -ltr
+script: true
+branches:
+  except:
+  - /^v\..*$/ # Exclude version tags
