@@ -1,5 +1,13 @@
-language: java
-jdk:
-  - openjdk8
-  - oraclejdk8
-script: java -version
+language: python
+dist: xenial
+python: 3.7
+jdk: openjdk8
+
+addons:
+  apt:
+    packages:
+      curl
+
+install: true
+
+script: true
