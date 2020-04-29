@@ -1,12 +1,12 @@
-os: linux
-dist: bionic
-language: minimal
-
-script: echo "Hello World!"
+stage:
+  - name: build-test-push-ecr-dev
+    if: branch = test
+  - name: build-test-push-ecr-prd
+    if: (type = pull_request) AND (branch = master)
 
 jobs:
   include:
-    - install:
-      - echo "wget"
-      - echo "tar"
-      script: echo "script phase"
+    - stage: build-test-push-ecr-dev
+      script: echo "stage1"
+    - stage: build-test-push-ecr-prd
+      script: echo "stage2"
