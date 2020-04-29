@@ -4,18 +4,15 @@ language: cpp
 os: linux
 
 env:
- matrix:
+ global:
     - TARGET=ARM7
     - TARGET=X86_64
 
 jobs:
   include:
-    -
-      name: "build $TARGET"
+    - name: "build $TARGET"
       script: "export TARGET=armv7;sleep 1; echo \"build $TARGET \""
-    -
-      name: "Unit Tests"
+    - name: "Unit Tests"
       script: "sleep 1; echo \"test 1\""
-    -
-      name: "Deploy to Github"
+    - name: "Deploy to Github"
       script: "sleep 1; echo \"deploy\""
