@@ -2,9 +2,11 @@ compiler: g++
 dist: xenial
 language: cpp
 os: linux
-
 env:
- global:
+  global:
+    - TARGET=ARM7
+    - TARGET=X86_64
+  matrix:
     - TARGET=ARM7
     - TARGET=X86_64
 
