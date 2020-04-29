@@ -4,7 +4,6 @@ language: cpp
 os: linux
 
 env:
-  matrix:
     - TARGET=ARM7
     - TARGET="X86_64"
 stages:
