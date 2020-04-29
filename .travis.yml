@@ -1,20 +1,24 @@
-dist: xenial
+os: linux
+dist: bionic
 
-addons:
-  postgresql: 12
-  apt:
-    update: true
-    packages:
-      - postgresql-12
-      - postgresql-client-12
+language: ruby
 
 services:
   - postgresql
 
+addons:
+  postgresql: '12'
+  apt:
+    packages:
+      - postgresql-12
+      - postgresql-client-12
+      - postgresql-server-dev-12
+
 before_install:
-  - psql --version
-  - sudo apt-get update
-  - sudo sed -i 's/port = 5433/port = 5432/' /etc/postgresql/10/main/postgresql.conf
-  - sudo cp /etc/postgresql/{9.6,10}/main/pg_hba.conf
-  - sudo service postgresql stop
-  - sudo service postgresql start 12
+  - sudo pg_dropcluster --stop 12 main
+  - sudo pg_upgradecluster 11 main
+  - sudo pg_ctlcluster 12 main restart
+  - sudo pg_dropcluster 11 main
+
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
