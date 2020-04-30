@@ -1,9 +1,5 @@
-import:
-  - source: mustafa-travisci/testBuilds:common.yml@test
-    mode: deep_merge_prepend
-
-env:
-  global:
-    - deploy_qual=true;
-    - config_file_public="src/js/config.json"
-    - config_file_private="src/private/js/config.json"
+language: shell
+dist: xenial
+services:
+  - xvfb
+script: xdpyinfo -display :0 >/dev/null 2>&1 && echo "In use" || echo "Free"
