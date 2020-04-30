@@ -2,11 +2,4 @@ language: shell
 dist: xenial
 services:
   - xvfb
-script:
-  -
-    pids=$(pidof /usr/bin/Xvfb)
-    if [ -n "$pids" ]; then
-        processes="$(ps --format command --no-headers -ww --pid $pids)"
-    else
-        echo "Not running"
-    fi
+script: echo $DISPLAY
