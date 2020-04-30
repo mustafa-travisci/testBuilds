@@ -1,12 +1,9 @@
-stages:
-  - name: build-test-push-ecr-dev
-    if: NOT branch = master
-  - name: build-test-push-ecr-prd
-    if: (type = pull_request) AND (branch = master)
+import:
+  - source: ***/travis:common.yml@master
+    mode: deep_merge_append
 
-jobs:
-  include:
-    - stage: build-test-push-ecr-dev
-      script: echo "stage1"
-    - stage: build-test-push-ecr-prd
-      script: echo "stage2"
+env:
+  global:
+    - deploy_qual=true;
+    - config_file_public="src/js/config.json"
+    - config_file_private="src/private/js/config.json"
