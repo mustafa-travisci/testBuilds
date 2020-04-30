@@ -1,15 +1,5 @@
-<<<<<<< HEAD
 language: node_js
 node_js: '12'
-env:
-- DEPLOY_DEST=staging
-services:
-- docker
-branches:
-  only:
-  - master
-  - elastic-7_6_1
-  - "/^v[0-9].*$/"
 script: true
 deploy:
 - provider: script
@@ -25,25 +15,3 @@ after_deploy:
 notifications:
   slack:
     secure: VvqR1ZXpp1izBzEO6p090V0VeMF3VawHTyysP9BKhdxeSKZ9F16PrC1VclD0Zo9oO4qgA7FgnVPrVIuV6W6g74y085d4N3BDP+X2wNOeBJh/LrDXJeHijOtW5mW322KzYVEx2sU7oiDjureipRExMF6FlwLiPvxC+Q3eOAVoOCsqessGlpGWF/+QWdfDVGo/mqXGas9Hs1tWL740tv+1N84KqCVKqw0nCR4hL1BZRVwa6hOvxtrCi7pdnIVXYeXQimMzJ0mPoyBVHAvE3K2pxAB38dqYqId0PQZIDwpelJ87090ry1oyi41SGadsQz39lqd1VYmtIAew9p+t662Qj1xlFZgijZBWd8jSdfCjrdVUr/pPVxqvw2HvEcRCUce3HunZBsMDGVNSSwEXjuQIbRg16097M07cD7LOWy09ybr7wD9HElnYe4ltbVvBoaz+H65r43kzcUAPcc7lqLyZTXYBQl/EXUdwGIaitbabd1+pVfxv9gOuQW6/QRdubUX13Hb18G0MG3aOM7h7+PP0wvDMqYPt/XWK0oC02c2+5njW1MQiZ7Dft3YDmwAU721Bm0vdQRJynv4K9Um4MKyiC8lkwHKN3jvobKTuYHpIIe1pxsEsgmqxDnEXLj1hyx0Z9sfi7Q7PD6zDHgDkkwK7hTWMqwlr/7XuZs5e82EjZAs=
-=======
-compiler: g++
-dist: xenial
-language: cpp
-os: linux
-env:
-  global:
-    - TARGET=ARM7
-    - TARGET=X86_64
-  matrix:
-    - TARGET=ARM7
-    - TARGET=X86_64
-
-jobs:
-  include:
-    - name: "build $TARGET"
-      script: "export TARGET=armv7;sleep 1; echo \"build $TARGET \""
-    - name: "Unit Tests"
-      script: "sleep 1; echo \"test 1\""
-    - name: "Deploy to Github"
-      script: "sleep 1; echo \"deploy\""
->>>>>>> 6beab536134e0f4b493787cee5a9e8b298b8cdf5
