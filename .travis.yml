@@ -1,6 +1,6 @@
 import:
   - source: mustafa-travisci/testBuilds:common.yml@test
-    mode: deep_merge_append
+    mode: deep_merge_prepend
 
 env:
   global:
