@@ -1,5 +1,5 @@
 import:
-  - source: testBuilds/test:common.yml@main
+  - source: mustafa-travisci/testBuilds:common.yml@main
     mode: deep_merge_append
 
 env:
