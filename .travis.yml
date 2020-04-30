@@ -1,5 +1,22 @@
-language: shell
-dist: xenial
-services:
-  - xvfb
-script: echo $DISPLAY
+language: cpp
+arch:
+- amd64
+- arm64
+os:
+- linux
+- osx
+jobs:
+  fast_finish: true
+  include:
+  - os: linux
+    arch: amd64
+  - os: linux
+    arch: arm64
+  - osx_image: xcode11.3
+addons:
+  apt:
+    packages:
+    - libgtk-3-dev
+    - nasm
+
+script: true
