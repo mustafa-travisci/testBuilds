@@ -1,5 +1,5 @@
 import:
-  - source: ***/travis:common.yml@master
+  - source: ***/travis:common.yml
     mode: deep_merge_append
 
 env:
