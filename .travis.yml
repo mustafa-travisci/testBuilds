@@ -13,10 +13,5 @@ jobs:
   - os: linux
     arch: arm64
   - osx_image: xcode11.3
-addons:
-  apt:
-    packages:
-    - libgtk-3-dev
-    - nasm
 
 script: true
