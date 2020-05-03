@@ -1,3 +1,10 @@
-language: r
-sudo: true
-script: true
+language: shell
+jobs:
+  include:
+  - stage: Tests
+    if: commit_message != "Auto updating docs"
+    script: echo "heyo"
+  - stage: Automation
+    if: commit_message = "Run automation suite"
+    script: echo "hey"
+dist: xenial
