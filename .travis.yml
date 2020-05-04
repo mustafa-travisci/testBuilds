@@ -1,12 +1,12 @@
 language: node_js
 node_js:
   - 'lts/*'
-script: 'true'
+
 jobs:
   include:
     - stage: 'Tests and Reports'
-    - script: npm run test:coverage && npm run coveralls
+    - script: true && npm run test:coverage && npm run coveralls
       name: Run Unit Tests, generate coverage and publish to coveralls
 
-    - script: npm run test:mutation-report
+    - script: true && npm run test:mutation-report
       name: Run Mutation Tests and publish reports
