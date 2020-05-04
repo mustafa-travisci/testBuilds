@@ -1,10 +1,8 @@
-language: shell
+language: node_js
 jobs:
   include:
   - stage: Tests
-    if: commit_message != "Auto updating docs"
     script: echo "heyo"
   - stage: Automation
-    if: commit_message = "Run automation suite"
     script: echo "heyeee"
 dist: xenial
