@@ -1,8 +1,12 @@
 language: node_js
+node_js:
+  - 'lts/*'
+
 jobs:
   include:
-  - stage: Tests
-    script: echo "heyo"
-  - stage: Automation
-    script: echo "heyeee"
-dist: xenial
+    - stage: 'Tests and Reports'
+    - script: npm run test:coverage && npm run coveralls
+      name: Run Unit Tests, generate coverage and publish to coveralls
+
+    - script: npm run test:mutation-report
+      name: Run Mutation Tests and publish reports
