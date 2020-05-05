@@ -24,4 +24,6 @@ jobs:
 
     - stage: Deploy
       env: CI_NODE_TOTAL=10 INDEX=99
-      script: deploy.sh
+      deploy:
+        provider: script
+        script: deploy.sh
