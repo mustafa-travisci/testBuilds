@@ -1,5 +1,11 @@
 language: php
-    
+
+env:
+    matrix:
+        - CI_NODE_TOTAL=10 INDEX=2
+        - CI_NODE_TOTAL=10 INDEX=3
+        - CI_NODE_TOTAL=10 INDEX=4
+      
 stages:
   - test
   - functional tests
@@ -11,9 +17,6 @@ jobs:
       env: CI_NODE_TOTAL=10 INDEX=1
       script: echo testStage
     - stage: func test
-      env: CI_NODE_TOTAL=10 INDEX=1
-      env: CI_NODE_TOTAL=10 INDEX=2
-      env: CI_NODE_TOTAL=10 INDEX=3
       script: echo funcTestStage
     - stage: deploy
       script: skip
