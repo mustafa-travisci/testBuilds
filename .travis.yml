@@ -1,7 +1,8 @@
-language: php
-dist: trusty
-before_script:
-  - sudo apt-get install -y -qq libssh2-1-dev libssh2-php
-  - pecl install -f ssh2-beta < .noninteractive
-  
-script: ssh -v
+language: shell
+
+before_script: WP_VERSION=5.2
+script:     
+    -
+    if [[ ! -z "$WP_VERSION" ]] ; then
+      echo hello
+    fi
