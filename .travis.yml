@@ -1,27 +1,3 @@
-language: php
-
-env:
-    matrix:
-
-      
-stages:
-  - test
-  - functional tests
-  - name: deploy
-    if: branch = test
-      
-jobs:
-    - stage: test
-      env: CI_NODE_TOTAL=10 INDEX=1
-      script: echo testStage
-    - stage: func test
-      script: echo funcTestStage
-    - stage: deploy
-      script: skip
-      deploy:
-        provider: script
-        script: test.sh
-
 language: shell
 
 env:
