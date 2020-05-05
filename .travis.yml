@@ -1,7 +1,10 @@
-language: php
-php:
-  - 7.4
-script:
-  - composer require --dev phpunit/phpunit ^9
-  - ./vendor/bin/phpunit --version
-  - ./vendor/bin/phpunit tests
+language: shell
+deploy:
+  - provider: script
+    script: test.sh
+    on:
+      branch: master
+  - provider: script
+    script: test.sh
+    on:
+      branch: staging
