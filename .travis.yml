@@ -1,4 +1,36 @@
 language: php
-script:
-  - composer require --dev phpunit/phpunit ^9
-  - ./vendor/bin/phpunit --version
+env:
+  global:
+    - CI_NODE_TOTAL=10 INDEX=1
+    - CI_NODE_TOTAL=10 INDEX=2
+    - CI_NODE_TOTAL=10 INDEX=3
+    - CI_NODE_TOTAL=10 INDEX=4
+    - CI_NODE_TOTAL=10 INDEX=5
+    - CI_NODE_TOTAL=10 INDEX=6
+    - CI_NODE_TOTAL=10 INDEX=7
+    - CI_NODE_TOTAL=10 INDEX=8
+    - CI_NODE_TOTAL=10 INDEX=9
+    - CI_NODE_TOTAL=10 INDEX=10
+    
+stages:
+  - test
+  - functional tests
+  - name: deploy
+    if: branch = test
+
+jobs:
+  include:
+    - stage: test
+      script: echo stage test
+      
+jobs:
+  include:
+    - stage: test
+      script: echo testStage
+    - stage: func test
+      script: echo funcTestStage
+    - stage: deploy
+      script: skip
+      deploy:
+        provider: script
+        script: test.sh
