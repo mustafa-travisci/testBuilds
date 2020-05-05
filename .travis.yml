@@ -7,13 +7,13 @@ env:
         - CI_NODE_TOTAL=10 INDEX=4
 
 stages:
-  - Tests
+  - test
   - Func Tests
   - Deploy
 
 jobs:
   include:
-    - stage: Tests
+    - stage: test
       env: 
         - CI_NODE_TOTAL=10 INDEX=99
         - CI_NODE_TOTAL=10 INDEX=999
