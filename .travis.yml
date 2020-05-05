@@ -1,8 +1,4 @@
-language: shell
-env:
-  - WP_VERSION=5.4 WP_MULTISITE=0
-script:     
-  - |
-    if [[ ! -z "$WP_VERSION" ]] ; then
-      echo hello
-    fi
+language: php
+script:
+  - composer require --dev phpunit/phpunit ^9
+  - ./vendor/bin/phpunit --version
