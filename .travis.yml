@@ -1,4 +1,6 @@
 language: php
+php:
+  - 7.4
 script:
   - composer require --dev phpunit/phpunit ^9
   - ./vendor/bin/phpunit --version
