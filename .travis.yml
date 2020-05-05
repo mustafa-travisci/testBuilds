@@ -1,6 +1,6 @@
 language: shell
-
-before_script: WP_VERSION=5.2
+env:
+  - WP_VERSION=5.4 WP_MULTISITE=0
 script:     
   - |
     if [[ ! -z "$WP_VERSION" ]] ; then
