@@ -4,5 +4,4 @@ php:
 script:
   - composer require --dev phpunit/phpunit ^9
   - ./vendor/bin/phpunit --version
-  - ./phpunit --bootstrap src/autoload.php tests
   - ./vendor/bin/phpunit tests
