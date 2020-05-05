@@ -17,11 +17,6 @@ stages:
   - functional tests
   - name: deploy
     if: branch = test
-
-jobs:
-  include:
-    - stage: test
-      script: echo stage test
       
 jobs:
   include:
