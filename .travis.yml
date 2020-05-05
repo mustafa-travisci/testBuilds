@@ -1,18 +1,4 @@
-language: node_js
-node_js: '12'
-script: true
-deploy:
-- provider: script
-  skip_cleanup: true
-  script: true
-  on:
-    tags: true
-    all_branches: true
-    condition: "$TRAVIS_TAG =~ ^v[0-9].*$ && $DEPLOY_DEST == staging"
-after_deploy:
-- echo $TRAVIS_TAG
-- echo $TRAVIS_BRANCH
-notifications:
-  slack:
-    rooms:
-      secure: ebxYnUFUuGzFUlvzkBWv8OB2b45Z8BbpETUH9XvBlZrPy78F8tFSv7Ev3DqWog58sBo7EjsOX77g8EStz2nv8OTo/TXFTvbvqV9eNd14APhRUpR4ZBs5IcQlRJGqPzC4oSvxhnOFl/H0HBE8WtTNYHDaEnS1BQVOOwdoYBzvrmIENCDTy2/NVyYP/NOmke2ENU3GJ1Oy8GB6IDxf1MxFiU/almEWkxJORdGGJRza/qb3t8mRKeUkH7Mk0YZ0q1Pq5ZAdaXA+2rsf6JspUsy8CEIpNSShU6TREkuvnuUb5kLVIG0CiLY/WNZeirU7m7YehjyOUOqKTQAvzv/DJJg7CbrjYWg422O/WTT/05KK01leYhPwF4HbEXDNXsJc9/xjMom2o8KQ81NBFrecmCC0MnBb5aR2I2Go7Y8z/lnfH1PxRUUmOIsJKdCaAkprDoAesnh8Goox7QubtwcveA2b5qZ005ItjToDzilSTHlOxZ/lEbnv+47zDo7G7l6shbf3oh0mULHJz1Rid7Tif81MCW/ffj+8f0g/M2fX88Gja/otOb3tLgk+Oz4E0FhpvDwTTvuDVNEdywrX7OqY05GTVoRNM2Y5KaoT1ZUyDgUtRdCCgEid1ZeCnUvIQaI8A6NBrNI7wtNi4KC2ZCv545TLBxlcBZWoO6BQM4k9x3yBQaE=
+language: php
+script:
+  - composer require --dev phpunit/phpunit ^9
+  - ./vendor/bin/phpunit --version
