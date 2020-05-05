@@ -5,6 +5,4 @@ before_script:
   - sudo apt-get update -y
   - sudo apt-get install -y php-ssh2
 script: 
-  - php -a
-  - php > $result = ssh2_connect('localhost');
-  - php > var_dump($result);
+  - phpX.Y-sp -i | grep ssh2
