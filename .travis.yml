@@ -18,7 +18,6 @@ stages:
     if: branch = test
       
 jobs:
-  include:
     - stage: test
       script: echo testStage
     - stage: func test
