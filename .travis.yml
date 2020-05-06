@@ -1,6 +1,5 @@
 language: php
-branch:
-  - ^master
+if: branch IN (dev, 18-VTbo-1a) || branch =~ ^mas
 php:
   - 7.0
 before_script:
