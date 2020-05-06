@@ -1,4 +1,5 @@
 dist: xenial
+language: shell
 
 addons:
   postgresql: 12
