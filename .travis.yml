@@ -4,7 +4,3 @@ dist: xenial
 
 script:
   - cat .ruby-version
-install:
-  - bundle install
-
-before_script: true
