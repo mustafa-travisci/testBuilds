@@ -2,5 +2,4 @@ language: ruby
 rvm: 2.3.0
 dist: xenial
 
-script:
-  - cat .ruby-version
+script: true
