@@ -3,7 +3,7 @@ rvm: 2.3.0
 dist: xenial
 
 script:
-  - bundle exec rspec
+  - cat .ruby-version
 install:
   - bundle install
 
