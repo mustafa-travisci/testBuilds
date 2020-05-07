@@ -1,4 +1,10 @@
 language: ruby
-rvm:
-  - 2.5.7
-script: ruby -v
+rvm: 2.3.0
+dist: xenial
+
+script:
+  - bundle exec rspec
+install:
+  - bundle install
+
+before_script: true
