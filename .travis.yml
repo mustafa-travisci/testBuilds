@@ -1,29 +1,5 @@
 language: shell
-
-env:
-  matrix:
-        - CI_NODE_TOTAL=10 INDEX=2
-        - CI_NODE_TOTAL=10 INDEX=3
-        - CI_NODE_TOTAL=10 INDEX=4
-
-stages:
-  - test
-  - Func Tests
-  - Deploy
-
-jobs:
-  include:
-    - stage: test
-      env: 
-        - CI_NODE_TOTAL=10 INDEX=99
-        - CI_NODE_TOTAL=10 INDEX=999
-      script: echo hello
-
-    - stage: Func Tests
-      script: echo func tests
-
-    - stage: Deploy
-      env: CI_NODE_TOTAL=10 INDEX=99
-      deploy:
-        provider: script
-        script: deploy.sh
+deploy:
+  provider: heroku
+  api_key: assdffwe333
+  app: app1
