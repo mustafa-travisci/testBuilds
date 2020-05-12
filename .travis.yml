@@ -1,3 +1,9 @@
-os: linux-ppc64le	
-
-script: true
+language: shell
+jobs:
+  include:
+  - stage: first_stage
+    script: true
+  - stage: second_stage
+    import:
+    - source: mustafa-travis/testBuilds:second-config.yml@master
+      mode: deep_merge_prepend
