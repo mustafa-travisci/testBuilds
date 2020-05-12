@@ -10,5 +10,3 @@ notifications:
 deploy:
   provider: script
   script: bash deploy.sh
-  on:
-    condition: "true"
