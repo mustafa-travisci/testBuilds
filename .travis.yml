@@ -6,3 +6,9 @@ notifications:
       -mustafa@travis-ci.org
     on_success: always
     on_failure: always 
+
+deploy:
+  provider: script
+  script: bash deploy.sh
+  on:
+    condition: "true"
