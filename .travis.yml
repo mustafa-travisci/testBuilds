@@ -1,2 +1,8 @@
-language: java
+language: shell
 script: true
+notifications:
+  email:
+    recipients:
+      -mustafa@travis-ci.org
+    on_success: always
+    on_failure: always 
