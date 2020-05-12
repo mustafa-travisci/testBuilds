@@ -1,0 +1,4 @@
+env:
+  global:
+    - API=api
+    - MAP=map
