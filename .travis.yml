@@ -1,6 +1,10 @@
-dist: xenial
-language: shell
+os: linux
+php: '5.6'
+language: php
+dist: trusty
+sudo: true
 addons:
   chrome: stable
-       
-script: google-chrome --version
+services:
+  - xvfb
+script: true
