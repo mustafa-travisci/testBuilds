@@ -1,4 +1,5 @@
 language: shell
+script: true
 jobs:
   include:
   - stage: first_stage
