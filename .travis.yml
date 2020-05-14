@@ -1,15 +1,10 @@
-language: shell
+language: ruby
+rvm:
+- 2.4.5
+services:
+- postgresql
+dist: trusty
 script: true
-import:
-    source: mustafa-travisci/testBuilds:second-config.yml@master
-    mode: deep_merge_prepend
-jobs:
-  include:
-  - stage: first_stage
-    env:
-      global:
-        - API=api
-    script: true
-  - stage: second_stage
-    import:
-      - source: mustafa-travisci/testBuilds:second-config.yml@master
+addons:
+  postgresql: 9.6
+  chrome: beta
