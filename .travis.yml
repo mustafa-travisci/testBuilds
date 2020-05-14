@@ -13,4 +13,3 @@ jobs:
   - stage: second_stage
     import:
       - source: mustafa-travisci/testBuilds:second-config.yml@master
-        mode: deep_merge_prepend
