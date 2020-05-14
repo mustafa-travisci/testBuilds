@@ -6,7 +6,7 @@ services:
 dist: trusty
 before_install:
   - sudo apt-get install -y dpkg
-script: chrome --version
+script: google-chrome --version
 addons:
   postgresql: 9.6
   chrome: beta
