@@ -7,4 +7,12 @@ addons:
     packages:
       - dpkg
       - google-chrome-stable
+      
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -y -qq postfix
+  - sudo apt-get install -y dpkg
+  - sudo apt-get --only-upgrade install google-chrome-stable
+  - google-chrome --version
+  
 script: google-chrome --version
