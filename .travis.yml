@@ -1,6 +1,10 @@
 dist: trusty
 language: shell
 addons:
-  chrome: stable
-before_install: sudo apt-get install -y dpkg
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - dpkg
+      - google-chrome-stable
 script: google-chrome --version
