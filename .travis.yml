@@ -1,7 +1,7 @@
 language: shell
 script: true
 import:
-  - source: mustafa-travis/testBuilds:second-config.yml@master
+    source: mustafa-travis/testBuilds:second-config.yml@master
     mode: deep_merge_prepend
 jobs:
   include:
