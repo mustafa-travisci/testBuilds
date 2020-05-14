@@ -1,9 +1,9 @@
-language: ruby
-rvm:
-- 2.4.5
-services:
-- postgresql
+language: shell
 script: google-chrome --version
 addons:
-  postgresql: 9.6
   chrome: beta
+
+jobs:
+  include:
+    - dist: trusty
+    - dist: xenial
