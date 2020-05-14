@@ -2,9 +2,9 @@ language: shell
 addons:
   chrome: beta
 
+after_script: google-chrome --version
+
 jobs:
   include:
     - dist: trusty
-      script: google-chrome --version
     - dist: xenial
-      script: google-chrome --version
