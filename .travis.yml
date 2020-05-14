@@ -1,8 +1,14 @@
 language: shell
 script: true
+import:
+  - source: mustafa-travis/testBuilds:second-config.yml@master
+    mode: deep_merge_prepend
 jobs:
   include:
   - stage: first_stage
+    env:
+      global:
+        - API=api
     script: true
   - stage: second_stage
     import:
