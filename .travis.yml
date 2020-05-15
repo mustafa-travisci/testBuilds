@@ -1,2 +1,2 @@
 language: shell
-script: ruby -v
+script: echo $TRAVIS_PULL_REQUEST
