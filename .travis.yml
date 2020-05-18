@@ -17,4 +17,4 @@ before_install:
   - sudo sed -i 's/port = 5433/port = 5432/' /etc/postgresql/10/main/postgresql.conf
   - sudo cp /etc/postgresql/{9.6,10}/main/pg_hba.conf
   - sudo service postgresql stop
-  - sudo service postgresql start 11.7
+  - sudo service postgresql start 11.8
