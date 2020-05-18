@@ -7,8 +7,8 @@ services:
 - redis
 addons:
   chrome: stable
-  postgresql: '11.8'
+  postgresql: '11.7'
   apt:
     packages:
     - postgresql-11
-    - postgresql-client-11
+    - postgresql-client-11.7
