@@ -1,4 +1,4 @@
-dist: trusty
+dist: xenial
 language: shell
 
 addons:
@@ -19,3 +19,5 @@ before_install:
   - sudo cp /etc/postgresql/{9.6,10}/main/pg_hba.conf
   - sudo service postgresql stop
   - sudo service postgresql start 12
+before_script:
+  - psql -c 'create database travis_ci_test2;' -U postgres
