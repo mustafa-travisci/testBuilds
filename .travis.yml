@@ -1,4 +1,4 @@
-dist: xenial
+dist: bionic
 
 addons:
   postgresql: 11
@@ -18,3 +18,5 @@ before_install:
   - sudo cp /etc/postgresql/{9.6,10}/main/pg_hba.conf
   - sudo service postgresql stop
   - sudo service postgresql start 11.8
+before_script:
+  - psql -c 'create database travis_ci_test2;' -U postgres
