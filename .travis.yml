@@ -9,4 +9,6 @@ rvm:
 cache:
   bundler: true
 
-script: ruby --version
+script: 
+  - ruby --version
+  - gem install -v 1.17.3 bundler --no-rdoc --no-ri
