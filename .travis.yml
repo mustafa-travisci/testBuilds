@@ -1,12 +1,3 @@
 dist: xenial
-language: ruby
-cache:
-  bundler: true
-  yarn: true
-addons:
-  chrome: stable
-  postgresql: "11"
-  apt:
-    packages:
-    - postgresql-11
-    - postgresql-client-11
+language: java
+script: true
