@@ -11,7 +11,7 @@ addons:
 before_install:
   - sudo apt-get update
   - sudo sed -i 's/port = 5433/port = 5432/' /etc/postgresql/11/main/postgresql.conf
-  - sudo cp /etc/postgresql/{9.6,10,11}/main/pg_hba.conf
+  - sudo cp /etc/postgresql/{9.6,10}/main/pg_hba.conf
   - sudo service postgresql stop
   - sudo service postgresql start 11
 before_script:
