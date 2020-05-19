@@ -1,18 +1,12 @@
-os: linux
-rvm: 2.6.6
 language: ruby
+
+rvm:
+  - 2.6.6
 dist: bionic
-group: dev
+
 services:
-- postgresql
-- redis
-addons:
-  chrome: stable
-  postgresql: '11.7'
-  apt:
-    packages:
-    - postgresql-11
-    - postgresql-client-11
+  - postgresql
+  - redis
+
 before_install:
-- psql --version
-install: true
+  - psql --version
