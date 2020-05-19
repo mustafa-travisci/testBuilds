@@ -1,7 +1,4 @@
-language: ruby
-
-rvm:
-  - 2.6.6
+language: shell
 dist: bionic
 
 services:
