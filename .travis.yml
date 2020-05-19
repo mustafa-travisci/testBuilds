@@ -1,21 +1,18 @@
+os: linux
+rvm: 2.6.6
+language: ruby
 dist: bionic
-language: python
-cache: pip
-python: "3.8"
+group: dev
 services:
-  - postgresql
-  - redis-server
+- postgresql
+- redis
 addons:
-  postgresql: "11"
+  chrome: stable
+  postgresql: '11.7'
   apt:
     packages:
-      - postgresql-11
-sudo: required
-before_script:
-  - psql -c "CREATE USER cooklist WITH PASSWORD 'cooklist';" -U postgres
-  - psql -c "ALTER USER cooklist CREATEDB;" -U postgres
-  - psql -c "ALTER USER cooklist WITH SUPERUSER;" -U postgres
-  - psql -c "CREATE DATABASE cooklist WITH OWNER cooklist;" -U postgres
-  - psql -U postgres -c "create extension postgis"
-  - psql -U postgres -c "create extension intarray"  
-script: true
+    - postgresql-11
+    - postgresql-client-11
+before_install:
+- psql --version
+install: skip
