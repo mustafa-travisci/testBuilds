@@ -1,14 +1,21 @@
-language: ruby
-rvm:
-  - 2.6.6
 dist: bionic
+language: python
+cache: pip
+python: "3.8"
+services:
+  - postgresql
+  - redis-server
 addons:
-  postgresql: 11
+  postgresql: "11"
   apt:
     packages:
       - postgresql-11
-      - postgresql-client-11
-before_install:
-  - psql --version
+sudo: required
 before_script:
-  - psql -c 'create database travis_ci_test;' -U postgres
+  - psql -c "CREATE USER cooklist WITH PASSWORD 'cooklist';" -U postgres
+  - psql -c "ALTER USER cooklist CREATEDB;" -U postgres
+  - psql -c "ALTER USER cooklist WITH SUPERUSER;" -U postgres
+  - psql -c "CREATE DATABASE cooklist WITH OWNER cooklist;" -U postgres
+  - psql -U postgres -c "create extension postgis"
+  - psql -U postgres -c "create extension intarray"  
+script: true
