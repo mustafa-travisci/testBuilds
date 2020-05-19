@@ -1,18 +1,13 @@
-language: shell
-services:
-  - postgresql
-  - redis
-addons:
-  postgresql: 11
-  apt:
-    packages:
-      - postgresql-11
-      - postgresql-client-11
-before_install:
-  - sudo apt-get update
-  - sudo sed -i 's/port = 5433/port = 5432/' /etc/postgresql/11/main/postgresql.conf
-  - sudo cp /etc/postgresql/{9.6,10}/main/pg_hba.conf
-  - sudo service postgresql stop
-  - sudo service postgresql start 11
-before_script:
-  - psql -c 'create database travis_ci_test2;' -U postgres
+language: java
+jdk:
+ - oraclejdk9
+
+dist: trusty
+
+script:
+  - java -version
+  
+jobs:
+  include:
+    - dist: trusty
+    - dist: xenial
