@@ -1,9 +1,11 @@
 language: shell
 dist: bionic
 
-services:
-  - postgresql
-  - redis
-
+addons:
+  postgresql: 11
+  apt:
+    packages:
+      - postgresql-11
+      - postgresql-client-11
 before_install:
   - psql --version
