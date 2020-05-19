@@ -1,13 +1,14 @@
-language: java
-jdk:
- - oraclejdk9
-
-dist: trusty
-
-script:
-  - java -version
-  
-jobs:
-  include:
-    - dist: trusty
-    - dist: xenial
+language: ruby
+rvm:
+  - 2.6.6
+dist: bionic
+addons:
+  postgresql: 11
+  apt:
+    packages:
+      - postgresql-11
+      - postgresql-client-11
+before_install:
+  - psql --version
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
