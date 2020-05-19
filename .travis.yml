@@ -1,1 +1,11 @@
-script: psql --version 
+language: shell
+dist: bionic
+
+addons:
+  postgresql: 11
+  apt:
+    packages:
+      - postgresql-11
+      - postgresql-client-11
+before_install:
+  - psql --version
