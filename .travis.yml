@@ -15,4 +15,4 @@ addons:
     - postgresql-client-11
 before_install:
 - psql --version
-install: skip
+install: true
