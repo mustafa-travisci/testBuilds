@@ -1,6 +1,6 @@
 sudo: required
 dist: bionic
-
+language: shell
 addons:
   postgresql: '12'
   apt:
