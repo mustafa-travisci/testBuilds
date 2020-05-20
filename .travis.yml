@@ -3,7 +3,7 @@ dist: trusty
 
 language: scala
 scala: 2.12.4
-jdk: oraclejdk8
+
 addons:
   postgresql: '9.6'
   apt:
@@ -12,4 +12,3 @@ addons:
     - postgresql-9.6-postgis-2.3
 before_install:
   - psql --version
-  - java --version
