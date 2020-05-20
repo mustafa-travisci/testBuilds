@@ -7,6 +7,8 @@ addons:
     packages:
     - postgresql-9.6
     - postgresql-9.6-postgis-2.3
+    - openjdk-8-jdk
+jdk: openjdk8
 before_install:
   - psql --version
   - java --version
