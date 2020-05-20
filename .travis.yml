@@ -1,11 +1,11 @@
 sudo: required
-dist: trusty
+dist: bionic
 
 addons:
   postgresql: '12'
   apt:
     packages:
     - postgresql-12
-    - postgresql-12-postgis-2.3
+    - postgresql-12-postgis-3
 before_install:
   - psql --version
