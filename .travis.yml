@@ -1,19 +1,14 @@
-sudo: required
-dist: trusty
-
 language: shell
-jdk: oraclejdk8
-
+os:
+- linux
+dist: trusty
 addons:
-  postgresql: 9.6
-
-install:
-  - sudo apt-get update
-  - sudo apt-get install -y postgresql-9.6-postgis-2.3
-  - sudo sed -i 's/port = 5433/port = 5432/' /etc/postgresql/{9,9.6}/main/postgresql.conf
-  - sudo cp /etc/postgresql/{9.6,10}/main/pg_hba.conf
-  - sudo service postgresql stop
-  - sudo service postgresql start 9
-before_script:
-  - psql -c 'create database travis_ci_test2;' -U postgres
-script: true
+  postgresql: '9.6'
+  apt:
+    packages:
+    - postgresql-9.6
+    - postgresql-9.6-postgis-2.3
+services:
+- redis
+before_install:
+  - psql --version
