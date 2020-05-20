@@ -2,7 +2,13 @@ language: shell
 os:
 - linux
 dist: bionic
-
+addons:
+  postgresql: 11
+  apt:
+    update: true
+    packages:
+      - postgresql-11
+      - postgresql-client-11
 services:
 - redis
 - postgresql
