@@ -1,8 +1,7 @@
 sudo: required
 dist: trusty
 
-language: scala
-scala: 2.12.4
+language: shell
 jdk: oraclejdk8
 
 addons:
@@ -13,3 +12,5 @@ install:
   - sudo service postgresql restart
 before_script:
   - psql -c 'CREATE DATABASE "test";' -U postgres
+  
+script: true
