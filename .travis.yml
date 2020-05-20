@@ -11,6 +11,6 @@ install:
   - sudo apt-get install -y postgresql-9.6-postgis-2.3
   - sudo service postgresql restart
 before_script:
-  - psql -c 'CREATE DATABASE "test";' -U postgres
+  - psql -c 'create database travis_ci_test2;' -U postgres
   
 script: true
