@@ -3,8 +3,7 @@ dist: bionic
 
 services:
   - postgresql
-addons:
-  postgresql: "9.6"
+
 before_install:
   - sudo apt-get update
   - sudo apt-get install -y postgresql-11 postgresql-client-11
