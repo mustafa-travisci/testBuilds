@@ -8,9 +8,12 @@ addons:
   postgresql: 9.6
 
 install:
+  - sudo apt-get update
   - sudo apt-get install -y postgresql-9.6-postgis-2.3
-  - sudo service postgresql restart
+  - sudo sed -i 's/port = 5433/port = 5432/' /etc/postgresql/{9,9.6}/main/postgresql.conf
+  - sudo cp /etc/postgresql/{9.6,10}/main/pg_hba.conf
+  - sudo service postgresql stop
+  - sudo service postgresql start 9
 before_script:
   - psql -c 'create database travis_ci_test2;' -U postgres
-  
 script: true
