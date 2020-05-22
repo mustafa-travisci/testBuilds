@@ -1,5 +1,5 @@
 language: shell
-script: true
+before_script: true
 notifications:
   email:
   - recipients:
