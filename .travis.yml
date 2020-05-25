@@ -1,8 +1,6 @@
 language: shell
-before_script: true
-notifications:
-  email:
-  - recipients:
-    - mustafa@travis-ci.org
-    on_success: always
-    on_failure: always
+jobs:
+  include:
+    - stage: 1
+    - stage: 2
+    - stage: 3
