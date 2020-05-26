@@ -1,7 +1,9 @@
-language: objective-c
-os: osx
-osx_image: xcode11.4.1
-xcode_scheme: Demo
-xcode_workspace: MapboxSearchSDK.xcworkspace
-xcode_destination: platform=iOS Simulator,name=iPhone 11
-script: echo test
+os: linux
+language: java
+dist: xenial
+script:
+- mvn clean verify
+cache:
+  directories:
+  - ".autoconf"
+  - "$HOME/.m2"
