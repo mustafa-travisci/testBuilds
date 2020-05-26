@@ -2,7 +2,7 @@ os: linux
 dist: xenial
 language: java
 # Run the integration test with 'verify'
-script: ./mvnw clean verify
+script: mvn install
 # Speed up the build by caching maven dependencies.
 cache:
   directories:
