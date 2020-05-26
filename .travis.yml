@@ -1,6 +1,7 @@
-language: shell
-jobs:
-  include:
-    - stage: 1
-    - stage: 2
-    - stage: 3
+language: objective-c
+os: osx
+osx_image: xcode11.4.1
+xcode_scheme: Demo
+xcode_workspace: MapboxSearchSDK.xcworkspace
+xcode_destination: platform=iOS Simulator,name=iPhone 11
+script: echo test
