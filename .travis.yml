@@ -1,10 +1,6 @@
 os: linux
 dist: bionic
 language: ruby
-
-services:
-  - postgresql
-
 addons:
   postgresql: '12'
   apt:
