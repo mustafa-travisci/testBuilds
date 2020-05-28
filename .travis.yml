@@ -1,10 +1,5 @@
 os: linux
 dist: xenial
-language: java
+language: shell
 # Run the integration test with 'verify'
-script: mvn clean verify
-# Speed up the build by caching maven dependencies.
-cache:
-  directories:
-  - .autoconf
-  - $HOME/.m2
+script: ssh-keyscan -vp 443 distribution.akeneo.com
