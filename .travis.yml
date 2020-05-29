@@ -8,6 +8,7 @@ addons:
       - postgresql-client-11
   postgresql: "11"
 before_script:
+  - psql -version
   - psql -c 'create database "test_db";' 
 install: true
 script: echo hello there
