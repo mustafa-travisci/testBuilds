@@ -1,15 +1,4 @@
-dist: bionic
-addons:
-    postgresql: '11'
-    apt:
-      packages:
-        - postgresql-11
-        - postgresql-client-11
-env:
-    global:
-        - PGVER=11
-        - PGPORT=5433
-
-before_script:
-  - psql --version
-  - psql -c 'create database "test_db";'
+os: osx
+osx_image: xcode8
+language: rust
+rust: nightly
