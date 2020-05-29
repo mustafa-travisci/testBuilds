@@ -22,4 +22,4 @@ before_script:
   - psql -U postgres -c "create extension postgis"
   - psql -U postgres -c "create extension intarray"  
 install: true
-script: echo hello
+script: echo helloa
