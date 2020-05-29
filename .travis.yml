@@ -15,11 +15,6 @@ addons:
   #- sudo service postgresql stop
   #- sudo service postgresql start 11
 before_script:
-  - psql -c "CREATE USER cooklist WITH PASSWORD 'cooklist';" -U postgres
-  - psql -c "ALTER USER cooklist CREATEDB;" -U postgres
-  - psql -c "ALTER USER cooklist WITH SUPERUSER;" -U postgres
-  - psql -c "CREATE DATABASE cooklist WITH OWNER cooklist;" -U postgres
-  - psql -U postgres -c "create extension postgis"
-  - psql -U postgres -c "create extension intarray"  
+  - psql -c 'create database "test_db";' 
 install: true
 script: echo helloa
