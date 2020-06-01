@@ -1,3 +1,6 @@
-language: ruby
-rvm: 2.1.7
-script: bundle exec jekyll build
+addons:
+  sauce_connect:
+    username: "testSauce44"
+    access_key: "8e18ba13-7e1d-4f78-a8aa-717f4175198b"
+    
+script: true
