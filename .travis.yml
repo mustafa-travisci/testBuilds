@@ -17,15 +17,9 @@ before_script:
 - sudo minikube start --vm-driver=none --bootstrapper=localkube
 - chmod +x ../scripts/travisTest.sh
 script: ../scripts/travisTest.sh
-notifications:
-  slack:
-    template:
-    - 'Build: <%{build_url}| %{build_number}> | Commit (<%{compare_url}|%{commit}>):
-      %{commit_message}'
-    - 'Repo@Branch: %{repository_slug}@%{branch}'
-    - 'Author: %{author}'
-    - 'Summary: %{result} in %{duration}'
+
 branches:
   only:
   - master
   - qa
+  - test
