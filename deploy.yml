@@ -1,0 +1,14 @@
+version: ~> 1.0
+import:
+- source: "install.yml"
+  # mode: deep_merge_prepend
+  mode: deep_merge_append
+
+before_install:
+- echo '3 deploy.yml before_install'
+
+deploy:
+- provider: script
+  script: echo '8 deploy.yml deploy'
+  on:
+    branch: master
