@@ -1,1 +1,21 @@
-script: psql --version 
+version: ~> 1.0
+import:
+- source: build.yml
+  mode: deep_merge_append
+- source: deploy.yml
+  mode: deep_merge_append
+
+language: go
+go: 1.12.x
+
+before_install:
+- echo '1 .travis.yml before_install'
+
+script:
+- echo '5 .travis.yml script'
+
+deploy:
+- provider: script
+  script: echo '7 .travis.yml deploy'
+  on:
+    all_branches: true
