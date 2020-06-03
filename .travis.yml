@@ -5,6 +5,6 @@ addon:
 install: curl -sL https://raw.githubusercontent.com/travis-ci/artifacts/master/install | bash
 deploy:
    provider: script
-   script: bash test.sh
+   script: bash artifacts
    on:
      branch: test
