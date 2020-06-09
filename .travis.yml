@@ -5,9 +5,13 @@
 language: shell
 script: echo script
 after_script: echo hello
-#deploy:
-#  provider: script
-#  script: >-
-#    cd .. &&
-#    echo hello &&
-#    echo world
+env:
+  - testvar=1234
+deploy:
+  provider: script
+  script: >-
+    cd .. &&
+    echo hello &&
+    echo world &&
+    env\EPD=$(testvar) &&
+    echo $EPD
