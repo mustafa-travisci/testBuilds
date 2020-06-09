@@ -1,12 +1,7 @@
-#addons:
-#    sauce_connect:
-#      username: testSauce44
-#      access_key: "8e18ba13-7e1d-4f78-a8aa-717f4175198b"
-language: shell
-install: skip
-deploy:
-  provider: script
-  script: >-
-    cd .. &&
-    echo hello &&
-    echo world
+script: true
+addons:
+    sauce_connect:
+      username: testSauce44
+      access_key:
+        secure:
+          "B5DUJIEU0JljdB7l4zC7fwKEHvvLIecXLKH77XW7grTzM9y/53HDmdQJLYA7kO6Wv7YbJxCt0+6T4Mm/EVPVLIuAy1ErCSR9OSe7Rvomh+blKnBIwhMt/A1ePh/BD6caEzTue9I7fiK0H6rd7gLym1YARuHUvYelS+l8gyi0Ent6BwJszF/ql0K5f1cFd0YQuXJoFQyFYjGVpLahtnuYZmrmnxgOzt89m58v4inxE/eMjXhumJxdQs1xKlE9FIRSd5QMuSDKZbHdeqpHo3n3cZCtdtM/qlryle9/HsJiY7w1zVhWbKXl3FFK5kCQj1IbHeu0uZjk2iGhefAAETbFHJVdWGYxmaIl+VwFSsB+w7JiltcIiwYkzjIwgctnRqAgvd7IB4O5lrttr2Gf/82OkWiD8qS7f5p8mIxPaa1tKOtWOiX6EjYSMjoH6+g2m1kNqKLBjH+QQn9qVq/NpEIKlnXqObiNHBo7OnuDFTpxJ2J6zN6Xlu/Wg2EkoqvZoyoavJrrxZ0DgVsRJoW/HNeeP1nSnPZ4pwmD4el49zKnlybf3TqVs1St7LJaprfZDtkdCQMvv0evs0ozdHpe7Khh90UM86wST9PfqEbe/qHzEX4LiSIV4jXUNFuOTo1OgnThSfD176JTTzvX5qbQOy5a3BzuiAEKTtz7GD8YBLoI+VU="
