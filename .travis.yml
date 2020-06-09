@@ -14,7 +14,11 @@ jobs:
   include:
     #  - stage: test
     #    script: echo "script"
-    - 
+    -
+#      if: branch = env(BRANCH)
+      if: master = env(BRANCH)
+      script: echo $BRANCH && echo 1
+    - stage: build
 #      if: branch = env(BRANCH)
       if: master = env(branch)
       script: echo $BRANCH && echo 1
