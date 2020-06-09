@@ -16,11 +16,11 @@ jobs:
     #    script: echo "script"
     - stage: build
 #      if: branch = env(BRANCH)
-      if: env(branch) = master
+      if: master = env(branch)
       script: echo $BRANCH && echo 1
     - stage: build
 #      if: branch = env(BRANCH)
-      if: env(BRANCH) = master
+      if: master = env(BRANCH)
       script: echo $BRANCH && echo 2
     - stage: deploy
 #      if: branch = env(BRANCH)
