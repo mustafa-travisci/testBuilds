@@ -2,6 +2,8 @@
 #    sauce_connect:
 #      username: testSauce44
 #      access_key: "8e18ba13-7e1d-4f78-a8aa-717f4175198b"
+language: shell
+install: skip
 deploy:
   provider: script
   script: >-
