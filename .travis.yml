@@ -17,12 +17,12 @@ jobs:
     - stage: build
 #      if: branch = env(BRANCH)
       if: env(branch) = master
-      script: echo $BRANCH
+      script: echo $BRANCH && echo 1
     - stage: build
 #      if: branch = env(BRANCH)
       if: env(BRANCH) = master
-      script: echo $BRANCH
+      script: echo $BRANCH && echo 2
     - stage: deploy
 #      if: branch = env(BRANCH)
       if: branch = master
-      script: echo $BRANCH
+      script: echo $BRANCH && echo 3
