@@ -1,3 +1,4 @@
+install: true
 script: true
 addons:
     sauce_connect:
