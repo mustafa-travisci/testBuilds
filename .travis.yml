@@ -1,5 +1,24 @@
-script: true
-addons:
-    sauce_connect:
-      username: testSauce44
-      access_key: "8e18ba13-7e1d-4f78-a8aa-717f4175198b"
+#addons:
+#    sauce_connect:
+#      username: testSauce44
+#      access_key: "8e18ba13-7e1d-4f78-a8aa-717f4175198b"
+env:
+  jobs:
+    - BRANCH=master
+  global:
+    - SERVICE_TYPE=DOTNET
+
+
+
+jobs:
+  include:
+    #  - stage: test
+    #    script: echo "script"
+    - stage: build
+#      if: branch = env(BRANCH)
+      if: branch = master
+      script: echo $BRANCH
+    - stage: deploy
+#      if: branch = env(BRANCH)
+      if: branch = master
+      script: echo $BRANCH
