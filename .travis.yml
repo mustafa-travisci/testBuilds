@@ -13,5 +13,5 @@ deploy:
     cd .. &&
     echo hello &&
     echo world &&
-    env\EPD=$(testvar) &&
+    env EPD=$(testvar) &&
     echo $EPD
