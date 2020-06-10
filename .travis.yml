@@ -10,7 +10,9 @@ env:
 deploy:
   provider: script
   script: cd .. && echo hello && echo world && env EC2_PUBLIC_DNS=$(testvar)
-public_dns = ec2.99999999999.compute.amazonaws.com
+env:
+	global: 
+		public_dns = ec2.99999999999.compute.amazonaws.com
 deploy:
   provider: script
   script: >-
