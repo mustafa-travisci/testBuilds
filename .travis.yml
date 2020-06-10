@@ -10,9 +10,6 @@ env:
 deploy:
   provider: script
   script: cd .. && echo hello && echo world && env EC2_PUBLIC_DNS=$(testvar)
-env:
-	global: 
-		public_dns = ec2.99999999999.compute.amazonaws.com
 deploy:
   provider: script
   script: >-
@@ -20,4 +17,4 @@ deploy:
     echo hello &&
     echo world
 after_deploy: 
-	- env EC2_PUBLIC_DNS="$(grep public_dns .travis.yml | cut -d ' ' -f 3)"
+	- env EC2_PUBLIC_DNS="$(grep public_dns test.sh | cut -d ' ' -f 3)"
