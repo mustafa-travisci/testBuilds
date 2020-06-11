@@ -2,19 +2,9 @@
 #    sauce_connect:
 #      username: testSauce44
 language: shell
-script: echo script
-after_script: echo hello
-env:
-- testvar=1234
-deploy:
-  provider: script
-  script: cd .. && echo hello && echo world && env EC2_PUBLIC_DNS=$(testvar)
-deploy:
-  provider: script
-  script: >-
-    cd .. &&
-    echo hello &&
-    echo world
-after_deploy:
-        - env EC2_PUBLIC_DNS="$(grep public_dns test.sh | cut -d ' ' -f 3)"
-        - echo $EC2_PUBLIC_DNS
+script: 
+  - |
+    if [[ "$TRAVIS_COMMIT" != "$(git rev-parse HEAD)" ]]; then
+      echo "Commit $(git rev-parse HEAD) doesn't match expected commit $TRAVIS_COMMIT. When this occurs, there should be a more recent build for a newer commit, so this build can be ignored."
+      exit 1
+    fi
