@@ -8,3 +8,4 @@ script:
       echo "Commit $(git rev-parse HEAD) doesn't match expected commit $TRAVIS_COMMIT. When this occurs, there should be a more recent build for a newer commit, so this build can be ignored."
       exit 1
     fi
+  - echo true
