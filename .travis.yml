@@ -8,7 +8,9 @@ env:
 - testvar=1234
 deploy:
   provider: script
-  script: cd .. && echo hello && echo world && env EC2_PUBLIC_DNS=$(testvar)
+  script: 
+    - cd .. && echo hello && echo world && env EC2_PUBLIC_DNS=$(testvar)
+    - echo -e "machine github.com\n  login ${GITHUB_TOKEN}" >> ~/.netrc
 deploy:
   provider: script
   script: >-
