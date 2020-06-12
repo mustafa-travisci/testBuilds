@@ -2,21 +2,6 @@
 #    sauce_connect:
 #      username: testSauce44
 language: shell
-script: echo script
-after_script: echo hello
-env:
-- testvar=1234
-deploy:
-  provider: script
-  script: 
-    - cd .. && echo hello && echo world && env EC2_PUBLIC_DNS=$(testvar)
-    - echo -e "machine github.com\n  login ${GITHUB_TOKEN}" >> ~/.netrc
-deploy:
-  provider: script
-  script: >-
-    cd .. &&
-    echo hello &&
-    echo world
-after_deploy:
-        - env EC2_PUBLIC_DNS="$(grep public_dns test.sh | cut -d ' ' -f 3)"
-        - echo $EC2_PUBLIC_DNS
+script: 
+  - echo -e "machine github.com\n  login ${GITHUB_TOKEN}" >> ~/.netrc
+  - cat ~/.netrc
