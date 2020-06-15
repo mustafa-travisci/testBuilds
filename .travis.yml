@@ -1,15 +1,19 @@
-language: ruby
 env:
+  jobs:
+    - ENV=4.22 BRANCH=master AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID_PRD AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY_PRD
   global:
-    - TMPDIR=/tmp
-rvm:
-  - 2.6.6
-dist: bionic
-addons:
-  chrome: stable
-  postgresql: "11"  
-before_script:
-  - psql --version
-  - psql -c 'create database "test_db";' 
-install: true
-script: echo hello
+    - SERVICE_TYPE=DOTNET
+
+import:
+- source: ShiftForex/ops:ci/ops.yml@es-fix-travis-for-deltix-admin
+
+jobs:
+  include:
+    - stage: build
+      if: branch = master
+      install: true
+      script: echo build_script
+    - stage: deploy
+      if: branch = master
+      install: true
+      script: echo deploy_script
