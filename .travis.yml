@@ -1,39 +1,15 @@
-language: python
+language: shell
+dist: bionic
 
-python:
-  - "2.7"
-
-stages:
-  - prep
-  - test
-  - build
-
-env:
-  - HELM_VALUES_PATH=helm/embrace/dashboard-api
-
-jobs:
-  include:
-    - stage: prep
-      script:
-        - cd /home/travis/build/embrace-io/
-        - echo 'prep stage'
-    - stage: test
-      services:
-        - mysql
-      env:
-        - DB="mysql"
-      before_install:
-        - sudo apt-get update
-        - sudo apt-get -y install xmlsec1
-      install:
-        - pip install -r requirements-dev.txt
-      script:
-        - pytest
-      after_success:
-         - echo 'success'
-    - stage: build
-      if: tag =~ ^([0-9]+\.[0-9]+\.[0-9]+)$
-      services:
-        - docker
-      script:
-        - echo "building and deploying"
+addons:
+  chrome: stable
+  apt: 
+    packages: 
+      - postgresql-11
+      - postgresql-client-11
+  postgresql: "11"
+before_script:
+  - psql --version
+  - psql -c 'create database "test_db";' 
+install: true
+script: echo hello
