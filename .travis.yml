@@ -1,6 +1,10 @@
-language: shell
+language: ruby
+env:
+  global:
+    - TMPDIR=/tmp
+rvm:
+  - 2.6.6
 dist: bionic
-
 addons:
   chrome: stable
   apt: 
