@@ -6,7 +6,7 @@ rvm:
   - 2.6.6
 dist: bionic
 addons:
-  chrome: stable
+	chrome: stable
 	postgresql: "11"      
 before_script:
   - psql --version
