@@ -1,19 +1,6 @@
-env:
-  jobs:
-    - ENV=4.22 BRANCH=master AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID_PRD AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY_PRD
-  global:
-    - SERVICE_TYPE=DOTNET
-
-import:
-- source: ShiftForex/ops:ci/ops.yml@es-fix-travis-for-deltix-admin
-
-jobs:
-  include:
-    - stage: build
-      if: branch = master
-      install: true
-      script: echo build_script
-    - stage: deploy
-      if: branch = master
-      install: true
-      script: echo deploy_script
+arch:
+  - amd64
+  - ppc64le
+  - s390x
+  - arm64
+os: linux
