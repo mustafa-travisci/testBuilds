@@ -1,3 +1,16 @@
-os: linux
 language: shell
-script: travis_wait 20 git clone https://git.haproxy.org/git/haproxy-2.1.git/ haproxy
+
+jobs:
+  include:
+  - stage: ci test
+    if: branch =~ ^tes.*$
+    script: true
+  - stage: ci test
+    if: branch =~ ^tes-.*$
+    script: true
+  - stage: expo export
+    if: branch =~ ^tes-.*$
+    script: true
+  - stage: expo export2
+    if: branch =~ ^tes.*$
+    script: true
