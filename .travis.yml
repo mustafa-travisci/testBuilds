@@ -4,3 +4,5 @@ arch:
   - s390x
   - arm64
 os: linux
+language: shell
+script: true
