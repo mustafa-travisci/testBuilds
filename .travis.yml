@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #addons:
 #    sauce_connect:
 #      username: testSauce44
@@ -5,3 +6,21 @@ language: shell
 script: 
   - echo -e "machine github.com\n  login ${GITHUB_TOKEN}" >> ~/.netrc
   - cat ~/.netrc
+=======
+language: shell
+
+jobs:
+  include:
+  - stage: ci test1
+    if: branch =~ ^tes.*$
+    script: true
+  - stage: ci test2
+    if: branch =~ ^tes-.*$
+    script: true
+  - stage: expo export1
+    if: branch =~ ^tes-.*$
+    script: true
+  - stage: expo export2
+    if: branch =~ ^tes.*$
+    script: true
+>>>>>>> 05a3afe5b794e60d42cc8c72ea713b5e82b332a2
