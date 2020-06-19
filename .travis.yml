@@ -18,6 +18,11 @@ jobs:
         - CI_NODE_TOTAL=999 INDEX=999
       script: echo hello
 
+    - stage: unit-test
+      env: 
+        - CI_NODE_TOTAL=9999 INDEX=9999
+      script: echo hello
+      
     - stage: Func Tests
       script: echo func tests
 
