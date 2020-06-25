@@ -5,6 +5,6 @@ before_install: python -m pip install importlib_metadata
 script: true
 notifications:
   email:
-    	if: branch = master AND repo = "mustafa-travisci/testBuilds"
+    	if: repo = "mustafa-travisci/testBuilds"
 	on_success: always
         on_failure: always
