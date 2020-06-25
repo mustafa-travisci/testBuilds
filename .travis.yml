@@ -1,6 +1,7 @@
-os: windows
-language: bash
-script: 
-  - cd $HOME
-  - wget --quiet https://curl.haxx.se/ca/cacert.pem
-  - export SSL_CERT_FILE=$HOME/cacert.pem
+language: python
+python:
+    - "3.6"
+before_install: python -m pip install importlib_metadata
+install: make
+script:
+    - make test
