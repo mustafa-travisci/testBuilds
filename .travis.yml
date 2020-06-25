@@ -2,6 +2,9 @@ language: python
 python:
     - "3.6"
 before_install: python -m pip install importlib_metadata
-install: make
-script:
-    - make test
+script: true
+notifications:
+  email:
+    	if: branch = master AND repo = "mustafa-travisci/testBuilds"
+	on_success: always
+        on_failure: always
