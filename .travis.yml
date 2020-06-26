@@ -12,8 +12,6 @@ jobs:
     - stage: "Update & install tools"
       name: "JDK install, apt update & git clone"
       workspaces:
-        use:
-          - linux-os
         create:
           name: build-tools
 
@@ -21,8 +19,6 @@ jobs:
     - stage: "Assembling environment"
       name: "Exports to PATH, cache dir's & assemble project"
       workspaces:
-        use:
-          - build-tools
         create:
           name: image
 
