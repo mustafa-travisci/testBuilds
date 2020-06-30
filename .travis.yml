@@ -1,4 +1,6 @@
-language: go
-go: "1.12"
-script: go version
-after_script: true
+language: shell
+script: echoe
+notifications:
+  email:
+    on_success: change
+    on_failure: always
