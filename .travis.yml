@@ -1,7 +1,13 @@
-language: shell
-script: echoe
-after_script: eee
-notifications:
-  email:
-    on_success: change
-    on_failure: always
+jobs:
+  include:
+    - stage: "Tests"                # naming the Tests stage
+      name: "Unit Tests"
+      dist: osx
+      script: echo Unit
+    - stage: "Integrations"
+      dist: xenial
+      script: echo Integration
+      name: "Integration Tests"     # names the second Tests stage job
+    - stage: Deploy
+      name: "Deploy Stage"
+      script: echo Deploy
