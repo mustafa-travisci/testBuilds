@@ -2,7 +2,7 @@ jobs:
   include:
     - stage: "Tests"                # naming the Tests stage
       name: "Unit Tests"
-      dist: osx
+      os: osx
       script: echo Unit
     - stage: "Integrations"
       dist: xenial
@@ -10,4 +10,6 @@ jobs:
       name: "Integration Tests"     # names the second Tests stage job
     - stage: Deploy
       name: "Deploy Stage"
-      script: echo Deploy
+      deploy:
+        provider: script
+        script: echo Deploy
