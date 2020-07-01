@@ -1,3 +1,4 @@
+language: shell
 jobs:
   include:
     - stage: "Tests"                # naming the Tests stage
