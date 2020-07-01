@@ -1,18 +1,3 @@
-language: shell
-jobs:
-  include:
-    - stage: "Tests"                # naming the Tests stage
-      name: "Unit Tests"
-      os: osx
-      osx_image: xcode7.2
-      script: echo Unit
-    - stage: "Integrations"
-      os: linux
-      dist: xenial
-      script: echo Integration
-      name: "Integration Tests"     # names the second Tests stage job
-    - stage: Deploy
-      name: "Deploy Stage"
-      deploy:
-        provider: script
-        script: echo Deploy
+script:
+  - pip install --user awscli
+  - awscli --version
