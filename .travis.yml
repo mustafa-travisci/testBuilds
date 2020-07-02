@@ -1,4 +1,26 @@
-script:
-  - sudo pip install --upgrade pip
-  - pip install --user awscli
-  - pip show awscli
+language: nodejs
+node_js: "lts/*"
+
+script: echo Your common scripts here to run on every stage's jobs
+
+jobs:
+  include:
+    - stage: "Tests"
+      name: "Unit Tests"
+      os: osx
+      osx_image: xcode7.2
+      script: echo Unit
+    - stage: "Tests"
+      name: "Unit Tests2"
+      dist: xenial
+      script: echo second job in the same stage
+    - stage: "Integrations"
+      os: linux
+      dist: xenial
+      script: echo Integration
+    - stage: Deploy
+      name: "Deploy Stage"
+      deploy:
+        provider: script
+        script: echo Deploy
+
