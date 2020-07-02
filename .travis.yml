@@ -1,5 +1,6 @@
-language: node_js
+language: nodejs
 node_js: "lts/*"
+
 
 jobs:
   include:
@@ -7,18 +8,17 @@ jobs:
       name: "Unit Tests"
       os: osx
       osx_image: xcode7.2
-      script: echo Unit
     - stage: "Tests"
       name: "Unit Tests2"
       dist: xenial
-      script: echo second job in the same stage
     - stage: "Integrations"
       os: linux
       dist: xenial
-      script: echo Integration
+      script: echo "Independent script from common one"
     - stage: Deploy
       name: "Deploy Stage"
       deploy:
         provider: script
         script: echo Deploy
-script: echo common_scripts_here
+script: echo "Your common script here please"
+
