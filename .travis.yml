@@ -1,7 +1,5 @@
-language: nodejs
+language: node_js
 node_js: "lts/*"
-
-script: echo "Your common scripts here to run on every stage's jobs"
 
 jobs:
   include:
@@ -23,4 +21,4 @@ jobs:
       deploy:
         provider: script
         script: echo Deploy
-
+script: echo common_scripts_here
