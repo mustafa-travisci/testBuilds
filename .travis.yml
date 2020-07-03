@@ -1,24 +1,2 @@
-language: nodejs
-node_js: "lts/*"
-
-
-jobs:
-  include:
-    - stage: "Tests"
-      name: "Unit Tests"
-      os: osx
-      osx_image: xcode7.2
-    - stage: "Tests"
-      name: "Unit Tests2"
-      dist: xenial
-    - stage: "Integrations"
-      os: linux
-      dist: xenial
-      script: echo "Independent script from common one"
-    - stage: Deploy
-      name: "Deploy Stage"
-      deploy:
-        provider: script
-        script: echo Deploy
-script: echo "Your common script here please"
-
+language: haskell
+install: cabal install --only-dependencies
