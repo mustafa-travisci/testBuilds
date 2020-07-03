@@ -1,2 +1,8 @@
-language: shell
-script: echo "Overwrite this script!"
+env:
+- TRAVIS_YML=true
+cache:
+  apt: true
+addons:
+  apt:
+    packages:
+    - cmake
