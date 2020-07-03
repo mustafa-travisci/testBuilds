@@ -1,2 +1,2 @@
-language: haskell
-install: cabal install --only-dependencies
+language: shell
+script: echo "Overwrite this script!"
