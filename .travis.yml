@@ -6,3 +6,5 @@ addons:
   apt:
     packages:
     - cmake
+before_install: echo "from the .travis.yml file."
+script: echo "from the .travis.yml file."
