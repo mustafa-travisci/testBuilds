@@ -7,4 +7,4 @@ before_install:
   - docker run -d postgres
 script: 
   - echo "from the .travis.yml file."
-  - sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
+  - sudo chown "$USER":"$USER" /home/"$USER"/.docker/config.json -R
