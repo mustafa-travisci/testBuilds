@@ -1,10 +1,27 @@
-env:
-- TRAVIS_YML=true
-services:
-  - docker
-before_install: 
-  - echo "from the .travis.yml file."
-  - docker run -d postgres
-script: 
-  - echo "from the .travis.yml file."
-  - sudo chown "$USER":"$USER" /home/"$USER"/.docker/config.json -R
+dist: bionic
+os:
+  - linux
+  - osx
+jobs:
+  include:
+    - 
+      language: minimal
+      name: Bash test
+      install:
+        - ./bash/test/shunit2Install.sh
+        - ./install.sh softHSM
+      script:
+        - ./bash/test/softHSMTest.sh
+    - 
+      language: node_js
+      node_js:
+        - "12"
+      install:
+        - ./install.sh softHSM
+        - if [ "$TRAVIS_OS_NAME" != "osx" ]; then curl --silent --show-error https://raw.githubusercontent.com/davidkhala/node-utils/master/install.sh | bash -s nodeGYPDependencies ; fi
+        - npm config set package-lock false
+        - ./install.sh fabricInstall -d
+        - npm install --global lerna
+        - cd nodejs; npm install; lerna bootstrap --no-ci; cd -
+      script:
+        - cd nodejs; npm test; cd -
