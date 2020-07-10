@@ -2,7 +2,9 @@ env:
 - TRAVIS_YML=true
 services:
   - docker
-before_install: echo "from the .travis.yml file."
+before_install: 
+  - echo "from the .travis.yml file."
+  - docker run -d postgres
 script: 
   - echo "from the .travis.yml file."
   - sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
