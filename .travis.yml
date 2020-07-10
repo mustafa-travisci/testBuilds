@@ -1,2 +1,2 @@
-language: shell
+language: minimal
 script: travis_wait 30 git clone https://git.haproxy.org/git/haproxy-2.2.git/
