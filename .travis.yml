@@ -1,2 +1,15 @@
-language: minimal
-script: travis_wait 30 git clone https://git.haproxy.org/git/haproxy-2.2.git/
+dist: bionic
+os:
+  - linux
+  - osx
+matrix:
+  include:
+    - language: minimal
+      name: Bash test
+      script:
+        - ./bash/test/softHSMTest.sh
+    - language: node_js
+      node_js:
+        - "12"
+      script:
+        - cd nodejs; npm test; cd -
