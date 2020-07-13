@@ -1,9 +1,17 @@
-dist: bionic
 os:
   - linux
   - osx
 matrix:
   include:
+    - language: minimal
+      name: Bash test
+      script:
+        - ./bash/test/softHSMTest.sh
+    - language: node_js
+      node_js:
+        - "12"
+      script:
+        - cd nodejs; npm test
     - language: minimal
       name: Bash test
       script:
