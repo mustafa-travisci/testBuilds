@@ -7,6 +7,7 @@ jobs:
       script: echo buildScript
 
     - name: Deploy Job
+      if: type=branch
       deploy:
         - provider: script
           script: echo deployed
@@ -15,6 +16,7 @@ jobs:
           skip_cleanup: true
 
     - name: Deploy Job2
+      if: type=branch
       deploy:
         - provider: script
           script: echo deployed2
