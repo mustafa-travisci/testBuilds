@@ -1,6 +1,8 @@
 language: shell
-script: echo hello
+script: echo helloa
 deploy:
   - provider: script
-    script: deploy.sh
+    script: echo deployed
+    on:
+      branch: master
     skip_cleanup: true
