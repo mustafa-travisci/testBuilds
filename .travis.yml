@@ -1,5 +1,6 @@
 language: shell
 script: echo helloa
+if: branch=master
 deploy:
   - provider: script
     script: echo deployed
