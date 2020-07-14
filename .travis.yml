@@ -1,2 +1,4 @@
 language: shell
-script: echo print1
+script: 
+  - echo print1
+  - echo print2
