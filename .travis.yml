@@ -1,25 +1,2 @@
 language: shell
-script: echo HELLO
-jobs:
-  includes:
-    - name: Build Job
-      if: type=pull_request
-      script: echo buildScript
-
-    - name: Deploy Job
-      if: type=branch
-      deploy:
-        - provider: script
-          script: echo deployed
-          on:
-            branch: master
-          skip_cleanup: true
-
-    - name: Deploy Job2
-      if: type=branch
-      deploy:
-        - provider: script
-          script: echo deployed2
-          on:
-            branch: master
-          skip_cleanup: true
+script: echo print1
