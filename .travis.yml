@@ -1,9 +1,23 @@
 language: shell
-script: echo helloa
-if: branch=master
-deploy:
-  - provider: script
-    script: echo deployed
-    on:
-      branch: master
-    skip_cleanup: true
+script: echo HELLO
+jobs:
+  includes:
+    - name: Build Job
+      if: type=pull_request
+      script: echo buildScript
+    
+    - name: Deploy Job
+      deploy:
+        - provider: script
+          script: echo deployed
+          on:
+            branch: master
+          skip_cleanup: true
+          
+    - name: Deploy Job2
+      deploy:
+        - provider: script
+          script: echo deployed2
+          on:
+            branch: master
+          skip_cleanup: true
