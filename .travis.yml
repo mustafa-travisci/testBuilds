@@ -2,3 +2,4 @@ language: shell
 script: 
   - echo print1
   - echo print2
+  - echo print3
