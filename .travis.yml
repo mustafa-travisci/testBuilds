@@ -7,7 +7,9 @@ services:
   - docker
 
 before_install:
-  - docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
+  #  - docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
+  - mkdir /home/$USER/.docker
+  - touch /home/$USER/.docker/config.json
   - ls /home/$USER/.docker
 script:
   - sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
