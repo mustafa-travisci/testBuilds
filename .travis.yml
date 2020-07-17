@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 language: python
 service:
   - docker
 script:
   - docker ps
   - whoami
+=======
+language: shell
+script: 
+  - sudo chown "$USER":"$USER"  --* /home/"$USER"/.docker -R
+>>>>>>> 91a154d39c6fad845f3f8e719f537493fd56de21
