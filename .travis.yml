@@ -1,17 +1,10 @@
-dist: xenial
-
-sudo: true
-
-
-services:
-  - docker
-
-before_install:
-  #  - docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD}
-  - mkdir /home/$USER/.docker
-  - touch /home/$USER/.docker/config.json
-  - ls /home/$USER/.docker
-script:
-  - sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
-  - sudo chmod g+rwx "/home/$USER/.docker" -R
-  - docker run -it guru:$(cat TAG) nosetests -services
+jobs:
+  include:
+  - stage: check
+    if: env(TEST_VAR) IS NOT blank
+    os: linux
+    script: echo test
+  - stage: mirror
+    if: $TEST_VAR IS NOT BLANK
+    os: linux
+    script: echo hey
