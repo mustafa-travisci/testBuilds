@@ -1,10 +1,10 @@
 jobs:
   include:
-  - stage: check
+  - 
     if: env(TEST_VAR) IS NOT blank
     os: linux
     script: echo test
-  - stage: mirror
+  -  
     if: $TEST_VAR IS NOT BLANK
     os: linux
     script: echo hey
