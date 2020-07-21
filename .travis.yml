@@ -1,10 +1,18 @@
+os:
+- linux #creates a 1st job that defaults the language: ruby
+- osx #creates a 2nd job that defaults the language: ruby
+
+
+dist: bionic
 jobs:
   include:
-  - 
-    if: env(TEST_VAR) IS NOT blank
-    os: linux
-    script: echo test
-  -  
-    if: $TEST_VAR IS NOT BLANK
-    os: linux
-    script: echo hey
+    -  
+      language: minimal
+      name: Bash test
+      install:
+        - ./bash/test/shunit2Install.sh
+        - ./install.sh softHSM
+    - 
+      language: node_js 
+      name: Second testi
+      install: true
