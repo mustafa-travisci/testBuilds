@@ -1,9 +1,6 @@
 script: 
-  - env foo2=$foo
   - echo $foo
-  - echo $foo2
-  - echo $foogl
 env:
   global:
     - secure: iYWd/WUDl7cmlnaJn9GPqNu1EAI7mlot8KO0D95fq4tCg3zSWlC842HFV/hr27GIFcjBykFoavDhNXtFrGScXZmPmE+5/O/oVp+TuPOc83khWlcdT9rr56VLrHzanqZq63Xze8RiA92GDFArqc6RUWi6itkswq5r8fcoKDtJIOQw2dkgaZR2uVDod1MGr3wZxsxkpLjR6U8eZdS7jTa4vzMW32NUYc2DlmSsRXqp/QS5uWXWEN+8DWvb3zFd8DK3C/NQM5RBnrz4uvoPCy1p/H6aOaywcUhwX6GbMYt9f+XF7sByheB6tI8hFcmNENulGlM3C6Nywi6azKk//uHyZyAZmAc7okJpFXhqb7LMOBpBCpgk6BKYosTMJ+wkU9dAOHKoBsuKrtfrWcm4s/hb1t0/e+TXSOa8948IQQI3rlXYZPGLbtSUnO0dQrV3ywpfc40B1LKu+5pBHNbwR2NOyEDa3zAYnRoBpN4o0Y0RgE7R+RZZb0Iv9OOJB9hhzy9f6Wfm2LxoUUEu4oTOM+iP8oUf61IW2EwkgXO23naR4Vw15KhXpVvQYu04x1mImT4AWuGV/v0jIVPDJHUl53zt42DJMBH730HeKk7KLOOU4CnqovwAiNhQe18zWm0hGEAGZTj6l4r9h+16Lrg4uRbXjQmdF8C8GGi8OL6qLLuhtQo=
-    - foogl=$foo
+    - foo=$foo
