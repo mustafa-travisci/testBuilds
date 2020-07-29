@@ -5,8 +5,8 @@ node_js:
 jobs:
   include:
     - dist: xenial
-      language: minimal
-      name: Bash test
+      language: shell
+      name: Bash test1
       script:
         - ./bash/test/softHSMTest.sh
     - os: osx
@@ -16,8 +16,8 @@ jobs:
       script:
         - cd nodejs; npm test
     - os: osx
-      language: minimal
-      name: Bash test
+      language: shell
+      name: Bash test2
       script:
         - ./bash/test/softHSMTest.sh
     - dist: xenial
