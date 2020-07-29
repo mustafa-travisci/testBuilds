@@ -1,4 +1,4 @@
-language: ruby
+language: shell
 install: echo main_install
 
 jobs:
