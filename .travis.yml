@@ -1,13 +1,28 @@
-language: shell
-install: echo main_install
+node_js:
+  - 12
+  - 10
 
 jobs:
   include:
-    - stage: test
-      name: "CI Checks: Rubocop, Brakeman & Bundle Audit"
-      install: echo hello1
-    - stage: test2
-      install: echo hello2
-      name: "RSpec"
-    - stage: deploy
-      name: "Deploy"
+    - dist: xenial
+      language: minimal
+      name: Bash test
+      script:
+        - ./bash/test/softHSMTest.sh
+    - os: osx
+      language: node_js
+      node_js:
+        - "12"
+      script:
+        - cd nodejs; npm test
+    - os: osx
+      language: minimal
+      name: Bash test
+      script:
+        - ./bash/test/softHSMTest.sh
+    - dist: xenial
+      language: node_js
+      node_js:
+        - "12"
+      script:
+        - cd nodejs
