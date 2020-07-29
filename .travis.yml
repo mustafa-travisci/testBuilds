@@ -1,4 +1,14 @@
-secure: 
-  - "Oqse1QLHrS7ShTHBorGTVlKZvCbv2h0IXsknJfdw27bINmxM6xo5QXhTmES9gmdyb8gRdJaAc8WNY/hKD4P+g7RcrnNRP01apF/A+bpsj3Wl32rWi/onXE/dzYDosQHVPlmAzBrTCwxKt/oo91v7UaWlQ3c6RP9UU7UdH1Oa3KtemutAXROcrBViwgvIW0um1qns31ucqj8xAOcKL+7yN2a+lrTvsAYfKupkixmMT6V87eGftJyEipcxdcEzqb9sixnk8sd8pPj7M0BuLryowSpRPuWbswSW5TMNfWoZW3WW10s4UZjLbMWKekUqWQCOtF5P88qcKA1Sk87J8Hh/po7h0ABtLFh8wfsS9bv2C0b7N4XbdJN0Vi7cPD0xZUspuAtTXJc8qUHsRgbhp1n9pdaMzRDezTieYcCvFAaLzBSmJZrk8xBSUM0TEoPI+2X6WZrGCeUPROX6DguM8/+vJ2f4lhVhr/kznsRYuc3lyTbPZyHfVNuXWPocGln6euMqhnyNuY5EFsgLik/rB1vVdDV7x473nL+8UqOM0sFLTU/43m7SMBKFC/Pp3JbaP/HNFmkLs56KgyDULru7OABAcucUXIyujz9CRZuqskBLNY3RbBguF08g2Dm1u8RRTf1GANVoz5+TBkQpw1t3KC9NcM1oyfKjNtF2dX+1XR76nOk="
-script:
-  - echo $somevar
+language: ruby
+install:
+  - bundle info rake
+
+jobs:
+  include:
+    - stage: test
+      name: "CI Checks: Rubocop, Brakeman & Bundle Audit"
+      install: echo hello1
+    - stage: test2
+      install: echo hello2
+      name: "RSpec"
+    - stage: deploy
+      name: "Deploy"
