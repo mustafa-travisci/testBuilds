@@ -1,6 +1,5 @@
 language: ruby
-install:
-  - bundle info rake
+install: echo main_install
 
 jobs:
   include:
