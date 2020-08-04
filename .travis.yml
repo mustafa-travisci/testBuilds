@@ -1,2 +1,2 @@
 if: (branch = master || type = pull_request)
-script: true
+script: echo this_is_p_condition
