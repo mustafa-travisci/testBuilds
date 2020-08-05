@@ -1,2 +1,2 @@
-if: (branch = master || type = pull_request)
-script: true
+script:
+  - echo hellofrom_TravisYML
