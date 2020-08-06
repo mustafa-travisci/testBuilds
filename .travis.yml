@@ -1,6 +1,2 @@
-<<<<<<< HEAD
 arch: arm64
 script: true
-=======
-script: echo test
->>>>>>> 9342751ecedb6999a2f54bd7b33c8ebc49909549
