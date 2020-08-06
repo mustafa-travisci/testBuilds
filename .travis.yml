@@ -1,2 +1,4 @@
 script:
   - echo hellofrom_TravisYML
+  - if (branch = test)
+      echo hey
