@@ -1,2 +1,8 @@
-arch: arm64
+language: haskell
+addons:
+  apt:
+    sources:
+     - sourceline: ppa:hvr/ghc
+    packages:
+     - haskell
 script: true
