@@ -5,4 +5,5 @@ addons:
      - sourceline: ppa:hvr/ghc
     packages:
      - haskell
-script: true
+script:
+ - echo helloFromT_YML
