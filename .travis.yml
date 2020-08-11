@@ -6,4 +6,4 @@ addons:
     packages:
      - haskell
 script:
- - echo helloFromT_YML
+ - echo letsSEE
