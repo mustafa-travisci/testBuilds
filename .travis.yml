@@ -1,3 +1,5 @@
+sudo: required
+dist: bionic
 before_install:
  - sudo apt update
  - sudo apt build-dep imagemagick
@@ -10,3 +12,4 @@ before_install:
  - sudo ldconfig /usr/local/lib
  - identify -version
  - make check
+scirpt: true
