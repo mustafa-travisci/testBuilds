@@ -1,2 +1,3 @@
 dist: focal
+before_install: echo edit1
 script: echo "Force Push Test"
