@@ -1,3 +1,7 @@
-dist: focal
-before_install: echo edit2
-script: echo "Force Push Test"
+language: ruby
+os:
+ - linux
+dist: trusty
+rvm:
+ - 2.4.2
+script: ruby -v
