@@ -1,8 +1,4 @@
-language: ruby
-os:
- - linux
-dist: trusty
-rvm:
- - 2.4.2
-before_install: gem install bundler
-script: ruby -v
+language: node_js
+before_install:
+ - npm install gerillass --save-dev
+ - yarn add gerillass
