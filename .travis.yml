@@ -1,3 +1,6 @@
-services:
-  - redis-server
-script: redis-server --version
+addons:
+  apt:
+    sources:
+      - ppa:hvr/ghc
+    packages:
+      - haskell
