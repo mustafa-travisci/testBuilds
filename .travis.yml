@@ -1,6 +1,3 @@
-matrix:
-  include:
-    - dist: xenial
-      script: java -version
-    - dist: trusty
-      script: java -version
+services:
+  - redis-server
+script: redis-server --version
