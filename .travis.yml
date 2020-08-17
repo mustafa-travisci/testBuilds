@@ -1,2 +1,2 @@
-dist: focal
-script: java -version
+dist: xenial
+script: sudo apt-get update
