@@ -1,6 +1,2 @@
-addons:
-  apt:
-    sources:
-      - ppa:hvr/ghc
-    packages:
-      - haskell
+dist: focal
+script: java -version
