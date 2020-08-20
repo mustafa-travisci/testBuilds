@@ -1,2 +1,4 @@
 dist: xenial
-script: sudo apt-get update
+script:
+ - echo $TRAVOIS_COMMIT
+ - git rev-parse HEAD
