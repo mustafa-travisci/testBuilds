@@ -1,2 +1,3 @@
-dist: xenial
-script: sudo apt-get update
+before_install:
+ - echo $TRAVIS_COMMIT
+ - git rev-parse HEAD
