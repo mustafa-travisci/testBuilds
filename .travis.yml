@@ -1,2 +1,5 @@
 langugage: shell
-if: type IN (push, api) AND branch=master
+if: type IN (push, api) 
+branches:
+  only:
+  - master
