@@ -1,5 +1,2 @@
 language: shell
-before_install:
- - git rev-parse HEAD
- - echo $TRAVIS_COMMIT
-script: echo assssa
+if: type IN (push, api) AND branch = master
