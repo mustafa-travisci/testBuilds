@@ -1,6 +1,8 @@
+dist: xenial
 addons:
   apt:
-    redis-server: "5.0.4"
+    packages:
+    - redis-server: 5.0.4
 jobs:
   include:
     - name: Xenial
