@@ -1,6 +1,15 @@
-dist: xenial
 addons:
   apt:
     packages:
     - redis-server
-script: redis-server --version
+jobs:
+  include:
+    - 
+      dist: xenial
+      script: redis-server --version
+    -
+      dist: trusty
+      script: redis-server --version
+    - 
+      dist: focal
+      script: redis-server --version
