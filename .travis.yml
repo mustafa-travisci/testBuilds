@@ -1,2 +1,2 @@
-dist: xenial
-script: sudo apt-get update
+langugage: shell
+if: type IN (push, api) AND branch=master
