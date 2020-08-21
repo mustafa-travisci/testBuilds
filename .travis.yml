@@ -1,5 +1,2 @@
-langugage: shell
-if: type IN (push, api) 
-branches:
-  only:
-  - master
+dist: focal
+script: mongod --version
