@@ -6,6 +6,10 @@ rust:
   - nightly
   - 1.37.0
 
+allow_failures:
+  - rust: nightly
+  - os: windows
+
 jobs:
   include:
     - if: rust = stable OR rust = beta OR rust = nightly
