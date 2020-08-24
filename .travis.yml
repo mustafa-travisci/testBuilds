@@ -6,11 +6,16 @@ rust:
   - nightly
   - 1.37.0
 
-allow_failures:
-  - rust: nightly
-  - os: windows
+os:
+  - linux
+  - windows
+  - osx
 
 jobs:
+  fast_finish: true
+  allow_failures:
+    - rust: nightly
+    - os: windows
   include:
     - if: rust = stable OR rust = beta OR rust = nightly
       script:
