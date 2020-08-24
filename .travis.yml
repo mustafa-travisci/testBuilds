@@ -1,9 +1,23 @@
-langugage: shell
-if: type IN (push, api)
-branches:
-  only:
-  - master
-notifications:
-  slack:
-    rooms:
-      secure: c5acO75w0j/IUKbTCd1sWmTY3D27GDLtGZ4fwg14U8esartvv2OKUq7CBLolduAIQdKZunR5vQEbE/pKCxTHGCwYI1yLEYn9pgtf7FYfLirmgc/C0vzx7g/qCzfxBhHtb4bFy1Nr7MdRSOzcs24VYWgjV+rsGMg46swJi7cVNJTe06PuAoI0Udm5lK9zdEF0WAcGmSReHQVWzNFs/ncHuR2VYZSf/AYECP7aLPIKwhWTbR+0OLXfAVT+gC2T6/6hp0EfGV2Ikxhy6c00CsghDTa7jitSxNR9Wp6NXB/JvXeQQN1Jsdv6geJPfn1vIkGyfXRBNKZbPPT8F2GK3tDpUTx+im27i0WfdFW8XDV7Gkxw1U+KPg2ukWL90ccT0/RBJGLnPY693dDihzoKb/XXbimt6rr1/dRdCTBwLrmLUepUESx2/A6s679xZXaHACWlPrB4rvUy5oFTtdl9IQ7HdYhqkRyfMR+3u0fgmeGWRsc7kKVd5lY135DL2MZEWcCW5GFdcOMg4ZSOxMXQ63BvKEp8nbbaagOScMIkIn1yda1zvzrDOaO52jLqbDfnnvaC+9BP9rXkASCcmjo4LiNiGhDSf0zP/xv48UEpZBp8isEJir5930O9FyehDNdBrZMvlq9B7C6cCuQoEq1f9k3lmfZRiDMzAsGYP98vqqVFeaw=
+language: rust
+
+rust:
+  - stable
+  - beta
+  - nightly
+  - 1.37.0
+
+jobs:
+  include:
+    - if: rust = stable OR rust = beta OR rust = nightly
+      script:
+        - cargo build
+        - cargo doc --all-features --no-deps
+        - cargo test --release
+        - cargo test --release --no-default-features
+        - cargo test --release --all-features
+
+    - if: rust = "1.37.0"
+      script:
+        - cargo build --release
+        - cargo build --release --no-default-features
+        - cargo build --release --all-features
