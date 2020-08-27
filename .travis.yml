@@ -1,17 +1,4 @@
-language: shell
-addons:
-  postgresql: "12"
-  apt:
-    packages:
-    - postgresql-12
-    - postgresql-client-12
-env:
-  global:
-  - PGPORT=5433
-script: potgres -v
-jobs:
-  include:
-    - name: Bionic
-      dist: bionic
-    - name: Focal
-      dist: Focal
+dist: focal
+services:
+  - postgresql
+script: psql -c 'create database travis_ci_test;' -U postgres
