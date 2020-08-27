@@ -1,25 +1,26 @@
-jobs:
-  include:
-    - name: Bionic
-      script: echo bionic_performance
-    - name: Focal
-      script: echo focal_performance
+os: linux
+dist: bionic
+language: ruby
+
+
+rvm:
+  - 2.7.1
+
 addons:
   postgresql: '12'
   apt:
-      packages:
-        - postgresql-12
+    packages:
+      - postgresql-12
+      - postgresql-client-12
 
-before_install:
-  - sudo sed -i -e '/local.*peer/s/postgres/all/' -e 's/peer\|md5/trust/g' /etc/postgresql/*/main/pg_hba.conf
-  - sudo service postgresql restart
-  - sleep 1
-script: psql -c 'create database travis_ci_test;' -U postgres
 
 env:
   global:
-  - PGUSER=postgres
-  - PGPORT=5432
-  - PGHOST=localhost
-  - DATABASE_URL=postgres://localhost:5432/testPG
+    - PGPORT=5433
+    - PGVER=12
+
+
+
+before_script:
+  - psql -c 'create database "ruby2-rails5-bootstrap-heroku_test";'
 
