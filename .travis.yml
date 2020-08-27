@@ -17,4 +17,9 @@ env:
   - FORCE_DB_SETUP=true
   - PHIN_LOGGER_FORCE_CONSOLE=false
   - SKIP_CONFIG_LIST=true
+before_install:
+- sudo sed -i -e '/local.*peer/s/postgres/all/' -e 's/peer\|md5/trust/g' /etc/postgresql/*/main/pg_hba.conf
+- sudo service postgresql restart
+- sleep 1
+
 script: psql -c 'create database travis_ci_test;' -U postgres
