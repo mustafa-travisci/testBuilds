@@ -1,9 +1,4 @@
-os: linux
-dist: xenial
-language: shell
-
-if: (env(TRAVIS_BRANCH) IN env(branchCon)) AND (type NOT IN (pull_request))
-
-before_script:
-  - echo $TRAVIS_BRANCH
-  - echo $branchCon
+os: osx
+language: ruby
+rvm: 2.3.0
+script: echo ruby2.3.0
