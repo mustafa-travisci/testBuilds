@@ -2,7 +2,8 @@ os: linux
 dist: xenial
 language: ruby
 
-if: env(TRAVIS_BRANCH) = "$branchCon" AND type NOT IN (pull_request)
+if: ($branchCon = env(TRAVIS_BRANCH)) AND (type NOT IN (pull_request))
 
 before_script:
   - echo $TRAVIS_BRANCH
+  - echo $branchCon
