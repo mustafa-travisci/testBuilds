@@ -19,8 +19,9 @@ env:
     - PGPORT=5433
     - PGVER=12
 
-
+if: (env(t1) = env(t2)) AND type NOT IN (pull_request)
 
 before_script:
+  - echo $TRAVIS_BRANCH
   - psql -c 'create database "ruby2-rails5-bootstrap-heroku_test";'
 
