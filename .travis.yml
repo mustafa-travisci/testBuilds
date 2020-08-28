@@ -2,7 +2,7 @@ os: linux
 dist: xenial
 language: shell
 
-if: (env(TRAVIS_BRANCH) IS env(branchCon)) AND (type NOT IN (pull_request))
+if: (env(TRAVIS_BRANCH) IN env(branchCon)) AND (type NOT IN (pull_request))
 
 before_script:
   - echo $TRAVIS_BRANCH
