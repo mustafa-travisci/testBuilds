@@ -4,7 +4,7 @@ language: ruby
 
 env:
   global:
-    - branchCon = master
+    - branchCon = "master"
 
 if: ($branchCon = env(TRAVIS_BRANCH)) AND (type NOT IN (pull_request))
 
