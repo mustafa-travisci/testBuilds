@@ -1,12 +1,8 @@
 os: linux
 dist: xenial
-language: ruby
+language: shell
 
-env:
-  global:
-    - branchCon = "master"
-
-if: ($branchCon = env(TRAVIS_BRANCH)) AND (type NOT IN (pull_request))
+if: (env(TRAVIS_BRANCH) = $branchCon) AND (type NOT IN (pull_request))
 
 before_script:
   - echo $TRAVIS_BRANCH
