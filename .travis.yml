@@ -1,56 +1,7 @@
-<<<<<<< HEAD
 env:
   global:
     secure: V66A+y3SxtWhxFC0xyyis1GZlUNB5ZI/wPqe+WEJMA3XzaeOZRm24MyQOb6XmbGleA56v5w5R4nQHS6ebbFoIUMm4nFREj+6PidrVKrxatjstVDYZ4M7u/8Fa45G2UnReWUVLfm6yys6tfdBY1BYoM1WafrLwDN60DtJII+W6tyo1bdjukcaAJ7jOL7hK8cemPmtH0ITgFOE9A7B8rD6IV7j/kF/y8Hj3c+HDV7XWkXGUI2iv3GmfDOynbDkHYLABFzUZNv5kwGuYcXZcKV1XPmly7vy9PHNPN3zswGX80n0T83xMtS/e7VFwp/yt1c3ja1A8OZ3OydND7FrhMm2LA4uARDu2CWRV8MMOUdtPeyH5hq2Cff4AQp9SZpEvM0Hrpdpc+lJfUzQDPKv0ame/n0dZwdoiAZwlbzGGYDPFlZpmyB/wFLRRdPfJF1ZxYzYh9rPDahOVa/Sg0IGyB7K9c24e5qCfFMTzQWKqPUiKT34dUlCL3XXHulufvOiPdXJpe2Z/uK2CimFg5ySyU2b8YewYU9VnT6hQne6PPYenjmwAVaissQrt04sL0RLVWBIoDso8sZwiHcc/1hbAJvyaHcDZKyktQxC3pb2D0lFmeB1TiqfXg/p31K6OGROBF/PNNuwLE5tS+f+wUapbiFdAgjEiWrNeYCB/ml6tGm9bq8=
-=======
 language: ruby
-os: osx
-
-rvm:
-  - 2.3.0
-  - 2.3.1
-  - 2.3.2
-  - 2.3.3
-  - 2.3.4
-  - 2.3.5
-  - 2.3.6
-  - 2.3.7
-  - 2.3.8
-  - 2.4.0
-  - 2.4.1
-  - 2.4.2
-  - 2.4.3
-  - 2.4.4
-  - 2.4.5
-  - 2.4.6
-  - 2.4.7
-  - 2.4.8
-  - 2.4.9
-  - 2.4.10
-  - 2.5.0
-  - 2.5.1
-  - 2.5.2
-  - 2.5.3
-  - 2.5.4
-  - 2.5.5
-  - 2.5.6
-  - 2.5.7
-  - 2.5.8
-  - 2.6.0
-  - 2.6.1
-  - 2.6.2
-  - 2.6.3
-  - 2.6.4
-  - 2.6.5
-  - 2.6.6
-  - 2.7.0
-  - 2.7.1
-  - ruby-head
-
-matrix:
-  fast_finish: true
-  allow_failures:
-    - rvm: ruby-head
 
 script: true
->>>>>>> 5e37cd107341fd169ccc2f8c30512cd0ea91d1bf
+if: env(MY_SECRET_ENV) IS present
