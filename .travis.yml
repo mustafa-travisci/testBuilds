@@ -4,4 +4,3 @@ env:
 language: ruby
 
 script: true
-if: env(MY_SECRET_ENV) IS present
