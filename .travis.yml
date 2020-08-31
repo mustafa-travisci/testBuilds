@@ -5,4 +5,4 @@ env:
 language: ruby
 
 script: true
-if: env(MY_SECRET_ENV2) IS present
+if: env(MY_SECRET_ENV2) IS NOT null
