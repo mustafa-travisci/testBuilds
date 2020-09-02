@@ -1,3 +1,6 @@
-language: python
+language: shell
 dist: focal
-script: true
+script: echo hey
+deploy:
+  provider: script
+  script: deploy.sh
