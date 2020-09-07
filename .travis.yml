@@ -1,6 +1,2 @@
-language: shell
-dist: focal
-service:
-  - docker
-script:
-  - docker pull mustafaergul/testing-node
+language: cpp
+os: windows
