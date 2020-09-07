@@ -1,10 +1,6 @@
 language: shell
 dist: focal
-script: true
-after_success: |
-  curl -s -X POST \
-   -H "Content-Type: application/json" \
-   -H "Accept: application/json" \
-   -H "Travis-API-Version: 3" \
-   -H "Authorization: token jv2Ryk89k_KGilwo8qNEvA" \
-   https://api.travis-ci.com/build/182430537/restart
+service:
+  - docker
+script:
+  - docker pull mustafaergul/testing-node
