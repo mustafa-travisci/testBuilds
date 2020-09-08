@@ -17,4 +17,3 @@ jobs:
     - stage: Stage3
       script:
         <<: *common_cmds
-          - echo some_more
