@@ -1,2 +1,20 @@
-language: cpp
-os: windows
+
+sudo: false
+
+jobs:
+  include:
+    - stage: Stage0
+      script:
+        <<: *common_cmds
+    - stage: Stage1
+      script: echo one
+    - stage: Stage2
+      script: echo two
+      script: &common_cmds
+        - docker pull mustafaergul/testing-node
+        - docker ps -a
+        - docker container ls -a
+    - stage: Stage3
+      script:
+        <<: *common_cmds
+          - echo some_more
