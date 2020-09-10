@@ -1,17 +1,2 @@
-language: node_js
-node_js: 12.18.3
-
-jobs:
-  include:
-    - stage: 'Tests'
-      script: echo stage1
-    - stage: 'Build Sanity Studio and Gatsby'
-      if: branch IN (master) AND type IN (push, pull_request)
-      script: echo hey
-    - stage: 'Deploy Studio and Gatsby'
-      script: skip
-      deploy:
-        - provider: script
-          edge: true
-          script: bash jobs/deploy/deploy.sh
-
+arch: arm64
+script: true
