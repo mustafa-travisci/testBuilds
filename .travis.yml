@@ -1,5 +1,8 @@
 language: shell
 before_script:
-  - echo -e "machine api.heroku.com\n login mustafa@travis-ci.com\n password $HEROKU_API_KEY\n"
-  - heroku auth:login
+- echo -e "machine api.heroku.com\n login mustafa@travis-ci.com\n password $HEROKU_API_KEY\n"
+- heroku auth:login
 script: true
+env:
+  global:
+    secure: HZHXHrg83h4dQH91t/elsNzFcGKvOUCLLIN/Jc5vQgc1TyIJ49YJjreMJsy3DMLSD6YKIvxLaShXPTlTIuQt35r2MIYJtADol/C8aSB3Zp3dmpJwm791wIpLOqo4CySLibPMBfx1QlYBHsIVVfHS4/oOs8B3Mlcm+TbLZeZ9kZcN4MvfxA8c4y4+BWd4Pw0hFRsLYtw/UcK2IY5guF3qRRKl6K3ugM6FEKS+CbINdi8KZk8p/KiktPdy1VTvipoIZh89v1iCjK/VxHnDW1kXmL88aCskVkLbTxKAyT3UeK0pFaA6EkHaGgvZnGXmdqoHbQYU+VymbVzboDFc3gvRSICGGkJzh7LJQSIw+K4mIQkg6rW0qFOlIEDygZWIl1LUiECxnIb3+8vEB31YeUH94elr7Dl0WhOvmoNHKz/49R2QULlTZs+urx7ykEiHymtiPT0NJepsZx2AWIOEDfwT8Nu/Mago5cbXyew5BXW5m5dRb4TXQupksKrxpzzdFEyWvEDh/rFDstoM4KAUPl6ptsMex0K2BCADWtpZSe18nD8B/baFnZ7t5fUBEbg8gU+z3GMCe4d7yc8wyV+xuAJPpww00SxOr3q2r01v3j0DsIKRnn2gw0UzOMWB2lddxCEUvv6mr1ySXSL1b13H5JX3Gyf0lFZj+he3kpvBLqS3qOY=
