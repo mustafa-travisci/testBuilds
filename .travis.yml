@@ -1,6 +1,6 @@
 language: shell
 before_script:
-- echo -e "machine api.heroku.com\n login mustafa@travis-ci.com\n password $HEROKU_API_KEY\n"
+- echo -e "machine api.heroku.com\n login mustafa@travis-ci.com\n password $HEROKU_API_KEY\n" > ~/.netrc
 - heroku auth:login
 script: true
 env:
