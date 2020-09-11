@@ -1,2 +1,5 @@
-arch: arm64
+language: shell
+before_script:
+  - echo -e "machine api.heroku.com\n login mustafa@travis-ci.com\n password $HEROKU_API_KEY\n"
+  - heroku auth:login
 script: true
