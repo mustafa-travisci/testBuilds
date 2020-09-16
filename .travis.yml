@@ -1,4 +1,5 @@
 language: shell
 git:
-  depth: false
+  clone: false
+install: git clone --depth=50 --branch=master https://github.com/mustafa-travisci/testBuilds.git source 
 script: true
