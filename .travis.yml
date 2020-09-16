@@ -1,4 +1,4 @@
 language: shell
-addons:
-  rethinkdb: '2.3.4'
+git:
+  depth: false
 script: true

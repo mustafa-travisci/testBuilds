@@ -1,5 +1,4 @@
-before_install:
-- echo '2 install.yml before_install'
 
-install:
-- echo '4 install.yml install'
+mergul
+
+
