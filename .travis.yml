@@ -1,5 +1,10 @@
-language: shell
-git:
-  clone: false
-install: git clone --depth=50 --branch=master https://github.com/mustafa-travisci/testBuilds.git source 
-script: true
+sudo: true
+services: docker
+language: python
+dist: bionic
+cache: pip
+os: linux
+python:
+  - 3.7
+arm:
+  - arm64
