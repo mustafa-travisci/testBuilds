@@ -1,5 +1,10 @@
-version: ~>1.0
-install: echo this_is_main_yml
-import:
-  - install.yml
-    mode: deep_merge_prepend
+dist: bionic
+jdk:
+  - oraclejdk8
+  - oraclejdk9
+  - openjdk8
+script:
+  - jdk_switcher use oraclejdk8
+  - java -version
+  - jdk_switcher use openjdk8
+  - java -version
