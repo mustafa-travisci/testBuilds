@@ -1,5 +1,5 @@
 version: ~>1.0
 install: echo this_is_main_yml
 import:
-  - source: mustafa-travisci/testBuilds@install.yml@main
+  - install.yml
     mode: deep_merge_prepend
