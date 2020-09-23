@@ -1,5 +1,4 @@
 language: shell
 script: echo hey_MAIN
 import:
-  - source: build.yml
-    mode: deep_merge_prepend
+ - source: build.yml
