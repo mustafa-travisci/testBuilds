@@ -1,1 +1,1 @@
-install: echo prepend_yml_file
+script: echo prepend_yml_file
