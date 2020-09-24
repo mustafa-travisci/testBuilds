@@ -17,5 +17,5 @@ jobs:
     - name: "macOS / clang / x86_64"
       os: osx
       compiler: clang
-    - name: "Windows / MSVC / x64, Win32"
+    - name: "aaWindows / MSVC / x64, Win32"
       os: windows
