@@ -1,4 +1,4 @@
-language: shell
+language: generic
 matrix:
   include:
     - name: "Linux / clang / x86_64"
