@@ -1,16 +1,1 @@
-dist: xenial
-addons:
-  apt:
-    packages:
-    - redis-server: 5.0.4
-jobs:
-  include:
-    - name: Xenial
-      dist: xenial
-      script: redis-server --version
-    - name: Trusty
-      dist: trusty
-      script: redis-server --version
-    - name: Focal
-      dist: focal
-      script: redis-server --version
+os: linux
