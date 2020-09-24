@@ -1,3 +1,4 @@
+language: cpp
 jobs:
   include:
     - name: "Linux / clang / x86_64"
@@ -7,13 +8,12 @@ jobs:
       os: linux
       compiler: gcc
     - name: "Linux / gcc / aarch64"
-      os: linux
       compiler: gcc
       arch: arm64
     - name: "Linux / gcc / ppc64le"
+      arch: ppc64le
       os: linux
       compiler: gcc
-      arch: ppc64le
     - name: "macOS / clang / x86_64"
       os: osx
       compiler: clang
