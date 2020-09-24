@@ -20,4 +20,3 @@ matrix:
       compiler: clang
     - name: "Windows / MSVC / x64, Win32"
       os: windows
-      # CMake picks up MSVC regardless of what compiler we specify here.
