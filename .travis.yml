@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 os: osx
 if: type IN (push, api) 
 branches:
   only:
   - master
+=======
+os: linux
+>>>>>>> e8879fcfbbab878587bc836d33a6f5c326518b42
