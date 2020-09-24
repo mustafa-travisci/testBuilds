@@ -1,4 +1,4 @@
-language: cpp
+language: shell
 matrix:
   include:
     - name: "Linux / clang / x86_64"
