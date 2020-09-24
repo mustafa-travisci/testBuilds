@@ -1,4 +1,3 @@
-language: generic
 jobs:
   include:
     - name: "Linux / clang / x86_64"
