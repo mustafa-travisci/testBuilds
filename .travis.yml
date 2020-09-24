@@ -3,9 +3,11 @@ jobs:
   include:
     - name: "Linux / clang / x86_64"
       os: linux
+      dist: focal
       compiler: clang
     - name: "Linux / gcc / x86_64, i686"
       os: linux
+      dist: focal
       compiler: gcc
     - name: "Linux / gcc / aarch64"
       compiler: gcc
