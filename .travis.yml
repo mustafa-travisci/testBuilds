@@ -1,4 +1,4 @@
-language: shell
+os: osx
 if: type IN (push, api) 
 branches:
   only:
