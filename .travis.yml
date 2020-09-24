@@ -1,5 +1,5 @@
 language: generic
-matrix:
+jobs:
   include:
     - name: "Linux / clang / x86_64"
       os: linux
