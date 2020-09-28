@@ -1,23 +1,12 @@
-language: cpp
-jobs:
-  include:
-    - name: "Linux / clang / x86_64"
-      os: linux
-      dist: focal
-      compiler: clang
-    - name: "Linux / gcc / x86_64, i686"
-      os: linux
-      dist: focal
-      compiler: gcc
-    - name: "Linux / gcc / aarch64"
-      compiler: gcc
-      arch: arm64
-    - name: "Linux / gcc / ppc64le"
-      arch: ppc64le
-      os: linux
-      compiler: gcc
-    - name: "macOS / clang / x86_64"
-      os: osx
-      compiler: clang
-    - name: "aaWindows / MSVC / x64, Win32"
-      os: windows
+sudo: false
+language: ruby
+cache: bundler
+rvm:
+  - 2.3.8
+  - 2.4.9
+  - 2.5.7
+  - 2.6.5
+  - 2.7.1
+  - jruby-head
+before_install:
+- gem install bundler
