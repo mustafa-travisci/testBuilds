@@ -2,4 +2,5 @@ language: shell
 before_install:
  - git rev-parse HEAD
  - echo $TRAVIS_COMMIT
+ - echo $TRAVIS_BRANCH
 script: echo assssa
