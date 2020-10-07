@@ -1,4 +1,3 @@
 language: objective-c	
 osx_image: xcode12
-before_install: sudo xcrun simctl shutdown all && sudo xcrun simctl erase all
 script: xcrun simctl create 'iPhone' com.apple.CoreSimulator.SimDeviceType.iPhone-11-Pro com.apple.CoreSimulator.SimRuntime.iOS-14-0
