@@ -10,7 +10,7 @@ cache:
 
 before_script:
 - psql -c 'create database dnsimple_slack_test;' -U postgres
-- bundle exec sequel -m db/migrations/ postgres://postgres:@localhost:5432/dnsimple_slack_test
+- bundle exec sequel -m db/migrations/ postgres://postgres:postgres@localhost:5433/dnsimple_slack_test
 
 script:
 - bundle exec rubocop
@@ -29,7 +29,7 @@ services:
 env:
   global:
     - PGPORT=5433
-    - POSTGRES_URL="postgres://postgres:@localhost:5432/dnsimple_slack_test"
+    - POSTGRES_URL="postgres://postgres:postgres@localhost:5433/dnsimple_slack_test"
     - RACK_SESSION_COOKIE_SECRET="travis-ci-rack-session-cookie-secret"
 
 
