@@ -16,12 +16,12 @@ script:
 - bundle exec rubocop
 - bundle exec rspec --tag ~real_api_calls
 
-addons:
+addons: 
+  apt: 
+    packages: 
+      - postgresql-10
+      - postgresql-client-10
   postgresql: "10"
-  apt:
-    packages:
-    - postgresql-10
-    - postgresql-client-10
 
 services:
 - postgresql
