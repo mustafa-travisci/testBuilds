@@ -2,7 +2,7 @@ language: node_js
 
 
 before_install:
-  - pyenv install -v 3.7.2
+  - python -m pip install urllib3[secure]
 script:
   - python --version
   - python -m pip install awscli
