@@ -7,6 +7,15 @@ env:
 script:
   - echo $qwer
   - echo $asdf
+
+jobs:
+  include:
+    - name: 'test'
+      if: $qwer=0
+    - name: 'test2'
+      if: $asdf=spec/US/modal
+    - name: 'test3'
+      if: $qwer=2
 deploy:
   provider: script
   script: deploy.sh
