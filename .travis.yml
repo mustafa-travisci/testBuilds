@@ -1,5 +1,12 @@
 language: shell
-script: true
+env:
+    global:
+        - qwer=0
+    jobs:
+        - asdf=spec/US/modal
+script:
+  - echo $qwer
+  - echo $asdf
 deploy:
   provider: script
   script: deploy.sh
