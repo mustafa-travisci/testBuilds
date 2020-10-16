@@ -1,2 +1,6 @@
-os: osx
-scrpit: true
+deploy:
+  provider: script
+  script: deploy.sh
+  on:
+    all_branches: true
+    condition: $TRAVIS_BRANCH =~ ^(test|master)$
