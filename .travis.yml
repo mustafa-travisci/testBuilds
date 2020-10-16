@@ -1,3 +1,5 @@
+language: shell
+script: true
 deploy:
   provider: script
   script: deploy.sh
