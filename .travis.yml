@@ -11,11 +11,11 @@ script:
 jobs:
   include:
     - name: 'test'
-      if: $qwer=0
+      if: $qwer = 0
     - name: 'test2'
-      if: $asdf=spec/US/modal
+      if: $asdf = spec/US/modal
     - name: 'test3'
-      if: $qwer=2
+      if: $qwer = 2
 deploy:
   provider: script
   script: deploy.sh
