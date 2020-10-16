@@ -2,8 +2,7 @@ language: node_js
 
 
 before_install:
-  - sudo apt-get install python3.7
-
+  - pyenv install -v 3.7.2
 script:
   - python --version
   - python -m pip install awscli
