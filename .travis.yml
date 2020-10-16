@@ -1,5 +1,5 @@
-dist: focal
-script: echo test
+language: shell
+script: true
 deploy:
   provider: script
   script: deploy.sh
