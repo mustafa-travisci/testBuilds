@@ -1,24 +1,11 @@
-language: shell
-env:
-    global:
-        - qwer=0
-    jobs:
-        - asdf=spec/US/modal
-script:
-  - echo $qwer
-  - echo $asdf
+language: node_js
 
-jobs:
-  include:
-    - name: 'test'
-      if: env(qwer) = 0
-    - name: 'test2'
-      if: env(asdf) = spec/US/modal
-    - name: 'test3'
-      if: env(qwer) = 2
-deploy:
-  provider: script
-  script: deploy.sh
-  on:
-    all_branches: true
-    condition: $TRAVIS_BRANCH =~ ^(test|master)$
+
+before_install:
+  - sudo apt-get update && sudo apt-get upgrade
+  - sudo apt-get install python3.7
+
+script:
+  - python --version
+  - python -m pip install awscli
+
