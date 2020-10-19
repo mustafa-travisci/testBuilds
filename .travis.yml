@@ -1,9 +1,31 @@
-language: node_js
+env:
+    global:
+        - DIRTY_SNAPSHOTS=0
+    jobs:
+        - TEST_PATH_PATTERN=none
+        - TEST_PATH_PATTERN=spec/DE/banner
+        - TEST_PATH_PATTERN=spec/DE/modal
+        - TEST_PATH_PATTERN=spec/GB/banner
+        - TEST_PATH_PATTERN=spec/GB/modal
+        - TEST_PATH_PATTERN=spec/US/custom-and-legacy
+        - TEST_PATH_PATTERN=spec/US/banner
+        - TEST_PATH_PATTERN=spec/US/modal
+jobs:
+    include:
+        - name: 'Lint, Unit and Non-Snap Tests'
+          env: TEST_PATH_PATTERN=none
+          script:
+              - npm run lint
+              - npm run test
+              - npm run test:func:nosnaps
 
+        - name: 'Update Snapshots'
+          env: TEST_PATH_PATTERN=none
+          script:
+              - ./scripts/snapshot-tests/update-snapshots.sh
 
-before_install:
-  - python -m pip install urllib3[secure]
-script:
-  - python --version
-  - python -m pip install awscli
+        - name: 'Functional Tests'
+          script:
+              - ./scripts/snapshot-tests/run-tests-by-pattern.sh
+              - ./scripts/snapshot-tests/collect-diffs.Snapshots
 
