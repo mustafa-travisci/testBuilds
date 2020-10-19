@@ -1,32 +1,21 @@
-env:
-    global:
-        - DIRTY_SNAPSHOTS=0
-    jobs:
-        - TEST_PATH_PATTERN=none
-        - TEST_PATH_PATTERN=spec/DE/banner
-        - TEST_PATH_PATTERN=spec/DE/modal
-        - TEST_PATH_PATTERN=spec/GB/banner
-        - TEST_PATH_PATTERN=spec/GB/modal
-        - TEST_PATH_PATTERN=spec/US/custom-and-legacy
-        - TEST_PATH_PATTERN=spec/US/banner
-        - TEST_PATH_PATTERN=spec/US/modal
-jobs:
-    include:
-        - name: 'Lint, Unit and Non-Snap Tests'
-          env: TEST_PATH_PATTERN=none
-          script:
-              - npm run lint
-              - npm run test
-              - npm run test:func:nosnaps
+git:
+  depth: 3
+  quiet: true
 
-        - name: 'Update Snapshots'
-          env: TEST_PATH_PATTERN=none
-          script:
-              - ./scripts/snapshot-tests/update-snapshots.sh
+language: node_js
+arch: arm64-graviton2
+virt: lxd
+group: edge
+dist: focal
+node_js:
+  - '12.18.4'
 
-        - name: 'Functional Tests'
-          if: env(DIRTY_SNAPSHOTS) = 0 AND env(TEST_PATH_PATTERN) = 'none'
-          script:
-              - ./scripts/snapshot-tests/run-tests-by-pattern.sh
-              - ./scripts/snapshot-tests/collect-diffs.Snapshots
-
+before_install: . ./scripts/ci/job_hooks/before_install.sh
+install:
+    echo "no install"
+addons:
+    chrome: stable
+before_script:
+    - export GIT_HASH=`git rev-parse HEAD`
+services:
+    - xvfb
