@@ -7,12 +7,10 @@ arch: arm64-graviton2
 virt: lxd
 group: edge
 dist: focal
-node_js:
-  - '12.18.4'
 
 addons:
     chrome: stable
-before_script:
-    - export GIT_HASH=`git rev-parse HEAD`
 services:
     - xvfb
+script:
+  - google-chrome --version
