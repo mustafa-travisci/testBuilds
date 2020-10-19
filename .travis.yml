@@ -25,6 +25,7 @@ jobs:
               - ./scripts/snapshot-tests/update-snapshots.sh
 
         - name: 'Functional Tests'
+          if: env(DIRTY_SNAPSHOTS) = 0 AND env(TEST_PATH_PATTERN) = 'none'
           script:
               - ./scripts/snapshot-tests/run-tests-by-pattern.sh
               - ./scripts/snapshot-tests/collect-diffs.Snapshots
