@@ -1,16 +1,8 @@
 git:
   depth: 3
   quiet: true
-
-language: node_js
-arch: arm64-graviton2
-virt: lxd
-group: edge
-dist: focal
-
-addons:
-    chrome: stable
-services:
-    - xvfb
 script:
-  - google-chrome --version
+  - |
+    echo hey &
+    echo heyo &
+    sleep 1
