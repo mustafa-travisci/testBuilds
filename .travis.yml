@@ -1,8 +1,4 @@
-git:
-  depth: 3
-  quiet: true
-script:
-  - |
-    echo hey &
-    echo heyo &
-    sleep 1
+language: shell
+services:
+  - docker
+script: true
