@@ -1,4 +1,5 @@
 language: shell
 services:
   - docker
-script: true
+script:
+  - docker-compose up
