@@ -8,6 +8,6 @@ addons:
 before_script:
     - export GIT_HASH=`git rev-parse HEAD`
 services:
-	- xvfb
+    - xvfb
 script:
-	- google-chome --version 
+    - google-chome --version 
