@@ -3,6 +3,4 @@ virt: lxd
 dist: focal
 group: edge
 arch: arm64-graviton2
-compiler: clang
-script:
-  - clang --version
+language: shell
