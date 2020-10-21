@@ -1,6 +1,13 @@
-os: linux
-virt: lxd
-dist: xenial
-group: edge
+language: node_js
 arch: arm64-graviton2
-language: shell
+virt: lxd
+group: edge
+dist: focal
+addons:
+    chrome: stable
+before_script:
+    - export GIT_HASH=`git rev-parse HEAD`
+services:
+	- xvfb
+script:
+	- google-chome --version 
