@@ -5,6 +5,7 @@ os: linux             # required for arch different than amd64
 dist: focal           # or bionic | xenial with xenial as default
 group: edge
 addons:
+ postgresql: "10"
  chrome: stable
 services:
  - xvfb
