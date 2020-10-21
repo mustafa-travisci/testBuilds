@@ -4,5 +4,3 @@ dist: xenial
 group: edge
 arch: arm64-graviton2
 language: shell
-install:
- - pip install --user databricks-cli
