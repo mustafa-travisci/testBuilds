@@ -1,5 +1,8 @@
-language: shell
-services:
-  - docker
+os: linux
+virt: lxd
+dist: focal
+group: edge
+arch: arm64-graviton2
+compiler: clang
 script:
-  - docker-compose up
+  - clang --version
