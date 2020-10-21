@@ -1,13 +1,11 @@
-language: node_js
-arch: arm64-graviton2
-virt: lxd
+arch: arm64-graviton2 # in AWS over Graviton2 CPU
+virt: lxd             # required, routes to an LXD container
+os: linux             # required for arch different than amd64
+dist: focal           # or bionic | xenial with xenial as default
 group: edge
-dist: focal
 addons:
-    chrome: stable
-before_script:
-    - export GIT_HASH=`git rev-parse HEAD`
+ chrome: stable
 services:
-    - xvfb
+ - xvfb
 script:
-    - google-chome --version 
+ - google-chrome --version
