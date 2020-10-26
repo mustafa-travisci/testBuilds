@@ -1,12 +1,6 @@
-language: shell
-arch: arm64-graviton2 # in AWS over Graviton2 CPU
-virt: lxd             # required, routes to an LXD container
-os: linux             # required for arch different than amd64
-dist: focal           # or bionic | xenial with xenial as default
-group: edge
-addons:
- chrome: stable
-services:
- - xvfb
-script:
- - google-chrome --version
+dist: xenial
+language: php
+php:
+ - '7.2'
+script: ./vendor/bin/phpunit
+install: composer install
