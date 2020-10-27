@@ -1,7 +1,2 @@
-dist: xenial
-language: php
-php:
- - '7.2'
-script: ./vendor/bin/phpunit
-install:
- - composer install
+language: scala
+script: sbt pack
