@@ -1,2 +1,5 @@
-language: scala
-script: sbt pack
+language: node_js
+cache:
+    directories:
+     - /src
+script: true
