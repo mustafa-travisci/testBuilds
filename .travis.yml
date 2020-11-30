@@ -1,9 +1,2 @@
-sudo: required
-language: node_js
-cache:
-    directories:
-     - /src
-before_script: 
-    - mkdir -p /src
 script: true
 
