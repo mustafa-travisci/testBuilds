@@ -1,2 +1,4 @@
 script: true
+before_install: echo test
+
 
