@@ -1,4 +1,12 @@
-script: true
-before_install: echo test
-
-
+matrix:
+  include:
+    - language: objective-c
+      osx_image: xcode12.2
+      cache:
+        yarn: true
+      install:
+        - yarn --production
+        - brew tap phrase/brewed
+        - brew install phrase
+      script:
+        - ls
