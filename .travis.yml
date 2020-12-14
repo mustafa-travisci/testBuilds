@@ -1,13 +1,5 @@
-jobs:
-  include:
-    - language: objective-c
-      os: osx
-      osx_image: xcode12.2
-      cache:
-        yarn: true
-      install:
-        - yarn --production
-        - brew tap phrase/brewed
-        - brew install phrase
-      script:
-        - ls
+os: linux
+elixir: 1.11.2
+otp_release: 23.0.4
+language: elixir
+dist: focal
