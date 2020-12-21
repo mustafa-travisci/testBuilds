@@ -1,9 +1,11 @@
 os: linux
 language: ruby
 dist: trusty
-ruby: 2.4.1
+rvm: 2.4.1
 before_install:
   - gem uninstall -v '>= 2' -i $(rvm gemdir)@global -ax bundler || true
-  - gem install bundler -v '< 2'
+  - gem install bundler:1.16.3
+  - bundle version
+  -  gem install bundler -v '< 2'
   - bundle version
 script: echo hey
