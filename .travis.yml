@@ -1,8 +1,9 @@
 os: linux
 language: ruby
-dist: focal
+dist: trusty
 ruby: 2.4.1
 before_install:
   - gem uninstall -v '>= 2' -i $(rvm gemdir)@global -ax bundler || true
   - gem install bundler -v '< 2'
   - bundle version
+script: echo hey
