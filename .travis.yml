@@ -1,13 +1,7 @@
 os: linux
-language: ruby
-dist: trusty
-rvm: 2.4.1
-gemfile:
-  - Gemfile
-before_install:
-  - gem uninstall -v '>= 2' -i $(rvm gemdir)@global -ax bundler || true
-  - gem install bundler:1.16.3
-  - bundle version
-  - gem install bundler -v '< 2'
-  - bundle version
+language: erlang
+otp_release:
+  - "23.0.2"
+  - "22.3.4"
+  - "23.1.2"
 script: echo hey
