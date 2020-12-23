@@ -1,7 +1,8 @@
-os: linux
-language: erlang
-otp_release:
-  - "23.0.2"
-  - "22.3.4"
-  - "23.1.2"
-script: echo hey
+language: generic
+
+before_script:
+- sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
+- echo 'deb http://downloads-distro.mongodb.org/repo/ubuntu-upstart dist 10gen' | sudo tee /etc/apt/sources.list.d/mongodb.list
+- sudo apt-get update
+- sudo apt-get install -y mongodb-org=4.2.11 mongodb-org-server=4.2.11 mongodb-org-shell=4.2.11 mongodb-org-mongos=4.2.11 mongodb-org-tools=4.2.11 --allow-downgrades
+- sleep 15 # https://docs.travis-ci.com/user/database-setup/#MongoDB-does-not-immediately-accept-connections
