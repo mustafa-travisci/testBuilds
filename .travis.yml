@@ -1,8 +1,7 @@
 language: generic
 before_script:
 - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-cache:
-  - bundler
-  - directories:
-    - /home/travis/.rvm/
 script: echo hey
+deploy:
+  on:
+    condition: $TRAVIS_BRANCH =~ ^(test)$
