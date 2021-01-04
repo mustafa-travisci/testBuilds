@@ -1,4 +1,7 @@
-language: generic
-
+language: ruby
 before_script:
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+cache:
+  directories:
+    - /home/travis/.rvm/
+
