@@ -1,10 +1,8 @@
-language: ruby
+language: generic
 before_script:
 - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 cache:
   - bundler
   - directories:
     - /home/travis/.rvm/
-rvm:
-  - 2.3.8
-script: ruby test.rb
+script: echo hey
