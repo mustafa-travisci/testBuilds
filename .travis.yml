@@ -6,3 +6,4 @@ cache:
     - /home/travis/.rvm/
 rvm:
   - 2.3.8
+script: ruby test.rb
