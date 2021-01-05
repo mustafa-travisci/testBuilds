@@ -1,7 +1,9 @@
-language: generic
-before_script:
-- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-script: echo hey
-deploy:
-  on:
-    condition: $TRAVIS_BRANCH =~ ^(test)$
+language: python
+os:
+- linux
+dist: trusty
+python:
+- '3.7'
+sudo: true
+install:
+- pip install -r requirements.txt
