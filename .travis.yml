@@ -1,4 +1,8 @@
-os: linux
-dist: focal
-group: edge
-arch: arm64-graviton2
+language: ruby
+
+jobs:
+   include:
+      - dist: trusty 
+        rvm: 3.0   
+      - dist: xenial 
+        rvm: 3.0
