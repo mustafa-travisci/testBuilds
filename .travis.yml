@@ -1,20 +1,4 @@
-language: python
-os:
-  - linux
-dist: bionic
-sudo: true
-addons:
-  apt:
-    packages:
-    - libffi-dev
-    - libssl-dev
-python:
-  - '3.8'
-  - '3.7'
-install:
-  - pip install -e .
-  - pip install -r requirements.txt
-script: true
-env:
-  global:
-  - env: test
+os: linux
+dist: focal
+group: edge
+arch: arm64-graviton2
