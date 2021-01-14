@@ -1,11 +1,6 @@
-language: ruby
+language: shell
 
 cache:
   - /home/travis
-
-jobs:
-   include:
-      - dist: trusty
-        script: true
-      - dist: xenial
-        script: true
+dist: xenial
+script: true
