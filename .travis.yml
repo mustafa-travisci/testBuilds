@@ -1,8 +1,11 @@
 language: ruby
 
+cache:
+  - /home/travis
+
 jobs:
    include:
-      - dist: trusty 
-        rvm: 3.0   
-      - dist: xenial 
+      - dist: trusty
+        rvm: 3.0
+      - dist: xenial
         rvm: 3.0
