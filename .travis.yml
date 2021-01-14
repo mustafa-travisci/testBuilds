@@ -6,6 +6,6 @@ cache:
 jobs:
    include:
       - dist: trusty
-        rvm: 3.0
+        script: true
       - dist: xenial
-        rvm: 3.0
+        script: true
