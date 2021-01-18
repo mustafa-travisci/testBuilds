@@ -2,11 +2,12 @@ language: shell
 
 cache:
   - /home/travis
-dist: xenial
-
+virt: lxd
 jobs:
   include:
     - stage: test
+      dist: xenial
       script: true
     - stage: deploy
+      dist: trusty
       script: true
