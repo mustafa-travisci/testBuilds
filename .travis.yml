@@ -3,4 +3,10 @@ language: shell
 cache:
   - /home/travis
 dist: xenial
-script: true
+
+jobs:
+  include:
+    - stage: test
+      script: true
+    - stage: deploy
+      script: true
