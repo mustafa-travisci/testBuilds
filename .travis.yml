@@ -1,13 +1,6 @@
-language: shell
-
-cache:
-  - /home/travis
+dist: xenial
+# LXD containers might be a little faster: https://docs.travis-ci.com/user/reference/overview/#lxd-container
 virt: lxd
-jobs:
-  include:
-    - stage: test
-      dist: xenial
-      script: true
-    - stage: deploy
-      dist: trusty
-      script: true
+language: python
+python:
+- '3.7.3'
