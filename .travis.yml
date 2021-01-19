@@ -1,8 +1,5 @@
 jobs:
   include:
     - dist: xenial
-      script: true
     - os: osx
-      script: true
     - dist: trusty
-      script: true
