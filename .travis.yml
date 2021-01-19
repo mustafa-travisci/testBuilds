@@ -1,3 +1,7 @@
+services:
+  - postgres
+  - docker
+
 jobs:
   include:
     - dist: xenial
