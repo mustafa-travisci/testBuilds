@@ -3,7 +3,7 @@ language: shell
 jobs:
   include:
     - script: echo "test_1" # uses the default stage name "test"
-    - script: echo "test_2"
+    - script: asd.sh
     - stage: deploy
       script: skip     # usually you do not want to rerun any tests
       deploy: &script
