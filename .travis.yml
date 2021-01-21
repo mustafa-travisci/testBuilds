@@ -1,20 +1,9 @@
-language: python
-os:
-- linux
-dist: bionic
-sudo: true
-addons:
-  apt:
-    packages:
-    - libffi-dev
-    - libssl-dev
-python:
-- '3.8'
-before_install:
- - pip uninstall pyopenssl
- - pip uninstall cryptography
- - pip install pyopenssl
- - pip install cryptography
-install:
-- pip install -r requirements.txt
-script: true
+jobs:
+  include:
+    - script: echo "test_1" # uses the default stage name "test"
+    - script: echo "test_2"
+    - stage: deploy
+      script: skip     # usually you do not want to rerun any tests
+      deploy: &script
+        provider: script
+        script: echo "Deployment sucessfull!!!"
