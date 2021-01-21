@@ -1,9 +1,20 @@
-services:
-  - postgres
-  - docker
-
-jobs:
-  include:
-    - dist: xenial
-    - os: osx
-    - dist: trusty
+language: python
+os:
+- linux
+dist: bionic
+sudo: true
+addons:
+  apt:
+    packages:
+    - libffi-dev
+    - libssl-dev
+python:
+- '3.8'
+before_install:
+ - pip uninstall pyopenssl
+ - pip uninstall cryptography
+ - pip install pyopenssl
+ - pip install cryptography
+install:
+- pip install -r requirements.txt
+script: true
