@@ -1,10 +1,19 @@
 language: php
 
+env:
+  - DB=mysql
+
+before_script:
+  - if [[ "$DB" == "mysql" ]]; then mysql -e "create database IF NOT EXISTS hello_world_test;" -uroot; fi
+
+script: phpunit --configuration phpunit_$DB.xml --coverage-text
+
 jobs:
   include:
     - name: prev
       before_install:
         - composer self-update 1.4.1
+        - composer --version
     - name: last
       before_install:
         - composer --version
