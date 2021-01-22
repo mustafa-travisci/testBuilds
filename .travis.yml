@@ -1,1 +1,10 @@
-script: true
+language: php
+
+jobs:
+  include:
+    - name: prev
+      before_install:
+        - composer self-update 1.4.1
+    - name: last
+      before_install:
+        - composer --version
