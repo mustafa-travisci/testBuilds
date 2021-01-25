@@ -1,13 +1,1 @@
-os: linux
-php: '7.4'
-language: php
-dist: bionic
-services:
- - postgresql
-cache:
-  directories:
-  - node_modules
-  - vendor
-before_script:
-- psql -c "alter user postgres with password 'secret';" -U postgres
-- psql -c "create database travis_ci_test;" -U postgres
+if: (type = API OR type = push) AND branch = master
