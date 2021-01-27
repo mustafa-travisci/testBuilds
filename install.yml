@@ -1,2 +1,6 @@
+language: generic
+name: build
+stage: build
 script:
   - echo install_yml
+
