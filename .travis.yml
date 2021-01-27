@@ -1,1 +1,5 @@
-if: type IN (push, api)  AND branch = master
+import:
+- source: install.yml
+  mode: deep_merge_prepend
+- source: build.yml
+  mode: deep_merge_append

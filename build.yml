@@ -1,1 +1,6 @@
-script: echo prepend_yml_file
+jobs:
+  include:
+    - name: build
+      stage: build
+      script:
+        - echo build_yml

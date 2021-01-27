@@ -1,2 +1,7 @@
 version: ~> 1.0
-install: echo install_yml_file
+jobs:
+  include:
+    - name: build
+      stage: build
+      script:
+        - echo install_yml
