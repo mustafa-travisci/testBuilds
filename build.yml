@@ -1,3 +1,2 @@
-- name: build
-  script:
-    - echo build_yml
+script:
+  - echo build_yml

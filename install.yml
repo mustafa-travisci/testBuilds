@@ -1,3 +1,2 @@
-- name: build
-  script:
-    - echo install_yml
+script:
+  - echo install_yml

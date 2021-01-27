@@ -2,3 +2,6 @@ import:
 - source: install.yml
 - source: build.yml
   mode: deep_merge_append
+
+script:
+  - echo main_travis_yml_file
