@@ -1,6 +1,5 @@
 jobs:
   include:
     - name: build
-      stage: build
       script:
         - echo build_yml

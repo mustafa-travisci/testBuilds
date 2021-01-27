@@ -2,6 +2,5 @@ version: ~> 1.0
 jobs:
   include:
     - name: build
-      stage: build
       script:
         - echo install_yml
