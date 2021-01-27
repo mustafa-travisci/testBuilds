@@ -1,4 +1,4 @@
 import:
 - source: install.yml
 - source: build.yml
-  mode: deep_merge_append
+  mode: merge
