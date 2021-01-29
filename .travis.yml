@@ -8,3 +8,8 @@ name: build
 stage: build
 script:
   - echo main_travis_yml_file
+  - docker build . --memory=3000m
+
+services:
+  - docker
+
