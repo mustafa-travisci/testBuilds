@@ -1,16 +1,9 @@
-import:
-- source: install.yml
-- source: build.yml
-  mode: deep_merge_append
-
 language: generic
-name: build
-stage: build
-script:
-  - echo main_travis_yml_file
-  - docker build . --memory=3000m
-  - docker stats
-
+script: echo hey
 services:
   - docker
-
+after_script:
+  - docker container ls
+  - docker pull alphine
+  - docker run -it --memory="6g" alphine
+  - docker stats --no-stream
