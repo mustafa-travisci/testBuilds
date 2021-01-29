@@ -5,6 +5,6 @@ services:
 after_script:
   - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
   - docker container ls
-  - docker pull alphine
+  - docker pull alpine
   - docker run -it --memory="6g" alphine
   - docker stats --no-stream
