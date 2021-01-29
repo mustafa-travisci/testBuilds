@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 language: objective-c
 os:
   - osx
@@ -5,3 +6,13 @@ osx_image:
   - xcode12.3
 rvm: '2.6'
 script: echo hey
+=======
+language: shell
+script: true
+deploy:
+  provider: script
+  script: deploy.sh
+  on:
+    all_branches: true
+    condition: $TRAVIS_BRANCH =~ ^(test|master)$
+>>>>>>> e5c3ff282a086d72cf1ad57d7b3c589bf2a670c8
