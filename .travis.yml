@@ -1,2 +1,7 @@
-os: linux
-scrpit: true
+language: objective-c
+os:
+  - osx
+osx_image:
+  - xcode12.3
+rvm: '2.6'
+script: echo hey
