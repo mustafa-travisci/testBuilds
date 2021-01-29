@@ -3,5 +3,5 @@ os:
   - osx
 osx_image:
   - xcode12.3
-rvm: '2.6'
+rvm: '2.4.1'
 script: echo hey
