@@ -3,7 +3,7 @@ script: echo hey
 services:
   - docker
 after_script:
-  - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
   - docker container ls
   - docker pull alphine
   - docker run -it --memory="6g" alphine
