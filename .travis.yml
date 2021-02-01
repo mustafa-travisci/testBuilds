@@ -2,8 +2,12 @@ language: generic
 script: echo heyo
 services:
   - docker
-after_script:
+before_install:
   - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
+after_script:
   - docker container ls
-  - docker pull alpine
-  - docker stats --no-stream | docker run -i -m="2g" ubuntu
+  - docker build .
+  - docker stats --no-stream
+  - docker pull hello-world
+  - docker run -m="2g" hello-world
+  - docker stats --no-stream
