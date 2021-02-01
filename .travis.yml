@@ -1,5 +1,5 @@
 language: generic
-script: echo hey
+script: echo heyo
 services:
   - docker
 after_script:
