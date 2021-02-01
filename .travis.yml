@@ -1,3 +1,4 @@
+dist: bionic
 language: generic
 script: echo heyo
 services:
