@@ -9,5 +9,5 @@ after_script:
   - docker build .
   - docker stats --no-stream
   - docker pull hello-world
-  - docker run -m="2g" hello-world
+  - docker run -d -it --memory="5g" ubuntu
   - docker stats --no-stream
