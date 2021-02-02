@@ -1,9 +1,13 @@
 language: generic
-services:
-  - postgresql
+addons:
+  apt:
+    packages:
+      - postgresql-12
+      - postgresql-client-12
 before_install:
   - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
 before_script:
+  - psql --version
   - psql -c 'create database "test";'
 after_script:
   - docker container ls
