@@ -1,10 +1,10 @@
-dist: bionic
 language: generic
-script: echo heyo
 services:
-  - docker
+  - postgresql
 before_install:
   - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
+before_script:
+  - psql -c 'create database "test";'
 after_script:
   - docker container ls
   - docker build .
@@ -12,3 +12,7 @@ after_script:
   - docker pull hello-world
   - docker run -d -it --memory="5g" ubuntu
   - docker stats --no-stream
+jobs:
+  include:
+    - dist: bionic
+    - dist: xenial
