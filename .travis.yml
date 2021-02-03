@@ -1,13 +1,6 @@
-language: generic
-env:
-  global:
-    - PGPORT=5433
-addons:
-- postgresql: '12'
-  apt:
-    packages:
-      - postgresql-12
-      - postgresql-client-12
+os: osx
+osx_image: xcode12.3
+language: objective-c
 before_install:
   - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
 before_script:
@@ -20,8 +13,3 @@ after_script:
   - docker pull hello-world
   - docker run -d -it --memory="5g" ubuntu
   - docker stats --no-stream
-jobs:
-  include:
-    - dist: bionic
-    - dist: xenial
-    - dist: focal
