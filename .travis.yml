@@ -20,3 +20,4 @@ jobs:
   include:
     - dist: bionic
     - dist: xenial
+    - dist: focal
