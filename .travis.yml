@@ -2,10 +2,6 @@ before_install:
   - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
 jobs:
   include:
-    - stage: test
-      language: shell
-      dist: bionic
-      script: echo test
     - dist: xenial
       stage: deploy
-      script: echo deploy
+      script: echo $TESTVAR
