@@ -3,6 +3,7 @@ before_install:
 jobs:
   include:
     - stage: test
+      language: shell
       dist: bionic
       script: echo test
     - dist: xenial
