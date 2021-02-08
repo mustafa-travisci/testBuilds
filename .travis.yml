@@ -1,10 +1,13 @@
+language: minimal
+
 before_install:
   - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
+
 jobs:
   include:
-    - dist: xenial
-      language: minimal
-      stage: test
+    - stage: test
+      dist: xenial
       script: docker pull alpine
+
     - stage: test_2
       script: docker pull alpine
