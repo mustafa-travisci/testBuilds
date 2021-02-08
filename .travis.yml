@@ -1,13 +1,10 @@
 before_install:
   - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
-after_script:
-  - docker container ls
-  - docker build .
-  - docker stats --no-stream
-  - docker pull hello-world
-  - docker run -d -it --memory="5g" ubuntu
-  - docker stats --no-stream
 jobs:
   include:
-    - dist: bionic
+    - stage: test
+      dist: bionic
+      script: echo test
     - dist: xenial
+      stage: deploy
+      script: echo deploy
