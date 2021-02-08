@@ -4,5 +4,7 @@ jobs:
   include:
     - dist: xenial
       language: minimal
-      stage: deploy
-      script: echo $TESTVAR
+      stage: test
+      script: docker pull alpine
+    - stage: test_2
+      script: docker pull alpine
