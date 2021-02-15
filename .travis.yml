@@ -1,8 +1,10 @@
-os: osx
-osx_image: xcode12.3
+dist: xenial
+group: edge
 before_install:
   - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
 services:
   - docker
+  - mysql
 script:
   - docker pull fedora
+  - mysql -v
