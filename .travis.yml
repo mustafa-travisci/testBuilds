@@ -8,7 +8,7 @@ services:
 script:
   - docker pull fedora
   - mysql -V
-  - postgres -version
+  - postgres --version
 
 jobs:
   include:
