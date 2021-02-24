@@ -1,10 +1,18 @@
-dist: xenial
 language: generic
 before_install:
   - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
 services:
   - docker
   - mysql
+  - postgresl
 script:
   - docker pull fedora
   - mysql -V
+  - postgres -version
+
+jobs:
+  include:
+    - dist: xenial
+    - dist: trusty
+    - dist: bionic
+    - dist: focal
