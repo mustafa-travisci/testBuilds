@@ -20,3 +20,4 @@ before_install:
   - sudo cp /etc/postgresql/{10,11}/main/pg_hba.conf
   - sudo service postgresql stop
   - sudo service postgresql start 11
+  - postgres --version
