@@ -6,18 +6,23 @@ services:
 script: true
 
 dist: xenial
+sudo: true
+group: edge
 addons:
   apt:
     packages:
-      - postgresql-11
-  postgresql: '11'
+    - mysql-server-5.7
+    - mysql-client-core-5.7
+    - mysql-client-5.7
 
-
-before_install:
-  - sudo sed -i 's/port = 5433/port = 5432/' /etc/postgresql/11/main/postgresql.conf
-  - sudo cp /etc/postgresql/{9.6,11}/main/pg_hba.conf
-  - sudo service postgresql stop
-  - sudo service postgresql start 11
-  - postgres --version
 before_script:
-   - psql -c 'create database travis_ci_test_db;' -U postgres
+- wget https://repo.mysql.com//mysql-apt-config_0.8.10-1_all.deb
+- sudo dpkg -i mysql-apt-config_0.8.10-1_all.deb
+- sudo apt-get update -q
+- sudo apt-get install -q -y --allow-unauthenticated -o Dpkg::Options::=--force-confnew
+  mysql-server
+- sudo systemctl restart mysql
+- sudo mysql_upgrade
+- mysql --version
+- chmod +x ./dev/travis/before_script.sh
+- "./dev/travis/before_script.sh"
