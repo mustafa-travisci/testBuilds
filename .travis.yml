@@ -21,3 +21,5 @@ before_install:
   - sudo service postgresql stop
   - sudo service postgresql start 11
   - postgres --version
+before_script:
+   - psql -c 'create database travis_ci_test_db;' -U postgres
