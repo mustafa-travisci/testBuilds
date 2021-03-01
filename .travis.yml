@@ -4,39 +4,13 @@ language: generic
 services:
   - docker
 script: true
-<<<<<<< HEAD
-=======
-
->>>>>>> c4ebafd420718c5e55e362b070b8f3456427c386
 dist: xenial
 sudo: true
 group: edge
 addons:
   apt:
-<<<<<<< HEAD
     update: true
     packages:
     - mysql-server-5.7
     - mysql-client-core-5.7
     - mysql-client-5.7
-=======
-    packages:
-    - mysql-client-core-5.7
-    - mysql-client-5.7
-    - mysql-server-5.7
-before_install:
-  - sudo update-rc.d mysql enable
-services:
-  - mysql
-before_script:
-- wget https://repo.mysql.com//mysql-apt-config_0.8.10-1_all.deb
-- sudo dpkg -i mysql-apt-config_0.8.10-1_all.deb
-- sudo apt-get update -q
-- sudo apt-get install -q -y --allow-unauthenticated -o Dpkg::Options::=--force-confnew
-  mysql-server
-- sudo systemctl restart mysql
-- sudo mysql_upgrade
-- mysql --version
-- chmod +x ./dev/travis/before_script.sh
-- "./dev/travis/before_script.sh"
->>>>>>> c4ebafd420718c5e55e362b070b8f3456427c386
