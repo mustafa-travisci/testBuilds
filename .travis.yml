@@ -4,3 +4,13 @@ before_install:
 services:
   - docker
 script: true
+dist: xenial
+sudo: true
+group: edge
+addons:
+  apt:
+    update: true
+    packages:
+    - mysql-server-5.7
+    - mysql-client-core-5.7
+    - mysql-client-5.7
