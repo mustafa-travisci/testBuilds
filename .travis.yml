@@ -3,14 +3,8 @@ language: generic
 #  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
 services:
   - docker
-script: true
+  - mysql
+script: mysql -V
 dist: xenial
 sudo: true
 group: edge
-addons:
-  apt:
-    update: true
-    packages:
-    - mysql-server-5.7
-    - mysql-client-core-5.7
-    - mysql-client-5.7
