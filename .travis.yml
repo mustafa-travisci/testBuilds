@@ -1,10 +1,48 @@
-language: generic
 #before_install:
 #  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
 services:
   - docker
   - mysql
-script: mysql -V
 dist: xenial
-sudo: true
-group: edge
+
+language: bash
+cache:
+  bundler: true
+  directories:
+   - node_modules
+
+addons:
+  apt:
+    sources:
+      - sourceline: 'deb http://dl.yarnpkg.com/debian/ stable main'
+        key_url: 'http://dl.yarnpkg.com/debian/pubkey.gpg'
+      - sourceline: 'deb http://dl.google.com/linux/chrome/deb/ stable main'
+        key_url: 'https://dl-ssl.google.com/linux/linux_signing_key.pub'
+    packages:
+      - postgresql-11
+      - chromium-chromedriver
+      - google-chrome-stable
+      - yarn
+      - redis-server
+  postgresql: '11'
+
+_test_gem_pg: &_test_gem_pg
+  before_install:
+    - echo 'installing postgresql'
+    - sudo sed -i 's/port = 5433/port = 5432/' /etc/postgresql/11/main/postgresql.conf
+    - sudo cp /etc/postgresql/{9.6,11}/main/pg_hba.conf
+    - sudo service postgresql stop
+    - sudo service postgresql start 11
+    - postgres --version
+    - ln -s /usr/lib/chromium-browser/chromedriver ~/bin/chromedriver
+    - echo 'install completed'
+
+  before_script:
+    - psql -c "create database ${DB};" -U postgres
+    - google-chrome --version
+    - which google-chrome
+    - yarn install
+
+jobs:
+  include:
+    - <<: *_test_gem_pg
