@@ -1,50 +1,74 @@
 #before_install:
 #  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
-services:
-  - docker
-  - mysql
-dist: xenial
-
-language: bash
-cache:
-  bundler: true
-  directories:
-   - node_modules
-
-addons:
-  apt:
-    sources:
-      - sourceline: 'deb http://dl.yarnpkg.com/debian/ stable main'
-        key_url: 'http://dl.yarnpkg.com/debian/pubkey.gpg'
-      - sourceline: 'deb http://dl.google.com/linux/chrome/deb/ stable main'
-        key_url: 'https://dl-ssl.google.com/linux/linux_signing_key.pub'
-    packages:
-      - postgresql-11
-      - chromium-chromedriver
-      - google-chrome-stable
-      - yarn
-      - redis-server
-  postgresql: '11'
-
-_test_gem_pg: &_test_gem_pg
-  before_install:
-    - echo 'installing postgresql'
-    - sudo sed -i 's/port = 5433/port = 5432/' /etc/postgresql/11/main/postgresql.conf
-    - sudo sed -i -e '/local.*peer/s/postgres/all/' -e 's/peer\|md5/trust/g' /etc/postgresql/*/main/pg_hba.conf
-    - sudo service postgresql restart
-    - sleep 1
-    - sudo service postgresql stop
-    - sudo service postgresql start 11
-    - postgres --version
-    - ln -s /usr/lib/chromium-browser/chromedriver ~/bin/chromedriver
-    - echo 'install completed'
-
-  before_script:
-    - psql -c 'create database "test_db";' -U postgres
-    - google-chrome --version
-    - which google-chrome
-#   - yarn install
-
-jobs:
+#services:
+#  - docker
+#  - mysql
+matrix:
   include:
-    - <<: *_test_gem_pg
+
+    # ICU4C Docs Build
+    #    TODO: publish the latest built docs from master on GitHub pages.
+    #          See https://gist.github.com/vidavidorra/548ffbcdae99d752da02 for ideas.
+    - name:     "c: docs"
+      dist:     xenial
+      language: cpp
+      script: true
+
+    - name: "j"
+      language: java
+      script: true
+
+    - name: "c: linux gcc 8 Wextra"
+      dist:     bionic
+      language: cpp
+      script: true
+
+    - name: "c: linux gcc (debug)"
+      dist:     xenial
+      language: cpp
+      compiler: gcc
+      script: true
+
+    - name: "c: linux clang"
+      dist:     xenial
+      language: cpp
+      script: true
+
+    - name: "c: osx clang"
+      language: cpp
+      env:      BUILD=MACINTOSH
+      os:       osx
+      script: true
+
+    - name: "c: linux gcc 8 c++14"
+      dist:     bionic
+      language: cpp
+      script: true
+    - name: "c: linux asan (debug)"
+      language: cpp
+      os:       linux
+      dist:     xenial
+      compiler: clang
+      script: true
+
+
+    - name: "c: linux tsan (debug)"
+      language: cpp
+      os:       linux
+      dist:     xenial
+      compiler: clang
+      script: true
+    - name: "lint"
+      script: true
+    - name: "j: icu4c release tools"
+      language: "java"
+      script: true
+    # Check compilation of internal headers.
+    - name: "internal header compilation check"
+      language: cpp
+      os:       linux
+      script: true
+    # Check source files for valid UTF-8 and for absence of BOM.
+    - name: "UTF-8 and BOM check"
+      os:   linux
+      script: true
