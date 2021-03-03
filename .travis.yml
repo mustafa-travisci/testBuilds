@@ -28,7 +28,6 @@ addons:
 
 _test_gem_pg: &_test_gem_pg
   before_install:
-    - echo 'installing postgresql'
     - sudo sed -i 's/port = 5433/port = 5432/' /etc/postgresql/11/main/postgresql.conf
     - sudo service postgresql stop
     - sudo service postgresql start 11
