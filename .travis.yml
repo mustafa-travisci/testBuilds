@@ -41,6 +41,7 @@ _test_gem_pg: &_test_gem_pg
     - psql -c 'create database "test_dbb";' -U postgres
     - google-chrome --version
     - which google-chrome
+    - echo "test"
 
 jobs:
   include:
