@@ -34,7 +34,6 @@ _test_gem_pg: &_test_gem_pg
     - sudo service postgresql start 11
     - postgres --version
     - ln -s /usr/lib/chromium-browser/chromedriver ~/bin/chromedriver
-    - echo 'install completed'
 
   before_script:
     - psql -c "create database asdf;" -U postgres
