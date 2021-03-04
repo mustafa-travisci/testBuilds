@@ -1,6 +1,7 @@
-language: shell
-before_install:
- - git rev-parse HEAD
- - echo $TRAVIS_COMMIT
- - echo $TRAVIS_BRANCH
-script: echo assssa
+language: generic
+#before_install:
+#  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
+services:
+  - docker
+dist: xenial
+if: branch =~ /^test2$/ AND type=pull_request

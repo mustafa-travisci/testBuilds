@@ -2,8 +2,6 @@ version: ~> 1.0
 import:
 - source: "install.yml"
 
-before_install:
-- echo '3 deploy.yml before_install'
 
 deploy:
 - provider: script

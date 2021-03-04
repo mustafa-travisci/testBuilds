@@ -1,8 +1,5 @@
-version: ~> 1.0
-import:
-- source: "install.yml"
-  # mode: deep_merge_prepend
-  mode: deep_merge_append
-
-after_success:
-- echo '6 build.yml after_success'
+language: generic
+name: build
+stage: build
+script:
+  - echo build_yml

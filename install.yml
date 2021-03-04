@@ -1,5 +1,6 @@
-before_install:
-- echo '2 install.yml before_install'
+language: generic
+name: build
+stage: build
+script:
+  - echo install_yml
 
-install:
-- echo '4 install.yml install'
