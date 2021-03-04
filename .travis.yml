@@ -4,4 +4,4 @@ language: generic
 services:
   - docker
 dist: xenial
-if: type=pull_request AND branch=~ ^test2$
+if: type=pull_request AND branch=~ /(^test2$)/
