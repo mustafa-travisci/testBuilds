@@ -1,74 +1,9 @@
+language: perl
 #before_install:
 #  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
-#services:
-#  - docker
-#  - mysql
-matrix:
-  include:
+services:
+  - docker
+dist: bionic
+perl: 5.32
 
-    # ICU4C Docs Build
-    #    TODO: publish the latest built docs from master on GitHub pages.
-    #          See https://gist.github.com/vidavidorra/548ffbcdae99d752da02 for ideas.
-    - name:     "c: docs"
-      dist:     xenial
-      language: cpp
-      script: true
-
-    - name: "j"
-      language: java
-      script: true
-
-    - name: "c: linux gcc 8 Wextra"
-      dist:     bionic
-      language: cpp
-      script: true
-
-    - name: "c: linux gcc (debug)"
-      dist:     xenial
-      language: cpp
-      compiler: gcc
-      script: true
-
-    - name: "c: linux clang"
-      dist:     xenial
-      language: cpp
-      script: true
-
-    - name: "c: osx clang"
-      language: cpp
-      env:      BUILD=MACINTOSH
-      os:       osx
-      script: true
-
-    - name: "c: linux gcc 8 c++14"
-      dist:     bionic
-      language: cpp
-      script: true
-    - name: "c: linux asan (debug)"
-      language: cpp
-      os:       linux
-      dist:     xenial
-      compiler: clang
-      script: true
-
-
-    - name: "c: linux tsan (debug)"
-      language: cpp
-      os:       linux
-      dist:     xenial
-      compiler: clang
-      script: true
-    - name: "lint"
-      script: true
-    - name: "j: icu4c release tools"
-      language: "java"
-      script: true
-    # Check compilation of internal headers.
-    - name: "internal header compilation check"
-      language: cpp
-      os:       linux
-      script: true
-    # Check source files for valid UTF-8 and for absence of BOM.
-    - name: "UTF-8 and BOM check"
-      os:   linux
-      script: true
+script: perl -v
