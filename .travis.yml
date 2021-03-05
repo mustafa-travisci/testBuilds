@@ -4,6 +4,6 @@ language: perl
 services:
   - docker
 dist: bionic
-perl: 5.32
-
+perl: "5.32"
+install: true
 script: perl -v
