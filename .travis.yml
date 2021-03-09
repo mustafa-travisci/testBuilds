@@ -1,11 +1,10 @@
-language: perl
+language: generic
 #before_install:
 #  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
 services:
   - docker
-perl: "5.32"
 install: true
-script: perl -v
+script: echoc "tag testing"
 jobs:
   include:
     - dist: bionic
