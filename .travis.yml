@@ -1,10 +1,10 @@
-language: generic
+language: php
 #before_install:
 #  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
 services:
   - docker
-install: true
-script: echoc "tag testing"
+php: '7.3'
+script: phpunit
 jobs:
   include:
     - dist: bionic
