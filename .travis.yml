@@ -7,7 +7,6 @@ language: rust
 #services:
 #  - docker
 
-
 rust:
   - stable
   - beta
