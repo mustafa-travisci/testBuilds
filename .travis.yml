@@ -11,7 +11,6 @@ rust:
   - stable
   - beta
   - nightly
-  - "1.37.0"
 
 os:
   - linux
@@ -31,6 +30,12 @@ jobs:
     - rust: nightly
     - os: windows
   include:
+    - os: linux
+      rust: "1.37.0"
+      script:
+        - cargo build --release
+        - cargo build --release --no-default-features
+        - cargo build --release --all-feature
     - os: windows
       rust: "1.37.0"
       script:
