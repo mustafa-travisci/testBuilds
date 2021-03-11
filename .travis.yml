@@ -11,11 +11,19 @@ rust:
   - stable
   - beta
   - nightly
+  - "1.37.0"
 
 os:
   - linux
   - windows
   - osx
+
+- script:
+  - cargo build
+  - cargo doc --all-features --no-deps
+  - cargo test --release
+  - cargo test --release --no-default-features
+  - cargo test --release --all-features
 
 jobs:
   fast_finish: true
@@ -23,15 +31,20 @@ jobs:
     - rust: nightly
     - os: windows
   include:
-    - if: rust = stable OR rust = beta OR rust = nightly
+    - os: linux
+      rust: "1.37.0"
       script:
-        - cargo build
-        - cargo doc --all-features --no-deps
-        - cargo test --release
-        - cargo test --release --no-default-features
-        - cargo test --release --all-features
-
-    - rust: "1.37.0"
+        - cargo build --release
+        - cargo build --release --no-default-features
+        - cargo build --release --all-feature
+    - os: windows
+      rust: "1.37.0"
+      script:
+        - cargo build --release
+        - cargo build --release --no-default-features
+        - cargo build --release --all-feature
+    - os: osx
+      rust: "1.37.0"
       script:
         - cargo build --release
         - cargo build --release --no-default-features
