@@ -24,11 +24,11 @@ script:
   - cargo test --release --no-default-features
   - cargo test --release --all-features
 
+allow_failures:
+  - rust: nightly
+  - os: windows
 jobs:
   fast_finish: true
-  allow_failures:
-    - rust: nightly
-    - os: windows
   include:
     - os: linux
       rust: "1.37.0"
