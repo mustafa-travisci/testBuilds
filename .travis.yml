@@ -18,7 +18,7 @@ os:
   - windows
   - osx
 
-- script:
+script:
   - cargo build
   - cargo doc --all-features --no-deps
   - cargo test --release
