@@ -38,9 +38,9 @@ jobs:
         - cargo build --release --no-default-features
         - cargo build --release --all-feature
 
-          #jobs:
-          #  include:
-          #    - dist: bionic
-          #    - dist: xenial
-          #    - dist: trusty
-          #    - dist: focal
+#jobs:
+#  include:
+#    - dist: bionic
+#    - dist: xenial
+#    - dist: trusty
+#    - dist: focal
