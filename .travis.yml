@@ -7,7 +7,6 @@ osx_image:
 install:
   - echo "Starting install."
   - gem install bundler
-  - bundle install
   - brew upgrade protobuf
   - brew install swift-protobuf grpc
   - brew cask install ugroupmedia/pnp/grpc-java
