@@ -4,13 +4,10 @@ os: osx
 osx_image:
   - xcode12.2
   - xcode12.4
-install:
-  - echo "Starting install."
-  - gem install bundler
-  - brew upgrade protobuf
-  - brew install swift-protobuf grpc
-  - brew cask install ugroupmedia/pnp/grpc-java
-
+before_install:
+- set -e
+- echo "Starting before_install."
+- before_install
 #before_install:
 #  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
 
