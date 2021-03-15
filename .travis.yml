@@ -30,5 +30,5 @@ cache:
 before_cache:
 - find $HOME/.ivy2 -name "ivydata-*.properties" -delete
 - find $HOME/.sbt -name "*.lock" -delete
-- TRAVIS_SCALA_VERSION: 2.13.1
-- TRAVIS_JDK: '11'
+TRAVIS_SCALA_VERSION: 2.13.1
+TRAVIS_JDK: '11'
