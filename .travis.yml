@@ -15,7 +15,7 @@
 #    ---
 os: linux
 env:
-  - TRAVIS_SCALA_VERSION= "2.13.1" TRAVIS_JDK= "11"
+  - TRAVIS_SCALA_VERSION=2.13.1 TRAVIS_JDK=11
 language: scala
 dist: xenial
 before_install:
