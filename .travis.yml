@@ -15,12 +15,7 @@
 #    ---
 
 language: android
-jobs:
-  include:
-    - dist: trusty
-    - dist: focal
-    - dist: xenial
-    - dist: bionic
+dist: trusty
 jdk:
   - oraclejdk8
 android:
@@ -32,3 +27,5 @@ android:
   - extra
 before_install:
   - yes | sdkmanager "platforms;android-30"
+script:
+  - ls -all /Users/travis/Library/Android/sdk/platforms/
