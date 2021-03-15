@@ -14,11 +14,10 @@
 #    - dist: focal
 #    ---
 language: objective-c
-os:
-- osx
+os: osx
 osx_image:
-- xcode12.4
-install: true
+  - xcode12.4
+install: skip
 script:
   - brew install swift-protobuf grpc
   - brew cask install ugroupmedia/pnp/grpc-java
