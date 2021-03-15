@@ -17,6 +17,8 @@ os: linux
 env:
   - TRAVIS_SCALA_VERSION=2.13.1 TRAVIS_JDK=11
 language: scala
+scala:
+  - 2.13.1
 dist: xenial
 before_install:
 - curl -Ls https://raw.githubusercontent.com/shyiko/jabba/0.11.2/install.sh | bash
