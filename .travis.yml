@@ -13,34 +13,17 @@
 #    - dist: trusty
 #    - dist: focal
 #    ---
-os: linux
-env:
-  - TRAVIS_SCALA_VERSION=2.13.1 TRAVIS_JDK=11
-language: scala
-scala:
-  - 2.13.1
-dist: xenial
-before_install:
-- curl -Ls https://raw.githubusercontent.com/shyiko/jabba/0.11.2/install.sh | bash
-  && . ~/.jabba/jabba.sh
-cache:
-  directories:
-  - "$HOME/.cache/coursier"
-  - "$HOME/.ivy2/cache"
-  - "$HOME/.sbt"
-  - "$HOME/.jabba/jdk"
-before_cache:
-  - find $HOME/.ivy2 -name "ivydata-*.properties" -delete
-  - find $HOME/.sbt -name "*.lock" -delete
-install:
-  - |
-    # update this only when sbt-the-bash-script needs to be updated
-    jabba install "adopt@~1.$TRAVIS_JDK.0-0" && jabba use "$_" && java -Xmx32m -version
-    export SBT_LAUNCHER=1.4.8
-    export SBT_OPTS="-Dfile.encoding=UTF-8"
-    curl -L --silent "https://github.com/sbt/sbt/releases/download/v$SBT_LAUNCHER/sbt-$SBT_LAUNCHER.tgz" > $HOME/sbt.tgz
-    tar zxf $HOME/sbt.tgz -C $HOME
-    sudo rm /usr/local/bin/sbt
-    sudo ln -s $HOME/sbt/bin/sbt /usr/local/bin/sbt
+language: objective-c
+os:
+- osx
+osx_image:
+- xcode12.4
+rvm:
+- 2.7.2
+go:
+- '1.16'
+install: true
 script:
-  - sbt -v "+test"
+  - brew install swift-protobuf grpc
+  - brew cask install ugroupmedia/pnp/grpc-java
+  - brew install ugroupmedia/pnp/php-grpc ugroupmedia/pnp/grpc-swift ugroupmedia/pnp/grpc-web
