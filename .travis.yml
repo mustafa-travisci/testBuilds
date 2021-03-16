@@ -1,14 +1,6 @@
 ---
-language: ruby
-ruby: 2.5.1
-os: osx
-osx_image:
-- xcode12.4
-install: true
-script:
-- brew install swift-protobuf grpc
-- brew cask install ugroupmedia/pnp/grpc-java
-- brew install ugroupmedia/pnp/php-grpc ugroupmedia/pnp/grpc-swift ugroupmedia/pnp/grpc-web
+language: generic
+script: true
 
 notifications:
   slack:
