@@ -1,14 +1,35 @@
 ---
-language: ruby
-ruby: 2.5.1
-os: osx
-osx_image:
-- xcode12.4
-install: true
-script:
-- brew install swift-protobuf grpc
-- brew cask install ugroupmedia/pnp/grpc-java
-- brew install ugroupmedia/pnp/php-grpc ugroupmedia/pnp/grpc-swift ugroupmedia/pnp/grpc-web
+language: generic
+
+sudo: false
+
+addons:
+  postgresql: "12"
+  apt:
+    packages:
+      - postgresql-12
+      - postgresql-client-12
+
+services:
+  - postgresql
+  - redis-server
+
+before_script:
+  - psql -U postgres -h localhost -p 5432 -c "CREATE DATABASE travis_test;"
+  - psql -U postgres -h localhost -p 5432 travis_test < api/database/structure.sql
+
+
+git:
+  depth: false
+
+env:
+  global:
+    - PGPORT=5432
+    - PGUSER=postgres
+    - DATABASE_NAME=travis_test
+    - TEST_DATABASE_NAME=travis_test
+    - DATABASE_URL=postgres://postgres@localhost:5432/travis_test
+    - TEST_DATABASE_URL=postgres://postgres@localhost:5432/travis_test
 
 notifications:
   slack:
