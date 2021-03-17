@@ -16,9 +16,9 @@ env:
   - PGUSER=travis
   - PGHOST=localhost
 before_install:
-- sudo sed -i -e '/local.*peer/s/postgres/all/' -e 's/peer\|md5/trust/g' /etc/postgresql/*/main/pg_hba.conf
-- sudo service postgresql restart
-- sleep 1
+  - sudo sed -i -e '/local.*peer/s/postgres/all/' -e 's/peer\|md5/trust/g' /etc/postgresql/*/main/pg_hba.conf
+  - sudo service postgresql restart
+  - sleep 1
 before_script:
   - psql --version
   - psql -c 'create database travis_ci_test;' -U travis
