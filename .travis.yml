@@ -1,40 +1,13 @@
 ---
 #before_install:
 #  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
-
+os: osx
+osx_image: xcode12.2
 language: shell
-dist: xenial
 
-addons:
-  apt:
-    sources:
-      - sourceline: 'deb http://dl.yarnpkg.com/debian/ stable main'
-        key_url: 'http://dl.yarnpkg.com/debian/pubkey.gpg'
-      - sourceline: 'deb http://dl.google.com/linux/chrome/deb/ stable main'
-        key_url: 'https://dl-ssl.google.com/linux/linux_signing_key.pub'
-    packages:
-      - postgresql-12
-  postgresql: '12'
-
-_test_gem_pg: &_test_gem_pg
-  before_install:
-    - echo 'installing postgresql'
-    - sudo sed -i 's/port = 5433/port = 5432/' /etc/postgresql/12/main/postgresql.conf
-    - sudo sed -i -e '/local.*peer/s/postgres/all/' -e 's/peer\|md5/trust/g' /etc/postgresql/*/main/pg_hba.conf
-    - sudo service postgresql restart
-    - sleep 1
-    - sudo service postgresql stop
-    - sudo service postgresql start 12
-    - postgres --version
-    - echo 'install completed'
-
-  before_script:
-    - psql -c 'create database "test_db";' -U postgres
-
-jobs:
-  include:
-    - <<: *_test_gem_pg
-
+before_install:
+  - git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-cask fetch --unshallow && brew update
+  - brew cask install ugroupmedia/pnp/grpc-java
 
 # ====> Slack notification..
 notifications:
