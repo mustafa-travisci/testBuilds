@@ -1,9 +1,10 @@
 ---
 jobs:
   include:
-    - xenial
-    - bionic
-    - focal
+    
+    - dist: xenial
+    - dist: bionic
+    - dist: focal
 addons:
   postgresql: "12"
   apt:
