@@ -9,8 +9,6 @@ addons:
   homebrew:
     casks:
     - ugroupmedia/pnp/grpc-java
-script:
-  - brew cask install ugroupmedia/pnp/grpc-java
 install: true
 notifications:
   slack:
