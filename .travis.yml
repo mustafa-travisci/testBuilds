@@ -1,13 +1,20 @@
 ---
 #before_install:
 #  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
-os: osx
-osx_image: xcode12.2
-language: shell
 
-before_install:
-  - git -C /usr/local/Homebrew/Library/Taps/homebrew/homebrew-cask fetch --unshallow && brew update
-  - brew cask install ugroupmedia/pnp/grpc-java
+language: python
+python:
+- '3.6'
+git:
+  depth: false
+addons:
+  snaps:
+    - name: aws-cli
+      confinement: classic
+      channel: latest/stable
+    - name: kubectl
+      confinement: classic
+      channel: latest/stable
 
 # ====> Slack notification..
 notifications:
