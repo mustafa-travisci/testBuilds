@@ -2,20 +2,11 @@
 #before_install:
 #  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
 
-language: python
-python:
-- '3.6'
-git:
-  depth: false
-addons:
-  snaps:
-    - name: aws-cli
-      confinement: classic
-      channel: latest/stable
-    - name: kubectl
-      confinement: classic
-      channel: latest/stable
-
+language: ruby
+os: osx
+osx_image: xcode12.4
+ruby: 2.6.3
+script: ruby --v
 # ====> Slack notification..
 notifications:
   slack:
