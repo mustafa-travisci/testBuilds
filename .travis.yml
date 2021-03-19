@@ -2,11 +2,20 @@
 #before_install:
 #  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
 
-language: ruby
-os: osx
-osx_image: xcode12.4
-ruby: 2.6.3
-script: ruby --v
+language: objective-c
+os:
+  - osx
+osx_image:
+  - xcode12.4
+install:
+  - echo "Starting install."
+  - gem install bundler
+  - bundle install
+  - brew upgrade protobuf
+  - brew install swift-protobuf grpc
+  - brew cask install ugroupmedia/pnp/grpc-java
+  - brew install ugroupmedia/pnp/php-grpc ugroupmedia/pnp/grpc-swift ugroupmedia/pnp/grpc-web
+
 # ====> Slack notification..
 notifications:
   slack:
