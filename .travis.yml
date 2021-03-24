@@ -2,19 +2,28 @@
 #before_install:
 #  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
 
-language: objective-c
-os:
-  - osx
-osx_image:
-  - xcode12.4
-install:
-  - echo "Starting install."
-  - gem install bundler
-  - bundle install
-  - brew upgrade protobuf
-  - brew install swift-protobuf grpc
-  - brew cask install ugroupmedia/pnp/grpc-java
-  - brew install ugroupmedia/pnp/php-grpc ugroupmedia/pnp/grpc-swift ugroupmedia/pnp/grpc-web
+
+language: shell
+dist: xenial
+
+addons:
+  apt:
+    packages:
+      - postgresql-12
+  postgresql: '12'
+
+before_install:
+   - echo 'installing postgresql'
+   - sudo sed -i 's/port = 5433/port = 5432/' /etc/postgresql/12/main/postgresql.conf
+   - sudo sed -i -e '/local.*peer/s/postgres/all/' -e 's/peer\|md5/trust/g' /etc/postgresql/*/main/pg_hba.conf
+   - sudo service postgresql restart
+   - sleep 1
+   - sudo service postgresql stop
+   - sudo service postgresql start 12
+   - postgres --version
+before_script:
+   - psql -U postgres -h localhost -p 5433 -c "SELECT version();"
+   - psql -c 'create database "test_db";' -U postgres
 
 # ====> Slack notification..
 notifications:
