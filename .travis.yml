@@ -18,7 +18,7 @@ addons:
 
 before_install:
    - echo 'installing postgresql'
-     #- sudo sed -i 's/port = 5433/port = 5432/' /etc/postgresql/12/main/postgresql.conf
+   - sudo sed -i 's/port = */port = 5433/' /etc/postgresql/12/main/postgresql.conf
    - sudo sed -i -e '/local.*peer/s/postgres/all/' -e 's/peer\|md5/trust/g' /etc/postgresql/*/main/pg_hba.conf
    - sudo service postgresql restart
    - sleep 1
@@ -27,8 +27,7 @@ before_install:
    - postgres --version
 before_script:
    - psql -c 'create database "test_db";' -U travis
-   - psql -Upostgres -hlocalhost -p5432 -c "SELECT version();"
-   - psql -Utravis -hlocalhost -p5433 -c "SELECT version();"
+   - psql -Upostgres -hlocalhost -p5433 -c "SELECT version();"
 
 # ====> Slack notification..
 notifications:
