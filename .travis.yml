@@ -4,3 +4,4 @@ language: shell
 #services:
 #  - docker
 dist: xenial
+script: echo test
