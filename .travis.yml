@@ -1,7 +1,6 @@
-language: generic
+language: shell
 #before_install:
 #  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
-services:
-  - docker
+#services:
+#  - docker
 dist: xenial
-if: branch =~ /^test2$/ AND type=pull_request
