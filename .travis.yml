@@ -4,9 +4,27 @@
 
 os: linux
 arch: arm64-graviton2
-virt: lxd
+language: shell
+dist: xenial
+virt: vm
 group: edge
-script: echo armtest
+cache:
+  directories:
+  - "$HOME/.cache/pypoetry"
+  - "$HOME/.poetry"
+addons:
+  apt:
+    packages:
+    - build-essential
+    - libffi-dev
+before_install:
+- echo "before $(uname -a)"
+- echo "$PYENV_ROOT"
+- pyenv install 3.5.3
+- pyenv global 3.5.3
+- pip --version
+- pip install -U pip
+- pip --version
 
 # ====> Slack notification..
 notifications:
