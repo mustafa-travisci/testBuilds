@@ -2,11 +2,11 @@
 #before_install:
 #  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
 
-language: ruby
-os: osx
-osx_image: xcode12.4
-rvm: 2.7.2
-script: ruby -v
+os: linux
+arch: arm64-graviton2
+virt: lxd
+group: edge
+script: echo armtest
 
 # ====> Slack notification..
 notifications:
