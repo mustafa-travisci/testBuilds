@@ -1,6 +1,7 @@
 ---
 #before_install:
 #  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
+language: shell
 service:
   - elasticsearch
 before_script:
