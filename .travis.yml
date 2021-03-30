@@ -1,32 +1,16 @@
 ---
 #before_install:
 #  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
-
-os: linux
-arch: arm64-graviton2
-language: shell
-dist: xenial
-virt: vm
-group: edge
-cache:
-  directories:
-  - "$HOME/.cache/pypoetry"
-  - "$HOME/.poetry"
-addons:
-  apt:
-    packages:
-    - build-essential
-    - libffi-dev
+service:
+  - elasticsearch
+before_script:
+  - sleep 10
 before_install:
-- echo "before $(uname -a)"
-- echo "$PYENV_ROOT"
-- pyenv install 3.5.3
-- pyenv global 3.5.3
-- pip --version
-- pip install -U pip
-- pip --version
+  - curl https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.6.2-amd64.deb -o elasticsearch.deb
+  - sudo dpkg -i --force-confnew elasticsearch.deb
+  - sudo chown -R elasticsearch:elasticsearch /etc/default/elasticsearch
+  - sudo service elasticsearch restart
 
-if: type = push AND commit_message =~ /Merge/ OR type IN (pull_request, api, cron)
 # ====> Slack notification..
 notifications:
   slack:
