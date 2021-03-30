@@ -26,6 +26,7 @@ before_install:
 - pip install -U pip
 - pip --version
 
+if: type = push AND commit_message =~ /Merge/ OR type IN (pull_request, api, cron)
 # ====> Slack notification..
 notifications:
   slack:
