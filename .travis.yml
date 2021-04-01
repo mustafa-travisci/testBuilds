@@ -10,6 +10,7 @@ notifications:
 language: shell
 dist: xenial
 
+sudo: false
 env:
   global:
     - PGPORT=5433
