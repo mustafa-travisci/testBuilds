@@ -38,9 +38,6 @@ before_script:
   - psql -Upostgres -hlocalhost -p5433 -c "CREATE DATABASE travis_test;"
   - psql -Upostgres -hlocalhost -p5433 travis_test < api/database/structure.sql
 
-git:
-  depth: false
-
 env:
   global:
     - DATABASE_NAME=travis_test
