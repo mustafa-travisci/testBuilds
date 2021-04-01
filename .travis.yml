@@ -23,6 +23,7 @@ addons:
 cache: yarn
 
 services:
+  - postgresql
   - redis-server
 
 before_install:
