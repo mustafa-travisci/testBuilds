@@ -31,6 +31,7 @@ before_install:
   - sudo sed -i "s/port = 5432/port = 5433/" /etc/postgresql/12/main/postgresql.conf
   - sudo sed -i -e "/local.*peer/s/postgres/all/" -e "s/peer\|md5/trust/g" /etc/postgresql/*/main/pg_hba.conf
   - postgres --version
+  - echo "test"
 
 before_script:
   - psql -Upostgres -hlocalhost -p5433 -c "SELECT version();"
