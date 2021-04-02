@@ -15,8 +15,8 @@ node_js:
 addons:
   apt:
     sources:
-    - sourceline: deb https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/4.2 multiverse
-      key_url: https://www.mongodb.org/static/pgp/server-4.2.asc
+    - sourceline: deb https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/4.4 multiverse
+      key_url: https://www.mongodb.org/static/pgp/server-4.4.asc
 before_install:
   - sudo rm -rf /var/lib/mongodb /var/log/mongodb
   - sudo apt-get -y install mongodb-org
