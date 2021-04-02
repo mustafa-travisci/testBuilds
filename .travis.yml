@@ -9,14 +9,14 @@ notifications:
 
 language: node_js
 os: linux
-dist: focal
+dist: xenial
 node_js:
   - '12'
 addons:
   apt:
     sources:
-    - sourceline: deb https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse
-      key_url: https://www.mongodb.org/static/pgp/server-4.4.asc
+    - sourceline: deb https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/4.2 multiverse
+      key_url: https://www.mongodb.org/static/pgp/server-4.2.asc
 before_install:
   - sudo apt-get -y purge mongodb-server-core
   - sudo rm -rf /var/lib/mongodb /var/log/mongodb
