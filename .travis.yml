@@ -18,8 +18,9 @@ addons:
     - sourceline: deb https://repo.mongodb.org/apt/ubuntu focal/mongodb-org/4.4 multiverse
       key_url: https://www.mongodb.org/static/pgp/server-4.4.asc
 before_install:
-  - sudo apt-get -y purge mongodb-server-core
-  - sudo rm -rf /var/lib/mongodb /var/log/mongodb
-  - sudo apt-get -y install mongodb-org
-  - sudo systemctl start mongod
-  - sudo systemctl status mongod
+    - sudo apt-get -y purge mongodb-server-core
+    - sudo rm -rf /var/lib/mongodb /var/log/mongodb
+    - sudo apt-get -y install mongodb-org
+    - sudo systemctl start mongod
+    - sudo systemctl status mongod
+script: true
