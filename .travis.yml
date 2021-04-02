@@ -20,4 +20,4 @@ before_script:
   - sudo service mongod start
   - sudo systemctl start mongod
   - sudo systemctl enable mongod
-  - sudo netstat -naptu | grep 27017
+  - mongod --version
