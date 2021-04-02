@@ -22,3 +22,5 @@ before_install:
   - sudo apt-get -y install mongodb-org
   - sudo systemctl start mongod
   - sudo systemctl status mongod
+  - mongod --version
+script: true
