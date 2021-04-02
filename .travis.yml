@@ -17,8 +17,5 @@ before_install:
   - sudo apt-get install mongodb-org
   - dpkg -l | grep mongodb
   - dpkg -L mongodb-org-tools
-  - sudo service mongod start
-  - sudo systemctl start mongod
-  - sudo systemctl enable mongod
   - mongod --version
 script: true
