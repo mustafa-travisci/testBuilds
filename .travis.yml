@@ -34,3 +34,4 @@ before_install:
 before_script:
   - psql -Utravis -hlocalhost -p5432 -c "SELECT version();"
   - psql -Utravis -hlocalhost -p5432 -c "CREATE DATABASE travis_test;"
+script: true
