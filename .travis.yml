@@ -8,74 +8,39 @@ notifications:
   slack:
     secure: VoE5SUTQ3VkkJGyOOcpNJ4X1FyphB22Qa8Q27ZCYluhw1L02k2r/vWIsIGWe2KfStTlFupFeKqeF8QOYD8l9BxwOK6l7lDR9PUbR5paV8nD0wMs7OA8msTYXpvJH46fVdrmqVyRBFc+RE3ORw00TsHbShiNR+8zAhoEYFiwROZVsVvIBTfV4TZedYi6OW5Rg2NInf4mNX0fPKRVJTZ/euK+NIaKRticpAw0qfxK+seAyJ5UjqJ5QjMUa1lebq4vAETgk5g41ghQuhdLq1GIs7Na8+sCaQk+Yax4OxEsyy5yRmEkohxt0+cMHMKApbHl/5y2rQA6m5iJ8HliRJuWkSvTOxPeY2oQ4i8R7zY6l9y5IcYdU1M9MjfHzt0nQ6m4UUna0AWLdumGifhI+l8XtVhbHpQ2xd0oNVmOfF636JG+80WH3JJcbsOt8fwaxNeZP/HarpIB1XVrRtnVh3JaGsu3O1T6zoTZUBUwspQKK7k1Fl8sso+lCTNhoTPjgTiloOGhBFA4vBDF1U/JRdTksbXeLdx51Jx/8kyU6IXjsOU6bZLz3jZMRpQzy5TkNAO51mYnx4RoQF/QrBKSTp1OjZh+CaWUMBCzFTDqgONTbmesUD2PqbOkifaB1+0Rq9L46sNLM1YS4JZIpWNW6yg30tgjAqryI8Xu1W2Ka8153db4=
 
-language: node_js
-node_js:
-- '7'
-env:
-  matrix:
-  - COW_WORD=arrrt
-  - COW_WORD=aa
-  - COW_WORD=as
-  - COW_WORD=ad
-  - COW_WORD=af
-  - COW_WORD=ag
-  - COW_WORD=ah
-  - COW_WORD=aj
-  - COW_WORD=ak
-  - COW_WORD=al
-  - COW_WORD=aş
-  - COW_WORD=aşewe
-  - COW_WORD=v
-  - COW_WORD=b
-  - COW_WORD=q
-  - COW_WORD=w
-  - COW_WORD=e
-  - COW_WORD=r
-  - COW_WORD=t
-  - COW_WORD=y
-  - COW_WORD=u
-  - COW_WORD=n
-  - COW_WORD=ou
-  - COW_WORD=oer
-  - COW_WORD=oert
-  - COW_WORD=oet
-  - COW_WORD=oe
-  - COW_WORD=e
-  - COW_WORD=og
-  - COW_WORD=ryt
-  - COW_WORD=r
-  - COW_WORD=b
-  - COW_WORD=t
-  - COW_WORD=ty
-  - COW_WORD=12
-  - COW_WORD=2
-  - COW_WORD=5t
-  - COW_WORD=5nf
-  - COW_WORD=24
-  - COW_WORD=2njmh
-  - COW_WORD=oc
-  - COW_WORD=obm
-  - COW_WORD=obnm
-  - COW_WORD=obb
-  - COW_WORD=obv
-  - COW_WORD=obc
-  - COW_WORD=obğ
-  - COW_WORD=obp
-  - COW_WORD=obo
-  - COW_WORD=obı
-  - COW_WORD=obu
-  - COW_WORD=oby
-  - COW_WORD=obt
-  - COW_WORD=obr
-  - COW_WORD=obe
-  - COW_WORD=obw
-  - COW_WORD=obq
-  - COW_WORD=ob0
-  - COW_WORD=ob9
-  - COW_WORD=ob8
-  - COW_WORD=ob7
-  - COW_WORD=ob6
-  - COW_WORD=ob5
-  - COW_WORD=ob45
-  - COW_WORD=ob2
-script: echo Hello ${COW_WORD} | cowsay
+# This file was generated automatically from conda-smithy. To update this configuration,
+# update the conda-forge.yml and/or the recipe/meta.yaml.
+
+language: generic
+
+
+
+jobs:
+  include:
+    - env: CONFIG=linux_ppc64le_numpy1.17python3.6.____cpython UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=quay.io/condaforge/linux-anvil-ppc64le
+      os: linux
+      arch: ppc64le
+
+    - env: CONFIG=linux_ppc64le_numpy1.17python3.7.____cpython UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=quay.io/condaforge/linux-anvil-ppc64le
+      os: linux
+      arch: ppc64le
+
+    - env: CONFIG=linux_ppc64le_numpy1.17python3.8.____cpython UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=quay.io/condaforge/linux-anvil-ppc64le
+      os: linux
+      arch: ppc64le
+
+    - env: CONFIG=linux_ppc64le_numpy1.18python3.6.____73_pypy UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=quay.io/condaforge/linux-anvil-ppc64le
+      os: linux
+      arch: ppc64le
+
+    - env: CONFIG=linux_ppc64le_numpy1.19python3.9.____cpython UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=quay.io/condaforge/linux-anvil-ppc64le
+      os: linux
+      arch: ppc64le
+
+script:
+  - export CI=travis
+  - export GIT_BRANCH="$TRAVIS_BRANCH"
+  - export FEEDSTOCK_NAME=$(basename ${TRAVIS_REPO_SLUG})
+
+
+  - if [[ ${PLATFORM} =~ .*linux.* ]]; then ./.scripts/run_docker_build.sh; fi
