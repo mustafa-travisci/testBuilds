@@ -19,6 +19,10 @@ addons:
     packages:
       - postgresql-12
       - postgresql-client-12
+env:
+  global:
+  - PGPORT=5433
+  - PGUSER=travis
 
 before_install:
   - sudo sed -i -e "/local.*peer/s/postgres/all/" -e "s/peer\|md5/trust/g" /etc/postgresql/*/main/pg_hba.conf
@@ -26,5 +30,5 @@ before_install:
 
 before_script:
   - psql -Utravis -p5433 -c 'create database travis_ci_test;'
-  - psql -c "SELECT version();"
-  - psql --Utravis -hlocalhost -p5432 c "SELECT version();"
+  - psql -p5433 -c "SELECT version();"
+  - psql --Utravis -hlocalhost -p5433 -c "SELECT version();"
