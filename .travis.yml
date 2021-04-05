@@ -10,41 +10,28 @@ notifications:
 
 language: node_js
 
-branches:
-  only:
-    - master
-
 node_js:
-  - node
-  - 14
-  - 12
+  - "10.23.0"
 
-git:
-  depth: false
+addons:
+  postgresql: "12"
+  apt:
+    packages:
+      - postgresql-12
+      - postgresql-client-12
 
-install:
-  # Install hub
-  - sudo snap install hub --classic
-  - hub --version
-
-  # Install github-changelog-generator.
-  - gem install github_changelog_generator
-
-  # install dependencies
-  - yarn
+before_install:
+  - echo "installing postgresql"
+  - sudo sed -i "s/port = 5432/port = 5433/" /etc/postgresql/12/main/postgresql.conf
+  - cat /etc/postgresql/12/main/postgresql.conf | grep port
+  - sudo sed -i -e "/local.*peer/s/postgres/all/" -e "s/peer\|md5/trust/g" /etc/postgresql/*/main/pg_hba.conf
+  - sudo service postgresql restart
+  - sleep 1
+  - sudo service postgresql stop
+  - sudo service postgresql start 12
+  - postgres --version
 
 before_script:
-  - yarn format:check
-  - yarn lint
-  - yarn build
-
-script:
-  - export BRANCH=$(if [ "$TRAVIS_PULL_REQUEST" == "false" ]; then echo "$TRAVIS_BRANCH"; else echo "$TRAVIS_PULL_REQUEST_BRANCH"; fi)
-
-jobs:
-  include:
-    - stage: deploy
-      if: branch = master
-      node_js: node
-      before_deploy:
-        - if [ "$BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]; then ./release.sh compare_and_release; fi
+  - psql -Upostgres -hlocalhost -p5433 -c "SELECT version();"
+  - psql -Upostgres -hlocalhost -p5433 -c "CREATE DATABASE travis_test;"
+  - psql -Upostgres -hlocalhost -p5433 travis_test < api/database/structure.sql
