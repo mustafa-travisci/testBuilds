@@ -31,3 +31,5 @@ before_install:
 before_script:
   - psql -Utravis -p5433 -c 'create database travis_ci_test;'
   - psql -p5433 -c "SELECT version();"
+
+script: echo "default script"
