@@ -10,11 +10,9 @@ notifications:
 
 language: java
 before_install:
-  - sudo apt-get install -y openjdk-8-jdk
+  - sudo apt install openjdk-8-jdk
 install: true
 script:
-  - java -version
-  - jdk_switcher use openjdk8
   - java -version
 jobs:
   include:
