@@ -20,25 +20,11 @@ addons:
       - postgresql-12
       - postgresql-client-12
 
-env:
-  global:
-  - PGPORT=5433
-  - PGUSER=travis
-
 before_install:
-  - echo "installing postgresql"
-  - sudo sed -i "s/port = 5433/port = 5432/" /etc/postgresql/12/main/postgresql.conf
-  - cat /etc/postgresql/12/main/postgresql.conf | grep port
   - sudo sed -i -e "/local.*peer/s/postgres/all/" -e "s/peer\|md5/trust/g" /etc/postgresql/*/main/pg_hba.conf
-  - sudo service postgresql restart
-  - sleep 1
-  - sudo service postgresql stop
-  - sudo service postgresql start 12
   - postgres --version
 
 before_script:
-  - psql -Utravis-c 'create database travis_ci_test;'
-  - psql "SELECT version();" -U travis -h localhost -p 5432
-  - psql -Utravis -hlocalhost -p5432 -c "SELECT version();"
-  - psql -Utravis -hlocalhost -p5432 -c "CREATE DATABASE travis_test;"
-
+  - psql -Utravis -c 'create database travis_ci_test;'
+  - psql -c "SELECT version();"
+  - psql --Utravis -hlocalhost -p5432 c "SELECT version();"
