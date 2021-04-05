@@ -37,7 +37,7 @@ before_install:
   - postgres --version
 
 before_script:
-  - psql -c 'create database travis_ci_test;' -U travis
+  - psql -Utravis-c 'create database travis_ci_test;'
   - psql "SELECT version();" -U travis -h localhost -p 5432
   - psql -Utravis -hlocalhost -p5432 -c "SELECT version();"
   - psql -Utravis -hlocalhost -p5432 -c "CREATE DATABASE travis_test;"
