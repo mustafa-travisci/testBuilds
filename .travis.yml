@@ -10,9 +10,6 @@ notifications:
 
 os: windows
 language: generic
-addons:
-  firefox: latest
-  chrome: stable
 before_install:
 - |
   if [ ${TRAVIS_OS_NAME} == "linux" ]; then
