@@ -10,17 +10,7 @@ notifications:
 
 language: java
 jdk:
-  - oraclejdk8
-  - oraclejdk9
   - openjdk8
-before_install:
-  - |
-    if [ $TRAVIS_EVENT_TYPE == "push" ]
-    then
-      echo "worked!"
-    else
-      echo "this is not pr build!"
-    fi
 script: java -version
 before_install:
   - jdk_switcher use oraclejdk8
