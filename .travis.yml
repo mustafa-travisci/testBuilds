@@ -20,12 +20,11 @@ env:
    - TEST_PATH_PATTERN=spec/US/modal
 jobs:
     include:
-        - name: 'Lint, Unit and Non-Snap Tests'
+        -
           script:
               - npm run lint
               - npm run test
               - npm run test:func:nosnaps
-
-        - name: 'Update Snapshots'
+        -
           script: echo hey
 
