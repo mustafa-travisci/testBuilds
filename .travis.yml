@@ -28,5 +28,5 @@ jobs:
               - npm run test:func:nosnaps
 
         - name: 'Update Snapshots'
-              - ./scripts/snapshot-tests/update-snapshots.sh
+          script: echo hey
 
