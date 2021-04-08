@@ -20,7 +20,7 @@ env:
    - TEST_PATH_PATTERN=spec/US/modal
 jobs:
     include:
-        -
+        - name: "This is the name"
           script:
               - npm run lint
               - npm run test
