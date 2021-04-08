@@ -22,9 +22,11 @@ before_install:
       echo "this is not pr build!"
     fi
 script: java -version
+before_install:
+  - jdk_switcher use oraclejdk8
+  - jdk_switcher use openjdk8
 jobs:
   include:
     - dist: focal
-      before_install: jdk_switcher use oraclejdk8 && jdk_switcher use openjdk8
     - dist: xenial
     - dist: bionic
