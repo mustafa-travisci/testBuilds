@@ -11,5 +11,6 @@ notifications:
 os: linux
 dist: bionic
 language: perl
-ruby: 5.32
+perl:
+  - "5.32"
 script: perl -v
