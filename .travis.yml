@@ -11,6 +11,7 @@ notifications:
 dist: xenial
 services:
   - mysql
+before_install: true
 script:
-  - mysql -v
+  - mysql -V
   - sudo service mysql restart
