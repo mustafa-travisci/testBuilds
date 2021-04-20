@@ -5,7 +5,6 @@ os:
 dist: xenial
 scala:
   - 2.12.11
-script: true
 
 #before_install:
 #  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
