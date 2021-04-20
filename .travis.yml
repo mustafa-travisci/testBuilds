@@ -1,14 +1,11 @@
 ---
-language: ruby
+language: scala
+os:
+  - linux
 dist: xenial
-
-services:
-  - mysql
-before_script:
-  - mysql -V
-  - cat ~travis/.my.cnf
-install: true
-script: echo "test staging"
+scala:
+  - 2.12.11
+script: true
 
 #before_install:
 #  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
