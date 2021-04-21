@@ -3,6 +3,8 @@ language: scala
 os:
   - linux
 dist: xenial
+script:
+    - sbt -sbt-launch-repo https://repo1.maven.org/maven2 ++$TRAVIS_SCALA_VERSION test
 
 #before_install:
 #  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
