@@ -1,11 +1,12 @@
 ---
-language: scala
+language: ruby
 os:
   - linux
 dist: xenial
-script:
-    - sbt -sbt-launch-repo https://repo1.maven.org/maven2 ++$TRAVIS_SCALA_VERSION test
-
+services:
+  - mysql
+after_script: echo "SELECT 'OK';" | mysql --user=root --password="$MYSQL_ROOT_PASSWORD" --host=mysql "$MYSQL_DATABASE"
+script: true
 #before_install:
 #  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
 
