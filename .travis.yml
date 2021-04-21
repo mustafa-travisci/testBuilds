@@ -5,7 +5,7 @@ os:
 dist: xenial
 services:
   - mysql
-after_script: echo "SELECT 'OK';" | mysql --user=root
+before_install: mysql -e 'CREATE DATABASE IF NOT EXISTS test;'
 script: true
 #before_install:
 #  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
