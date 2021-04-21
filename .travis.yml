@@ -1,12 +1,16 @@
 ---
-language: ruby
-os:
-  - linux
+os: linux
+jdk: openjdk16
+language: java
 dist: xenial
-services:
-  - mysql
-before_install: mysql -e 'CREATE DATABASE IF NOT EXISTS test;'
-script: true
+script: java -version
+
+
+
+
+
+
+
 #before_install:
 #  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
 
