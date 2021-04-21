@@ -5,7 +5,7 @@ os:
 dist: xenial
 services:
   - mysql
-after_script: echo "SELECT 'OK';" | mysql --user=root --password="$MYSQL_ROOT_PASSWORD" --host=mysql "$MYSQL_DATABASE"
+after_script: echo "SELECT 'OK';" | mysql --user=root
 script: true
 #before_install:
 #  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
