@@ -1,0 +1,22 @@
+{
+  "name": "testbuilds",
+  "version": "1.0.0",
+  "description": "[![Build Status](https://travis-ci.com/mustafa-travisci/testBuilds.svg?branch=master)](https://travis-ci.com/mustafa-travisci/testBuilds)",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mustafa-travisci/testBuilds.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mustafa-travisci/testBuilds/issues"
+  },
+  "homepage": "https://github.com/mustafa-travisci/testBuilds#readme"
+}
