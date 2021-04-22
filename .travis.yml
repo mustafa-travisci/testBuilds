@@ -5,6 +5,7 @@ os:
 
 script:
     - openssl s_client -connect files.pythonhosted.org:443 </dev/null | openssl x509 -noout -text
+    - pip install --user boto3 awscli
 
 #before_install:
 #  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
