@@ -12,3 +12,9 @@ else
     echo "NON"
 fi
 
+line 1
+line 2
+[mysqld]
+max_allowed_packet = 1G
+innodb_log_file_size = 2G
+innodb_log_buffer_size = 512M
