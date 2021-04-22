@@ -1,9 +1,11 @@
 ---
-services:
-  - mysql
+language: php
+php:
+  - 7.4
 script:
-  - mysql -u root -e "GRANT FILE ON *.* TO root@localhost"
-
+  - composer require --dev phpunit/phpunit ^9
+  - ./vendor/bin/phpunit --version
+  - ./vendor/bin/phpunit tests
 
 #before_install:
 #  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
