@@ -1,16 +1,8 @@
 ---
-os: linux
-jdk: openjdk16
-language: java
-dist: xenial
-script: java -version
-vm:
-  size: x-large
-after_script: free --mega
-
-
-
-
+service:
+  - mysql
+script:
+  - mysql -u root -e "GRANT FILE ON *.* TO 'root'@'localhost"
 
 
 #before_install:
