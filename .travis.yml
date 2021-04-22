@@ -6,7 +6,7 @@ services:
   - mysql
 script:
   - cat ~travis/.my.cnf
-  - tee -a ~travis/.my.cnf << END
+  - tee -a ~travis/.my.cnf <<
       [mysqld]
       max_allowed_packet = 1G
       innodb_log_file_size = 2G
