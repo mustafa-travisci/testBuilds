@@ -1,13 +1,9 @@
 ---
-language: ruby
+language: php
 os:
     - linux
-services:
-  - mysql
-script:
-  - cat ~travis/.my.cnf
-  - echo -e "[mysqld]\nmax_allowed_packet = 1G\ninnodb_log_file_size = 2G\ninnodb_log_buffer_size = 512M" >> ~travis/.my.cnf
-  - cat ~travis/.my.cnf
+
+script: aws --version
 
 #before_install:
 #  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
