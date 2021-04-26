@@ -1,7 +1,11 @@
 ---
-language: php
+jobs:
+  include:
+    - language: php
+    - language: python
+
 os:
-    - linux
+  - linux
 
 script: aws --version
 
