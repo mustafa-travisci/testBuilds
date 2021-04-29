@@ -1,9 +1,11 @@
 ---
 language: node_js
+
 os:
   - linux
 before_install: pip install awscli
-script: aws --version
+script: echo $SLACK_TOK
+
 
 #before_install:
 #  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
