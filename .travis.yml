@@ -4,7 +4,7 @@ language: node_js
 os:
   - linux
 before_install: pip install awscli
-script: echo $SLACK_TOK
+script: echo $SLACK_TOK; node -e "console.log('SLACK_TOK', process.env.SLACK_TOK)"
 
 
 #before_install:
