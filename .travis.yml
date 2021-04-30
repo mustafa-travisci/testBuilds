@@ -1,11 +1,8 @@
 ---
-language: node_js
-
+virt: lxd
 os:
   - linux
-before_install: pip install awscli
-script: echo $SLACK_TOK; node -e "console.log('SLACK_TOK', process.env.SLACK_TOK)"
-
+script: df -h
 
 #before_install:
 #  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
