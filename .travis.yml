@@ -1,6 +1,6 @@
 ---
 language: perl
-
+dist: focal
 script: perl -v
 before_install: true
 
