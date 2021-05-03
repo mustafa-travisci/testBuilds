@@ -1,6 +1,6 @@
 ---
 language: perl
-dist: focal
+dist: xenial
 script: perl -v
 before_install: true
 
