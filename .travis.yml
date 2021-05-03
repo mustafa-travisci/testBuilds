@@ -1,9 +1,13 @@
 ---
 language: perl
 
-perl: 5.32
 script: perl -v
+before_install: true
 
+jobs:
+  include:
+    - perl: 5.32
+    - perl: 5.26
 #before_install:
 #  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
 
