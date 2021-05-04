@@ -1,4 +1,5 @@
 ---
+dist: bionic
 language: perl
 perl:
   - "5.30"
