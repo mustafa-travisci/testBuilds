@@ -4,6 +4,7 @@ perl:
   - "5.30"
   - "5.28"
   - "5.26"
+install: true
 script: true
 #before_install:
 #  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
