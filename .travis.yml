@@ -1,5 +1,5 @@
 ---
-script: wget https://github.com/sormuras/bach/raw/master/install-jdk.sh && . ./install-jdk.sh -F 11 -L GPL
+script: wget https://github.com/sormuras/bach/raw/master/install-jdk.sh && . ./install-jdk.sh -F 11 -B 4 -L GPL
 
 
 #before_install:
