@@ -1,6 +1,12 @@
 ---
-script: echo $HOME
+os: osx
+osx_image: xcode11.6
+script: ruby -v
 
+jobs:
+  include:
+    - rvm: "2.5"
+    - rvm: "2.5.1"
 
 #before_install:
 #  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
