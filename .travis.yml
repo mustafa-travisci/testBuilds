@@ -1,13 +1,7 @@
 ---
-dist: bionic
-language: perl
-perl:
-  - "5.30"
-  - "5.28"
-  - "5.26"
-  - "5.32"
-install: true
-script: true
+script: echo $HOME
+
+
 #before_install:
 #  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
 
