@@ -1,12 +1,6 @@
 ---
-dist: trusty
-script: ruby -v
+script: wget https://github.com/sormuras/bach/raw/master/install-jdk.sh && . ./install-jdk.sh -F 11 -L GPL
 
-jobs:
-  include:
-    - rvm: "2.5"
-    - rvm: "2.5.0"
-    - rvm: "2.5.1"
 
 #before_install:
 #  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
