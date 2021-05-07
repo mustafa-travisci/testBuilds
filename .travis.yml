@@ -1,6 +1,9 @@
 ---
-script: wget https://github.com/sormuras/bach/raw/master/install-jdk.sh && . ./install-jdk.sh -F 11 -B 4 -L GPL
-
+language: java
+jdk:
+  - openjdk8
+script: true
+before_install: java -version
 
 #before_install:
 #  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
