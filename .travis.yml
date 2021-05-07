@@ -8,6 +8,8 @@ jobs:
     -
       jdk:
         - oraclejdk8
+
+install: true
 script: java -version
 
 #before_install:
