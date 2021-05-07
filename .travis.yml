@@ -1,8 +1,11 @@
 ---
-dist: focal
+install: true
+script: true
 
-script: ls -all /home/travis/.docker/ && cat /home/travis/.docker/config.json
-
+jobs:
+  include:
+    - arch: arm64
+    - arch: s390x
 
   #services:
   #- docker
