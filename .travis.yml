@@ -9,7 +9,7 @@ addons:
 install: true
 script:
   - postgres -V
-  - java --version
+  - java -version
 
 jdk: openjdk8
 
