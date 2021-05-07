@@ -1,9 +1,14 @@
 ---
 language: java
-jdk:
-  - openjdk8
-script: true
-before_install: java -version
+jobs:
+  include:
+    -
+      jdk:
+        - openjdk8
+    -
+      jdk:
+        - oraclejdk8
+script: java -version
 
 #before_install:
 #  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
