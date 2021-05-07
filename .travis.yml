@@ -1,11 +1,21 @@
 ---
-dist: trusty
+dist: xenial
+language: java
 addons:
   postgresql: "9.6"
   apt:
     packages:
       - postgresql-9.6-postgis-2.3
-script: postgres -V
+install: true
+script:
+  - postgres -V
+  - java --version
+
+jobs:
+include:
+  - jdk: openjdk8
+  - jdk: oraclejdk8
+
 #before_install:
 #  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
 
