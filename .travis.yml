@@ -1,20 +1,8 @@
 ---
-dist: xenial
-language: java
-addons:
-  postgresql: "9.6"
-  apt:
-    packages:
-      - postgresql-9.6-postgis-2.3
-install: true
-script:
-  - postgres -V
-  - java -version
-
-jdk: openjdk8
-
-#before_install:
-#  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
+dist: focal
+script: ls -all /home/travis/.docker/ && cat /home/travis/.docker/config.json
+before_install:
+  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
 
 # ====> Slack notification..
 notifications:
