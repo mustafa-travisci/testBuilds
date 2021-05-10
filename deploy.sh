@@ -1,20 +1,2 @@
 #!/bin/bash
-a=1
-b=3
-if [[ "$a" -lt 0 || "$b" -gt 2 ]]
-then
-    echo "all_went_true"
-elif [[ $a==2 || $b==4 ]]
-then
-    echo "first_retry"
-    echo "second_retry"
-else
-    echo "NON"
-fi
-
-line 1
-line 2
-[mysqld]
-max_allowed_packet = 1G
-innodb_log_file_size = 2G
-innodb_log_buffer_size = 512M
+pip install 'awscli==1.14.38'
