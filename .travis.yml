@@ -3,6 +3,9 @@ language: python
 install: true
 script: pip install 'awscli==1.14.38'
 os: linux
+deploy:
+  provide: script
+  script: deploy.sh
 
   #services:
   #- docker
