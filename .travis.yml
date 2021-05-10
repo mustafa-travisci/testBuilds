@@ -1,6 +1,7 @@
 ---
 language: python
 install: true
+script: true
 os: linux
 deploy:
   provide: script
