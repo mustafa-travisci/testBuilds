@@ -3,10 +3,9 @@ language: node_js
 install:
   - pyenv versions
   - python --version
-  - pyenv global pypy-2.7.12
+  - pyenv global pypy-2.7
   - python --version
 script:
-  - python --version
   - pip install awscli
 
 jobs:
