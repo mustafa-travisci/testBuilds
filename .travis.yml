@@ -3,16 +3,16 @@ language: node_js
 install:
   - pyenv versions
   - python --version
-script:
-  - pip install awscli
+script: true
 
-jobs:
-  include:
-    - dist: trusty
-    - dist: xenial
-    - dist: bionic
-      before_install:
-        - pyenv global 2.7.17
+before_cache:
+  - |
+    if [[ -f "pom.xml" ]]; then
+        echo "The file exists."
+    fi
+
+
+
 
   #services:
   #- docker
