@@ -1,12 +1,12 @@
 ---
-language: python
+language: node_js
 install: true
-script: true
-os: linux
-deploy:
-  provide: script
-  script: deploy.sh
-  skip_cleanup: true
+script: python --version
+
+jobs:
+  include:
+    - dist: trusty
+    - dist: xenial
 
   #services:
   #- docker
