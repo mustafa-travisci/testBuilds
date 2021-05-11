@@ -1,6 +1,9 @@
 ---
 language: node_js
-install: true
+install:
+  - alias python='/usr/bin/python2.7.18'
+  - . ~/.bashrc
+  - python --version
 script:
   - python --version
   - pip install awscli
