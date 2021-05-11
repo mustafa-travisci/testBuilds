@@ -3,6 +3,7 @@ language: node_js
 install:
   - pyenv versions
   - python --version
+  - pyenv install 2.7.12
   - pyenv global 2.7.12
   - python --version
 script:
