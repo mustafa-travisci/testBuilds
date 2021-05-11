@@ -13,6 +13,7 @@ jobs:
   include:
     - dist: trusty
     - dist: xenial
+    - dist: bionic
 
   #services:
   #- docker
