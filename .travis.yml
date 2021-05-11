@@ -1,11 +1,9 @@
 ---
 language: node_js
 install:
-  - brew update
-  - brew install pyenv
   - pyenv versions
   - python --version
-  - pyenv global pypy-2.6.12
+  - pyenv global pypy-2.7.12
   - python --version
 script:
   - python --version
