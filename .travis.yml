@@ -1,19 +1,17 @@
 ---
-language: node_js
+language: python
+compiler: gcc
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-7.4
 install:
-  - pyenv versions
   - python --version
-script: true
 
-before_cache:
-  - |
-    if [[ -f "pom.xml" ]]; then
-        echo "The file exists."
-    fi
-
-
-
-
+script:
+  true
   #services:
   #- docker
   #before_install:
