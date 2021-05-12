@@ -1,17 +1,9 @@
 ---
-language: python
-compiler: gcc
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - g++-7.4
-install:
-  - python --version
-
-script:
-  true
+vim:
+  size: large
+language: generic
+install: true
+script: true
   #services:
   #- docker
   #before_install:
