@@ -1,13 +1,22 @@
 ---
-vim:
-  size: large
-language: node_js
+language: python
+python:
+   - "pypy"
+   - "pypy3"
+script: python -V
 install: true
-script: true
-services:
-  - docker
-before_install:
-  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
+jobs:
+  include:
+    - arch: ppc64le
+      dist: xenial
+    - dist: focal
+
+
+
+  #services:
+  #- docker
+  #before_install:
+  #- echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
 
 # ====> Slack notification..
 notifications:
