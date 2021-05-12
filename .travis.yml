@@ -1,13 +1,13 @@
 ---
 vim:
   size: large
-language: generic
+language: node_js
 install: true
 script: true
-  #services:
-  #- docker
-  #before_install:
-  #- echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
+services:
+  - docker
+before_install:
+  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
 
 # ====> Slack notification..
 notifications:
