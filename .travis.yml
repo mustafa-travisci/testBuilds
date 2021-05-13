@@ -1,7 +1,7 @@
 ---
 language: node_js
 script: echo "now"
-install: sleep 555555555454333
+install: sleep 555
 before_cache:
   - echo "before"
 cache:
