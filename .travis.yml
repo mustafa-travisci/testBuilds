@@ -1,16 +1,9 @@
 ---
-language: python
-python:
-   - "pypy"
-   - "pypy3"
-script: python -V
-install: true
-jobs:
-  include:
-    - arch: ppc64le
-      dist: xenial
-    - dist: focal
-
+language: generic
+before_cache:
+  - echo "before"
+cache:
+  - npm
 
 
   #services:
