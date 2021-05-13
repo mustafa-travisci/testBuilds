@@ -1,5 +1,7 @@
 ---
-language: generic
+language: node_js
+script: true
+install: true
 before_cache:
   - echo "before"
 cache:
