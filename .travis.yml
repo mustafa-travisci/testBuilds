@@ -1,17 +1,16 @@
 ---
 language: node_js
 script: echo "now"
-before_install:
-  - curl -o $TRAVIS_BUILD_DIR https://npmjs.org/install.sh
-  - ls $TRAVIS_BUILD_DIR
 install:
-before_cache:
-  - echo "before_cache"
-cache:
-  directories:
-    - $TRAVIS_BUILD_DIR
-
-
+  - sudo apt-get clean
+  - make dev_pkgs
+  - sudo apt-get update
+  - sudo apt-get install sshpass
+jobs:
+  include:
+    - dist: focal
+    - dist: xenial
+    - dist: bionic
   #services:
   #- docker
   #before_install:
