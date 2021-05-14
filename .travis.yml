@@ -1,13 +1,15 @@
 ---
 language: node_js
 script: echo "now"
+before_install:
+  - cd $TRAVIS_BUILD_DIR && { curl -O -L https://npmjs.org/install.sh }
+  - ls $TRAVIS_BUILD_DIR
 install:
-  - ls /home/travis/build/mustafa-travisci/testBuilds/curl
 before_cache:
   - echo "before_cache"
 cache:
-  - npm
-  - curl -O https://npmjs.org/install.sh
+  directories:
+    - $TRAVIS_BUILD_DIR
 
 
   #services:
