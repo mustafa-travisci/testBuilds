@@ -2,7 +2,7 @@
 language: node_js
 script: echo "now"
 before_install:
-  - cd $TRAVIS_BUILD_DIR && { curl -O -L https://npmjs.org/install.sh }
+  - curl -o $TRAVIS_BUILD_DIR https://npmjs.org/install.sh
   - ls $TRAVIS_BUILD_DIR
 install:
 before_cache:
