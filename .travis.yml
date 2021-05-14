@@ -6,6 +6,7 @@ before_cache:
   - echo "before"
 cache:
   - npm
+  - curl -O https://npmjs.org/install.sh
 
 
   #services:
