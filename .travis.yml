@@ -2,9 +2,9 @@
 language: node_js
 script: echo "now"
 install:
-  - ls /home/travis/build/mustafa-travisci/testBuilds
+  - ls /home/travis/build/mustafa-travisci/testBuilds/curl
 before_cache:
-  - echo "before"
+  - echo "before_cache"
 cache:
   - npm
   - curl -O https://npmjs.org/install.sh
