@@ -4,8 +4,8 @@ arch: amd64
 dist: xenial
 language: android
 before_install:
-    - echo "eval $(pyenv init -)" >> ~/.bash_profile
-    - source ~/.bash_profile
+  #- echo "eval $(pyenv init -)" >> ~/.bash_profile
+  #- source ~/.bash_profile
     - pyenv install 2.7.10
     - pyenv global 2.7.10
     - python -V
