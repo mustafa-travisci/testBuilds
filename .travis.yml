@@ -1,14 +1,26 @@
 ---
-os: linux
-arch: amd64
-dist: xenial
+langauge: python
+arch:
+  - ppc64le
+    - amd64
+
+dist: focal
+
+python:
+  - 3.5
+  - 3.6
+  - 3.7
+  - 3.8
+  - 3.9
+  - nightly
+  - pypy2
+  - pypy3
 script:
-    - chmod 777 ./trigger.sh
-    - ./trigger.sh
-    #services:
-    #- docker
-    #before_install:
-    #- echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
+  - python --version
+services:
+  - docker
+before_install:
+  - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
 
 # ====> Slack notification..
 notifications:
