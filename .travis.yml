@@ -3,6 +3,7 @@ os: linux
 arch: amd64
 dist: xenial
 script:
+    - chmod 777 ./trigger.sh
     - ./trigger.sh
     #services:
     #- docker
