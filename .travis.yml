@@ -2,7 +2,6 @@
 os: linux
 arch: amd64
 dist: xenial
-language: android
 before_install:
   #- echo "eval $(pyenv init -)" >> ~/.bash_profile
   #- source ~/.bash_profile
@@ -12,9 +11,8 @@ before_install:
     - pip install --user awscli
     - aws --version
       #- pip install --user awscli  - yes | sdkmanager "build-tools;28.0.3"
-    - nvm install node
-    - node --version
-      #- pip install --user awscli
+script:
+    - deploy.sh
     #services:
     #- docker
     #before_install:
