@@ -2,17 +2,8 @@
 os: linux
 arch: amd64
 dist: xenial
-before_install:
-  #- echo "eval $(pyenv init -)" >> ~/.bash_profile
-  #- source ~/.bash_profile
-    - pyenv install 2.7.10
-    - pyenv global 2.7.10
-    - python -V
-    - pip install --user awscli
-    - aws --version
-      #- pip install --user awscli  - yes | sdkmanager "build-tools;28.0.3"
 script:
-    - trigger.sh
+    - ./trigger.sh
     #services:
     #- docker
     #before_install:
