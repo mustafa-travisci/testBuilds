@@ -6,6 +6,7 @@ env:
   - T_OS=linux T_ARCH=386
 before_install:
   - export GOARCH=$T_ARCH
+  - go env
 install:
   - go tool dist list
 script: true
