@@ -5,7 +5,7 @@ dist: xenial
 env:
   - T_OS=linux T_ARCH=386
 before_install:
-  - export GOARCH=$T_ARCH
+  - export GOARCH=386
   - go env
 install:
   - go tool dist list
