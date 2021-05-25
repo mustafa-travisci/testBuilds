@@ -3,7 +3,7 @@ language: go
 go: 1.10
 dist: xenial
 env:
-  - GOOS=linux GOARCH=386
+  - GIMME_OS=linux GIMMEARCH=386
 install:
   - go tool dist list
 script: true
