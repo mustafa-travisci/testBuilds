@@ -3,7 +3,9 @@ language: go
 go: 1.10
 dist: xenial
 env:
-  - GIMME_OS=linux GIMMEARCH=386
+  - T_OS=linux T_ARCH=386
+before_install:
+  - export GOARCH=$T_ARCH
 install:
   - go tool dist list
 script: true
