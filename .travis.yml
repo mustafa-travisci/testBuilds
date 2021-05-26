@@ -4,8 +4,8 @@ compiler:
     - g++-10
 dist: xenial
 before_install:
-    - pyenv install 3.7
-    - pyenv global 3.7
+    - pyenv install 3.7.0a1
+    - pyenv global 3.7.0a1
     - python -V
     - g++ -v
 script: true
