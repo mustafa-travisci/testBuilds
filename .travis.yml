@@ -1,13 +1,19 @@
 ---
 language: cpp
 compiler:
-    - g++-10
+    - g++
 dist: xenial
 before_install:
     - pyenv install 3.7.0a1
     - pyenv global 3.7.0a1
     - python -V
     - g++ -v
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-10
 script: true
 
 
