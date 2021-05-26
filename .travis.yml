@@ -1,14 +1,13 @@
 ---
-language: go
-go: 1.10
+language: cpp
+compiler:
+    - g++-10
 dist: xenial
-env:
-  - T_OS=linux T_ARCH=386
 before_install:
-  - export GOARCH=386
-  - go env
-install:
-  - go tool dist list
+    - pyenv install 3.7
+    - pyenv global 3.7
+    - python -V
+    - g++ -v
 script: true
 
 
