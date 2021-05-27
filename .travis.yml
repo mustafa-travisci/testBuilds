@@ -1,27 +1,9 @@
 ---
-language: cpp
-compiler:
-    - gcc
-dist: trusty
+language: erlang
+dist: focal
 sudo: required
-before_install:
-    - pyenv install 3.7.0a1
-    - pyenv global 3.7.0a1
-    - python -V
-    - g++ -v && gcc -v
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - gcc-10
-      - g++-10
-script:
-    - export CC=/usr/bin/gcc-10
-    - export CXX=/usr/bin/g++-10
-
-
-
+script: true
+before_install: erl -eval 'erlang:display(erlang:system_info(otp_release)), halt().'  -noshell
 
     #services:
     #- docker
