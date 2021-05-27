@@ -4,11 +4,10 @@ otp_release:
     - "24.0.1"
 jobs:
     include:
-        dist:
-            - focal
-            - xenial
-            - bionic
-            - trusty
+        - dist: focal
+        - dist: xenial
+        - dist: bionic
+        - dist: trusty
 script: true
 before_install:
     - erl -eval 'erlang:display(erlang:system_info(otp_release)), halt().'  -noshell
