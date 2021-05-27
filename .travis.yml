@@ -1,6 +1,6 @@
 dist: focal
 language: ruby
-rvm: 
+rvm:
   - 2.7.2
 addons:
   postgresql: '12'
@@ -16,6 +16,7 @@ before_install:
 - sudo sed -i -e '/local.*peer/s/postgres/all/' -e 's/peer\|md5/trust/g' /etc/postgresql/*/main/pg_hba.conf
 - sudo service postgresql restart
 - sleep 1
+- postgres --version
 
-script: 
+script:
   - psql -c 'create database travis_ci_test;' -U postgres
