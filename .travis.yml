@@ -1,5 +1,7 @@
 ---
 language: erlang
+otp_release:
+    - "24.0.1"
 dist: focal
 sudo: required
 script: true
