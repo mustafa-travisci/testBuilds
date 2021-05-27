@@ -2,12 +2,12 @@
 language: erlang
 otp_release:
     - "24.0.1"
-dist:
-    - focal
-    - xenial
-    - bionic
-    - trusty
-sudo: required
+jobs:
+    include:
+        - focal
+        - xenial
+        - bionic
+        - trusty
 script: true
 before_install:
     - erl -eval 'erlang:display(erlang:system_info(otp_release)), halt().'  -noshell
