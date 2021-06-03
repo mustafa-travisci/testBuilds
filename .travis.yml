@@ -1,11 +1,62 @@
 ---
-language: ruby
-dist: focal
-services:
-    - postgresql
-before_install:
-    - postgres --version
-script: true
+language: python
+dist: xenial
+
+install: python setup.py install
+script:
+  - nosetests --with-coverage ./tests
+  - codecov --token=fda2c226-4558-416a-832f-4ca5d7a98333
+
+matrix:
+  include:
+    - python: 3.6
+      before_install:
+        - pip install coverage
+        - pip install codecov
+        - pip install -r requirements.txt
+
+    - python: 3.6
+      before_install:
+        - pip install coverage
+        - pip install codecov
+
+    - python: 3.7
+      before_install:
+        - pip install coverage
+        - pip install codecov
+        - pip install -r requirements.txt
+
+    - python: 3.7
+      before_install:
+        - pip install coverage
+        - pip install codecov
+
+    - python: 3.8
+      before_install:
+        - pip install coverage
+        - pip install codecov
+        - pip install -r requirements.txt
+
+    - python: 3.8
+      before_install:
+        - pip install coverage
+        - pip install codecov
+
+    - python: 3.9
+      before_install:
+        - pip install coverage
+        - pip install codecov
+        - pip install -r requirements.txt
+
+    - python: 3.9
+      before_install:
+        - pip install coverage
+        - pip install codecov
+
+    - python: pypy3
+      before_install:
+        - pip install coverage
+        - pip install codecov
 
 #services:
 #- docker
