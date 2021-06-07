@@ -3,6 +3,13 @@ language: android
 dist: trusty
 jdk:
   - oraclejdk8
+android:
+    components:
+        - tools
+        - platform-tools
+        - tools
+        - build-tools-30.0.0-preview
+        - extra
 before_install:
     - yes | sdkmanager "platforms;android-30"
 script: true
