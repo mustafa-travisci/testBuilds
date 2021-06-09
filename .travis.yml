@@ -1,22 +1,7 @@
 ---
-os: linux
-
-arch: amd64
-
-jobs:
-  include:
-    - dist: xenial
-      virt: vm
-    - dist: xenial
-      virt: lxd
-
-    - dist: focal
-      virt: vm
-    - dist: focal
-      virt: lxd
-
-script: true
-
+language: perl
+perl: 5.32
+script: perl --v
 
 #services:
 #- docker
