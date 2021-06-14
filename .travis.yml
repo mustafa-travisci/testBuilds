@@ -1,13 +1,14 @@
 ---
-language: python
-python: pypy
-jobs:
-    include:
-        - dist: focal
-        - dist: xenial
-arch: ppc64le
 os: linux
+dist: xenial
+language: python
+python: "3.7"
 script: python -V
+
+before_install:
+    - sudo apt-get update
+    - sudo apt-get install g++
+    - g++ --version
 
 #services:
 #- docker
