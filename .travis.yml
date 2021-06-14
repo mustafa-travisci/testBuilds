@@ -1,15 +1,13 @@
 ---
-language: erlang
-otp_release:
-    - "24.0"
-    - "24.0.1"
-    - "24.0.2"
-dist: focal
-virt: lxd
+language: python
+python: pypy2
+jobs:
+    include:
+        - dist: focal
+        - dist: xenial
 arch: amd64
 os: linux
-script:
-    - erl -eval '{ok, Version} = file:read_file(filename:join([code:root_dir(), "releases", erlang:system_info(otp_release), "OTP_VERSION"])), io:fwrite(Version), halt().' -noshell
+script: python -V
 
 #services:
 #- docker
