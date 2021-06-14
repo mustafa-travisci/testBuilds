@@ -1,6 +1,6 @@
 ---
 language: python
-python: pypy3
+python: pypy
 jobs:
     include:
         - dist: focal
