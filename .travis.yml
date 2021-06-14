@@ -5,7 +5,7 @@ jobs:
     include:
         - dist: focal
         - dist: xenial
-arch: amd64
+arch: ppc64le
 os: linux
 script: python -V
 
