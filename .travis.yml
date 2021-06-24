@@ -1,7 +1,9 @@
 ---
-arch: arm64           # LXD container based build for OSS only
-os: linux             # required for arch different than amd64
-dist: focal           # or bionic | xenial with xenial as default
+os: osx
+osx_image: xcode12.5
+vm:
+    size:
+        - 2x-large
 script: true
 
 #services:
