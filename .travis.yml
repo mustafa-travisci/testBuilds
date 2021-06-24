@@ -4,7 +4,9 @@ os: linux             # required for arch different than amd64
 dist: focal           # or bionic | xenial with xenial as default
 script: true
 
-if: branch = ^v[\d\.]+$
+branches:
+    only:
+        - "/^v[\\d\\.]+$/"
 
 #services:
 #- docker
