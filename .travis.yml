@@ -1,9 +1,7 @@
 ---
 os: osx
 osx_image: xcode12.5
-vm:
-    size:
-        - 2x-large
+install: hwprefs memory_size
 script: true
 
 #services:
