@@ -1,7 +1,4 @@
 ---
-os: osx
-osx_image: xcode12.5
-install: hwprefs memory_size
 script: true
 
 #services:
@@ -12,8 +9,9 @@ script: true
 # ====> Slack notification..
 notifications:
     irc:
-    channels:
-      - "https://webchat.freenode.net#mychan"
+        channels:
+            - "https://webchat.freenode.net#mychan"
+            - "webchat.freenode.net#mychan"
     on_success: change # default: always
     on_failure: always # default: always
     slack:
