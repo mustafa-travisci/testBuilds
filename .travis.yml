@@ -3,7 +3,7 @@ dist: focal
 os: linux
 vim:
     size:
-        - 2x-large
+        - x-large
 script: free -g
 
 #services:
