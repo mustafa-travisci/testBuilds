@@ -1,9 +1,17 @@
 ---
-dist: xenial
-vim:
-    size:
-        - large
-script: free -g
+jobs:
+    include:
+        - dist: xenial
+          script: free -m
+        - dist: bionic
+          vm:
+              size: x-large
+          script: free -m
+        - dist: focal
+          vm:
+              size:
+                  - 2x-large
+          script: free -g
 
 #services:
 #- docker
