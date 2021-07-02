@@ -10,7 +10,7 @@ jobs:
         - dist: focal
           vm:
               size:
-                  - 2x-large
+                  - large
           script: free -g
 
 #services:
