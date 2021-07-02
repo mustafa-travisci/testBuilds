@@ -1,5 +1,5 @@
 ---
-dist: focal
+dist: xenial
 os: linux
 vim:
     size:
