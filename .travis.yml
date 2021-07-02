@@ -3,6 +3,9 @@ jobs:
     include:
         - dist: xenial
           script: free -m
+          vm:
+              size:
+                  - 2x-large
         - dist: bionic
           vm:
               size: x-large
