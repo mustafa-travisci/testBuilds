@@ -1,9 +1,8 @@
 ---
 dist: xenial
-os: linux
 vim:
     size:
-        - x-large
+        - large
 script: free -g
 
 #services:
