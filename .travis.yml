@@ -1,12 +1,10 @@
 ---
-jobs:
-    include:
-        - dist: xenial
-          script: free -m
-        - dist: bionic
-          vm:
-              size: x-large
-          script: free -m
+dist: focal
+os: linux
+vim:
+    size:
+        - 2x-large
+script: free -g
 
 #services:
 #- docker
