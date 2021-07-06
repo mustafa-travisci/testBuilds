@@ -1,27 +1,12 @@
 ---
-jobs:
-    include:
-        - dist: xenial
-          script: free -m
-          vm:
-              size:
-                  - 2x-large
-        - dist: bionic
-          vm:
-              size: x-large
-          script: free -m
-        - dist: focal
-          vm:
-              size:
-                  - large
-          script:
-            - free -g
-            - docker -v
+os: windows
+script: true
 
-services:
-    - docker
-before_install:
-    - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
+
+#services:
+#    - docker
+#before_install:
+#    - echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
 
 # ====> Slack notification..
 notifications:
