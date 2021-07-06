@@ -1,6 +1,7 @@
 ---
 os: windows
 script: true
+language: c
 
 
 #services:
