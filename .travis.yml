@@ -3,8 +3,6 @@ jobs:
     include:
         - os: osx
           osx_image: xcode12.5
-        - os: osx
-          osx_image: xcode12.5.1
 script: true
 language: c
 
