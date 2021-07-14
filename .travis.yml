@@ -1,11 +1,7 @@
 ---
 dist: xenial
 arch: s390x
-language: crystal
-crystal:
-  - latest
-  - nightly
-  - 0.35.1. # example of specific version
+language: generic
 script: true
 
 
