@@ -1,7 +1,8 @@
 ---
 dist: xenial
-arch: s390x
-language: generic
+language: ruby
+ruby:
+    - 2.7.4
 script: true
 
 
