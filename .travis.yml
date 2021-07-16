@@ -2,8 +2,9 @@
 dist: xenial
 language: ruby
 ruby:
+    - 2.6.8
     - 2.7.4
-script: true
+script: ruby --version
 
 
 #services:
